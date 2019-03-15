@@ -13,15 +13,9 @@ _global_script_classes=[ {
 "class": "DockableContainer",
 "language": "GDScript",
 "path": "res://Core/GUI/Container/DockableContainer/DockableContainer.gd"
-}, {
-"base": "Node2D",
-"class": "OpenNode",
-"language": "GDScript",
-"path": "res://Core/World/OpenContent/OpenNode.gd"
 } ]
 _global_script_class_icons={
-"DockableContainer": "",
-"OpenNode": ""
+"DockableContainer": ""
 }
 
 [application]
