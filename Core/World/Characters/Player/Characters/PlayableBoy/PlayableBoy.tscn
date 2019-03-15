@@ -1,0 +1,235 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://Core/World/Characters/Player/Characters/PlayableCharacter.gd" type="Script" id=1]
+[ext_resource path="res://Core/Resources/HitBox.gd" type="Script" id=2]
+[ext_resource path="res://Core/World/Collision/WorldCollider.gd" type="Script" id=3]
+[ext_resource path="res://Core/World/Collision/TileMapCollisionHelper.gd" type="Script" id=4]
+[ext_resource path="res://Resources/Debug/32x32.png" type="Texture" id=5]
+[ext_resource path="res://Core/Logic/Controllers/ControllerGamePad.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Core/Logic/FSM/FSM.gd" type="Script" id=7]
+[ext_resource path="res://Core/World/Characters/DefaultStates/StateBase.gd" type="Script" id=8]
+[ext_resource path="res://Core/World/Characters/DefaultStates/StateGrounded.gd" type="Script" id=9]
+[ext_resource path="res://Core/World/Characters/DefaultStates/StateGroundMovement.gd" type="Script" id=10]
+[ext_resource path="res://Core/World/Characters/DefaultStates/StateIdle.gd" type="Script" id=11]
+[ext_resource path="res://Core/World/Characters/DefaultStates/StateJump.gd" type="Script" id=12]
+[ext_resource path="res://Core/World/Characters/DefaultStates/StateAirborne.gd" type="Script" id=13]
+[ext_resource path="res://Core/World/Characters/Player/Characters/PlayableBoy/Sprites/Walk/walk_00.tres" type="Texture" id=14]
+[ext_resource path="res://Core/World/Characters/Player/Characters/PlayableBoy/Sprites/Walk/walk_01.tres" type="Texture" id=15]
+[ext_resource path="res://Core/World/Characters/Player/Characters/PlayableBoy/Sprites/Walk/walk_02.tres" type="Texture" id=16]
+[ext_resource path="res://Core/World/Characters/Player/Characters/PlayableBoy/Sprites/Walk/walk_03.tres" type="Texture" id=17]
+[ext_resource path="res://Core/World/Characters/Player/Characters/PlayableBoy/Sprites/Walk/walk_04.tres" type="Texture" id=18]
+[ext_resource path="res://Core/World/Characters/Player/Characters/PlayableBoy/Sprites/Walk/walk_05.tres" type="Texture" id=19]
+[ext_resource path="res://Core/World/Characters/Player/Characters/PlayableBoy/Sprites/Walk/walk_06.tres" type="Texture" id=20]
+[ext_resource path="res://Core/World/Characters/Player/Characters/PlayableBoy/Sprites/Walk/walk_07.tres" type="Texture" id=21]
+[ext_resource path="res://Core/World/Characters/Player/Characters/PlayableBoy/Sprites/Run/run_00.tres" type="Texture" id=22]
+[ext_resource path="res://Core/World/Characters/Player/Characters/PlayableBoy/Sprites/Run/run_01.tres" type="Texture" id=23]
+[ext_resource path="res://Core/World/Characters/Player/Characters/PlayableBoy/Sprites/Run/run_02.tres" type="Texture" id=24]
+[ext_resource path="res://Core/World/Characters/Player/Characters/PlayableBoy/Sprites/Run/run_03.tres" type="Texture" id=25]
+[ext_resource path="res://Core/World/Characters/Player/Characters/PlayableBoy/Sprites/Run/run_04.tres" type="Texture" id=26]
+[ext_resource path="res://Core/World/Characters/Player/Characters/PlayableBoy/Sprites/Run/run_05.tres" type="Texture" id=27]
+[ext_resource path="res://Core/Resources/AnimatedSpriteExt.gd" type="Script" id=28]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16.7271, 11.6738 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 5.83788, 29.6626 )
+
+[sub_resource type="ImageTexture" id=3]
+
+flags = 0
+storage = 0
+lossy_quality = 0.7
+flags = 0
+size = Vector2( 16, 16 )
+
+[sub_resource type="SpriteFrames" id=4]
+
+animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
+"loop": true,
+"name": "Run",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 22 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 10.0
+} ]
+
+[node name="PlayableBoy" type="Node2D" groups=[
+"Player",
+]]
+script = ExtResource( 1 )
+__controller = NodePath("GamePadController")
+__animated_sprite = NodePath("AnimatedSprite")
+__hit_box = NodePath("HitBox")
+__fsm = NodePath("FSM")
+__world_collider = NodePath("WorldCollider")
+
+[node name="HitBox" type="Area2D" parent="."]
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 2 )
+_sections_unfolded = [ "Collision", "Script" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource( 1 )
+_sections_unfolded = [ "Script" ]
+
+[node name="WorldCollider" type="Area2D" parent="."]
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 3 )
+_sections_unfolded = [ "Collision", "Transform" ]
+tile_map_collision_helper = NodePath("TileMapCollisionHelper")
+collision_shape = NodePath("CollisionShape2D")
+
+[node name="TileMapCollisionHelper" type="Node2D" parent="WorldCollider"]
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldCollider"]
+position = Vector2( 0.157784, 2.52448 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Script", "Transform" ]
+
+[node name="DEBUG" type="Sprite" parent="WorldCollider/CollisionShape2D"]
+visible = false
+modulate = Color( 1, 0.560784, 0, 1 )
+position = Vector2( -0.157784, 0.132867 )
+scale = Vector2( 0.356424, 1.8408 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="GamePadController" parent="." instance=ExtResource( 6 )]
+
+[node name="FSM" type="Node" parent="."]
+script = ExtResource( 7 )
+_sections_unfolded = [ "Script", "script", "states" ]
+__state = NodePath("Idle")
+__context = NodePath("..")
+
+[node name="Base" type="Node" parent="FSM"]
+script = ExtResource( 8 )
+_sections_unfolded = [ "Script" ]
+__meta__ = {
+"_editor_icon": SubResource( 3 )
+}
+
+[node name="Grounded" type="Node" parent="FSM"]
+script = ExtResource( 9 )
+_sections_unfolded = [ "Script" ]
+_WALK_THRESHOLD = 0.01
+_RUN_THRESHOLD = 0.5
+
+[node name="GroundMovement" type="Node" parent="FSM"]
+script = ExtResource( 10 )
+_sections_unfolded = [ "Script" ]
+_WALK_THRESHOLD = 0.01
+_RUN_THRESHOLD = 0.5
+_SPEED = 2.0
+_DECELERATION = 1.0
+_ACCELERATION = 1.0
+
+[node name="Idle" type="Node" parent="FSM"]
+script = ExtResource( 11 )
+_sections_unfolded = [ "Script" ]
+_WALK_THRESHOLD = 0.01
+_RUN_THRESHOLD = 0.5
+_SPEED = 50.0
+_DECELERATION = 1.0
+_ACCELERATION = 1.0
+
+[node name="Jump" type="Node" parent="FSM"]
+script = ExtResource( 12 )
+_sections_unfolded = [ "Script" ]
+_JSPD = 5.0
+
+[node name="Airborne" type="Node" parent="FSM"]
+script = ExtResource( 13 )
+_sections_unfolded = [ "Script" ]
+_HSPEED = 2.0
+_GRAV = 0.2
+_DECELERATION = 10.0
+_ACCELERATION = 10.0
+
+[node name="ParticleEffects" type="Node2D" parent="."]
+editor/display_folded = true
+visible = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ParticlesBlood" type="Particles2D" parent="ParticleEffects"]
+emitting = true
+amount = 8
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = null
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+
+[node name="ParticlesDust" type="Particles2D" parent="ParticleEffects"]
+emitting = true
+amount = 8
+lifetime = 1.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = null
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -0.225937, 0.45187 )
+frames = SubResource( 4 )
+animation = "Walk"
+frame = 1
+playing = true
+script = ExtResource( 28 )
+_sections_unfolded = [ "frames" ]
+

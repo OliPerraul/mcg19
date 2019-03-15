@@ -1,0 +1,509 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Core/Editor/SpriteEditor/SpriteEditor.gd" type="Script" id=1]
+[ext_resource path="res://Core/Editor/SpriteEditor/MenuButtonSettings.gd" type="Script" id=2]
+[ext_resource path="res://Core/Editor/SpriteEditor/SpriteCanvas.gd" type="Script" id=3]
+[ext_resource path="res://Core/Editor/SpriteEditor/Resources/img_demo_01.png" type="Texture" id=4]
+[ext_resource path="res://Core/Editor/SpriteEditor/Resources/img_cursor_crossdot.png" type="Texture" id=5]
+[ext_resource path="res://Core/Editor/SpriteEditor/Resources/img_gui_bg_checkboard_medium.png" type="Texture" id=6]
+[ext_resource path="res://Core/Editor/SpriteEditor/ToolBox.gd" type="Script" id=7]
+[ext_resource path="res://Core/Editor/SpriteEditor/Resources/Buttons/ToolsButtons/pencil-tool.png" type="Texture" id=8]
+[ext_resource path="res://Core/Editor/SpriteEditor/Resources/Buttons/ToolsButtons/fill-tool.png" type="Texture" id=9]
+[ext_resource path="res://Core/Editor/SpriteEditor/Resources/Buttons/ToolsButtons/clear-tool.png" type="Texture" id=10]
+[ext_resource path="res://Core/Editor/SpriteEditor/Resources/Buttons/ToolsButtons/eyedropper-tool.png" type="Texture" id=11]
+[ext_resource path="res://Core/Editor/SpriteEditor/Resources/Buttons/ToolsButtons/move-tool.png" type="Texture" id=12]
+[ext_resource path="res://Core/Editor/SpriteEditor/Resources/Buttons/ToolsButtons/zoom-tool.png" type="Texture" id=13]
+[ext_resource path="res://Core/Editor/SpriteEditor/Resources/Buttons/ToolsButtons/line-tool.png" type="Texture" id=14]
+[ext_resource path="res://Core/Editor/SpriteEditor/Resources/Buttons/ToolsButtons/curve-tool.png" type="Texture" id=15]
+[ext_resource path="res://Core/Editor/SpriteEditor/Resources/Buttons/ToolsButtons/rectangle-tool.png" type="Texture" id=16]
+[ext_resource path="res://Core/Editor/SpriteEditor/Resources/Buttons/ToolsButtons/ellipse-tool.png" type="Texture" id=17]
+[ext_resource path="res://Core/Editor/SpriteEditor/Resources/Buttons/ToolsButtons/marquee-tool.png" type="Texture" id=18]
+[ext_resource path="res://Core/Editor/SpriteEditor/ColorPalette.gd" type="Script" id=19]
+[ext_resource path="res://Core/Editor/SpriteEditor/Resources/img_palette_NES.png" type="Texture" id=20]
+[ext_resource path="res://Core/Editor/SpriteEditor/Resources/img_gui_colorpalette_icon.png" type="Texture" id=21]
+[ext_resource path="res://Core/Editor/SpriteEditor/Resources/img_gui_bg_checkboard_small.png" type="Texture" id=22]
+
+
+[node name="SpriteEditor" type="Control"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause" ]
+__canvas = NodePath("MarginContainer/HBoxContainer/VBoxContainer/CanvasContainer/SpriteCanvas")
+__palette = NodePath("MarginContainer/HBoxContainer/ColorPalette")
+__tool_box = NodePath("MarginContainer/HBoxContainer/ToolBox")
+__save_button = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ButtonSave")
+__new_button = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ButtonNew")
+__open_button = NodePath("MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ButtonOpen")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 792.0
+margin_bottom = 444.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 522.0
+margin_bottom = 444.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 522.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="ButtonSave" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 41.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0.06987, 0.61458, 0.941406, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "save"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_colors" ]
+
+[node name="ButtonNew" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 45.0
+margin_right = 83.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0.0805359, 1, 0.0273438, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "new"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_colors" ]
+
+[node name="ButtonOpen" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 87.0
+margin_right = 131.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_colors/font_color = Color( 0.914063, 0.68644, 0.00357056, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "open"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_colors" ]
+
+[node name="MenuButtonFile" type="MenuButton" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 135.0
+margin_right = 207.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 0
+shortcut = null
+group = null
+text = "File"
+flat = true
+align = 1
+items = [  ]
+script = ExtResource( 2 )
+content = null
+
+[node name="MenuButtonEdit" type="MenuButton" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 211.0
+margin_right = 283.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 0
+shortcut = null
+group = null
+text = "Edit"
+flat = true
+align = 1
+items = [  ]
+script = ExtResource( 2 )
+content = null
+
+[node name="MenuButtonImage" type="MenuButton" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 287.0
+margin_right = 359.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 0
+shortcut = null
+group = null
+text = "Image"
+flat = true
+align = 1
+items = [  ]
+script = ExtResource( 2 )
+content = null
+
+[node name="MenuButtonWindow" type="MenuButton" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 363.0
+margin_right = 435.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 0
+shortcut = null
+group = null
+text = "Window"
+flat = true
+align = 1
+items = [  ]
+script = ExtResource( 2 )
+content = null
+
+[node name="MenuButtonAllFrames" type="MenuButton" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 439.0
+margin_right = 519.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 0
+shortcut = null
+group = null
+text = "All Frames"
+flat = true
+align = 1
+items = [  ]
+script = ExtResource( 2 )
+_sections_unfolded = [ "Pause" ]
+content = null
+
+[node name="CanvasContainer" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 24.0
+margin_right = 522.0
+margin_bottom = 344.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="SpriteCanvas" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/CanvasContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 32, 32 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+expand = true
+stretch_mode = 6
+script = ExtResource( 3 )
+_sections_unfolded = [ "Rect" ]
+__meta__ = {
+"_edit_group_": true
+}
+_background = NodePath("Background")
+_brush = NodePath("Brush")
+_cursor = NodePath("Cursor")
+_dimension = Vector2( 48, 48 )
+_offset_brush_cursor = Vector2( -1, -1 )
+_size_brush_cursor = 1.5
+_alpha_brush_cursor = 0.2
+_brush_color = Color( 0.733333, 0.27451, 0.27451, 1 )
+_sprite_source_texture = ExtResource( 4 )
+_brush_cursor_source_texture = ExtResource( 5 )
+_background_source_texture = ExtResource( 6 )
+_scale = 2
+_scale_max = 8
+_scale_min = 1
+_brush_size_max = 8
+_brush_size_min = 1
+
+[node name="Background" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/CanvasContainer/SpriteCanvas"]
+show_behind_parent = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+stretch_mode = 2
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Cursor" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/CanvasContainer/SpriteCanvas"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+stretch_mode = 6
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="Brush" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/CanvasContainer/SpriteCanvas"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+stretch_mode = 6
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="FramesPreview" type="ItemList" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 348.0
+margin_right = 522.0
+margin_bottom = 444.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+items = [  ]
+select_mode = 0
+allow_reselect = false
+icon_mode = 1
+fixed_icon_size = Vector2( 0, 0 )
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="ToolBox" type="ItemList" parent="MarginContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 526.0
+margin_right = 656.0
+margin_bottom = 444.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+items = [  ]
+select_mode = 0
+allow_reselect = false
+max_text_lines = 2
+max_columns = 8
+same_column_width = true
+icon_mode = 1
+icon_scale = 2.0
+fixed_icon_size = Vector2( 0, 0 )
+script = ExtResource( 7 )
+_icon_pencil = ExtResource( 8 )
+_icon_fill = ExtResource( 9 )
+_icon_clear = ExtResource( 10 )
+_icon_eyedropper = ExtResource( 11 )
+_icon_move = ExtResource( 12 )
+_icon_zoom = ExtResource( 13 )
+_icon_draw_line = ExtResource( 14 )
+_icon_draw_curve = ExtResource( 15 )
+_icon_draw_rect = ExtResource( 16 )
+_icon_draw_ellipse = ExtResource( 17 )
+_icon_select_rect = ExtResource( 18 )
+
+[node name="ColorPalette" type="ItemList" parent="MarginContainer/HBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 660.0
+margin_right = 792.0
+margin_bottom = 444.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+items = [  ]
+select_mode = 0
+allow_reselect = false
+max_text_lines = 2
+max_columns = 8
+same_column_width = true
+icon_mode = 1
+icon_scale = 2.0
+fixed_icon_size = Vector2( 0, 0 )
+script = ExtResource( 19 )
+_sections_unfolded = [ "Mouse" ]
+_palette_source_texture = ExtResource( 20 )
+_icon_source_texture = ExtResource( 21 )
+_icon_transparent_source_texture = ExtResource( 22 )
+

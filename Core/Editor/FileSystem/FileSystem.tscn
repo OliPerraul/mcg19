@@ -1,0 +1,206 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Core/Editor/FileSystem/FileSystem.gd" type="Script" id=1]
+[ext_resource path="res://Core/Editor/SpriteEditor/SpriteEditor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Core/Editor/CodeEditor/ScriptEditor/ScriptEditor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Core/Editor/ResourceEditorParent.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Core/Editor/FileSystem/Model/ResourceFactory.gd" type="Script" id=5]
+[ext_resource path="res://Core/Editor/FileSystem/Resources/ExampleScript.gd" type="Script" id=6]
+[ext_resource path="res://Resources/External/GodotEngine/icon_script.svg" type="Texture" id=7]
+[ext_resource path="res://Resources/External/GodotEngine/icon_sprite.svg" type="Texture" id=8]
+[ext_resource path="res://Resources/External/GodotEngine/icon_folder.svg" type="Texture" id=9]
+[ext_resource path="res://Core/Editor/FileSystem/Model/FolderResource.gd" type="Script" id=10]
+[ext_resource path="res://Core/Editor/FileSystem/Model/ScriptResource.gd" type="Script" id=11]
+[ext_resource path="res://Core/Editor/FileSystem/Model/SpriteResource.gd" type="Script" id=12]
+[ext_resource path="res://Core/Editor/FileSystem/RenameDialog.gd" type="Script" id=13]
+[ext_resource path="res://Core/Editor/FileSystem/ItemList.gd" type="Script" id=14]
+[ext_resource path="res://Core/Editor/Logic/DnDWFileSystem.gd" type="Script" id=15]
+[ext_resource path="res://Core/GUI/DnD/ItemListDnD.gd" type="Script" id=16]
+
+
+
+[node name="FileSystem" type="Control"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+_sections_unfolded = [ "Script", "Size Flags" ]
+__resource_factory = NodePath("ResourceFactory")
+__folder_explorer_parent = NodePath("VBoxContainer/MarginContainer/FolderExplorer")
+__folder_explorer = NodePath("VBoxContainer/MarginContainer/FolderExplorer/ILFolderExplorer")
+_sprite_editor_scn = ExtResource( 2 )
+_script_editor_scn = ExtResource( 3 )
+_res_editor_par_scn = ExtResource( 4 )
+__context_menu = NodePath("")
+__editor_tab_destination = null
+__output = null
+_preview_item_max = 10
+_preview_opacity_max = 1.0
+
+[node name="ResourceFactory" type="Node" parent="."]
+script = ExtResource( 5 )
+_sections_unfolded = [ "Script", "_example_script" ]
+_example_script = ExtResource( 6 )
+_script_icon = ExtResource( 7 )
+_sprite_icon = ExtResource( 8 )
+_folder_icon = ExtResource( 9 )
+folder_resource_script = ExtResource( 10 )
+script_resource_script = ExtResource( 11 )
+sprite_resource_script = ExtResource( 12 )
+
+[node name="RenameDialog" type="ConfirmationDialog" parent="."]
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 306.0
+margin_top = 316.0
+margin_right = 506.0
+margin_bottom = 386.0
+rect_min_size = Vector2( 200, 70 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+window_title = "Rename"
+resizable = false
+dialog_hide_on_ok = true
+script = ExtResource( 13 )
+__line_edit = NodePath("LineEdit")
+
+[node name="LineEdit" type="LineEdit" parent="RenameDialog"]
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -92.0
+margin_top = 8.0
+margin_right = 92.0
+margin_bottom = 34.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 4
+size_flags_vertical = 4
+secret_character = "*"
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="SearchBar" type="Control" parent="VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 800.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 800.0
+margin_bottom = 480.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+_sections_unfolded = [ "Custom Constants", "Margin", "Size Flags" ]
+
+[node name="FolderExplorer" type="Control" parent="VBoxContainer/MarginContainer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 796.0
+margin_bottom = 476.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+_sections_unfolded = [ "Margin", "Mouse", "Size Flags" ]
+
+[node name="ILFolderExplorer" type="ItemList" parent="VBoxContainer/MarginContainer/FolderExplorer"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 1
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+items = [  ]
+select_mode = 1
+allow_reselect = false
+max_text_lines = 256
+auto_height = true
+max_columns = 256
+same_column_width = true
+fixed_column_width = 96
+icon_mode = 1
+fixed_icon_size = Vector2( 0, 0 )
+script = ExtResource( 14 )
+_sections_unfolded = [ "Columns", "Icon", "Rect", "_dnd_wrap_script" ]
+_dnd_wrap_script = ExtResource( 15 )
+__dragndrop_behaviour = NodePath("DnD")
+__file_system = NodePath("../../../..")
+__rename_dialog = NodePath("../../../../RenameDialog")
+
+[node name="DnD" type="Node" parent="VBoxContainer/MarginContainer/FolderExplorer/ILFolderExplorer"]
+script = ExtResource( 16 )
+__item_list = NodePath("..")
+_preview_item_max = 10
+_preview_opacity_max = 1.0
+

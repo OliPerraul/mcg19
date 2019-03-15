@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Core/World/OpenContent/OpenScene.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Fonts/fnt_editor_small.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Core/Editor/SceneEditor/EditorDialog.gd" type="Script" id=3]
+[ext_resource path="res://Core/Editor/SceneEditor/Tree.gd" type="Script" id=4]
+[ext_resource path="res://Core/Editor/Logic/DnDWSceneEditor.gd" type="Script" id=5]
+[ext_resource path="res://Core/GUI/DnD/TreeDnD.gd" type="Script" id=6]
+
+
+
+
+
+
+[node name="OpenScene" type="Node2D"]
+script = ExtResource( 1 )
+_sections_unfolded = [ "Z Index" ]
+__open_node = NodePath("")
+__scn_editor = NodePath("EditorDialog")
+
+[node name="EditorDialog" type="WindowDialog" parent="."]
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 96.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 96, 128 )
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 1
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/title_font = ExtResource( 2 )
+custom_constants/title_height = 0
+popup_exclusive = false
+window_title = ""
+resizable = true
+script = ExtResource( 3 )
+_sections_unfolded = [ "Visibility" ]
+__tree = NodePath("Tree")
+__moma_open_scene_editor_helper = NodePath("MoMaOpenSceneditor")
+
+[node name="Tree" type="Tree" parent="EditorDialog"]
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+custom_constants/vseparation = 0
+custom_constants/guide_width = 5
+custom_constants/hseparation = 5
+custom_constants/button_margin = 5
+columns = 1
+allow_reselect = false
+allow_rmb_select = false
+hide_folding = false
+hide_root = false
+drop_mode_flags = 0
+select_mode = 0
+script = ExtResource( 4 )
+_sections_unfolded = [ "Custom Fonts", "Mouse", "Rect" ]
+__meta__ = {
+"_edit_group_": true
+}
+_dnd_wrapper_script = ExtResource( 5 )
+__dnd_behaviour = NodePath("DnD")
+
+[node name="DnD" type="Node" parent="EditorDialog/Tree"]
+script = ExtResource( 6 )
+__tree = NodePath("..")
+_preview_item_max = 10
+_preview_opacity_max = 1.0
+
+[node name="MoMaOpenSceneditor" type="MoMaOpenSceneTreeEditor" parent="EditorDialog"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+_sections_unfolded = [ "Rect", "Script", "Size Flags" ]
+__meta__ = {
+"_edit_group_": true
+}
+

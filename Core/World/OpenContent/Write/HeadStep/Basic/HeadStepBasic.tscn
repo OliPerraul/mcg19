@@ -1,0 +1,193 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Core/OpenContent/OpenScene/OpenScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Core/OpenContent/OpenScene/HeadStep/Basic/HeadStepBasic.gd" type="Script" id=2]
+[ext_resource path="res://Core/Logic/Controllers/ScriptedController.gd" type="Script" id=3]
+[ext_resource path="res://Core/World/Characters/NavigationHelper.gd" type="Script" id=4]
+[ext_resource path="res://Core/World/Collision/DetectionEventPublisher.gd" type="Script" id=5]
+[ext_resource path="res://Core/Logic/FSM/FSM.gd" type="Script" id=6]
+[ext_resource path="res://Core/World/Characters/DefaultStates/StateGroundMovement.gd" type="Script" id=7]
+[ext_resource path="res://Core/World/Characters/DefaultStates/StateIdle.gd" type="Script" id=8]
+[ext_resource path="res://Core/World/Characters/DefaultStates/StateJump.gd" type="Script" id=9]
+[ext_resource path="res://Core/World/Characters/DefaultStates/StateAirborne.gd" type="Script" id=10]
+[ext_resource path="res://Core/OpenContent/OpenScene/Gobot/idle_00.tres" type="Texture" id=11]
+[ext_resource path="res://Core/OpenContent/OpenScene/Gobot/idle_01.tres" type="Texture" id=12]
+[ext_resource path="res://Core/OpenContent/OpenScene/Gobot/idle_02.tres" type="Texture" id=13]
+[ext_resource path="res://Core/Resources/HitBox.gd" type="Script" id=14]
+
+
+
+
+
+[sub_resource type="ImageTexture" id=1]
+
+flags = 0
+storage = 0
+lossy_quality = 0.7
+flags = 0
+size = Vector2( 16, 16 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14.0084, 8.49625 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 9.04453, 16.6003 )
+
+[sub_resource type="SegmentShape2D" id=5]
+
+custom_solver_bias = 0.0
+a = Vector2( -108.913, -1.45996 )
+b = Vector2( 110.081, -1.45996 )
+
+[node name="HeadStepBasic" type="Node2D"]
+_sections_unfolded = [ "Transform" ]
+
+[node name="OpenScene" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+__open_node = NodePath("../HeadStepBasic")
+
+[node name="EditorDialog" parent="OpenScene" index="0"]
+_sections_unfolded = [ "Rect", "Visibility" ]
+
+[node name="HeadStepBasic" type="Node2D" parent="."]
+script = ExtResource( 2 )
+_sections_unfolded = [ "Script", "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+__hit_box = NodePath("HitBox")
+__controller = NodePath("ScriptedController")
+__animated_sprite = NodePath("AnimatedSprite")
+__collision_box = NodePath("CollisionBox")
+__fsm = NodePath("FSM")
+
+[node name="ScriptedController" type="Node" parent="HeadStepBasic"]
+editor/display_folded = true
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_icon": SubResource( 1 )
+}
+_AXIS_LERP_AMOUNT = 0.1
+
+[node name="NavigationHelper" type="Node" parent="HeadStepBasic/ScriptedController"]
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_icon": SubResource( 1 )
+}
+__controller = null
+__hit_box = null
+__collision_box = null
+
+[node name="DetectionEventPublisher" type="Node" parent="HeadStepBasic"]
+script = ExtResource( 5 )
+__detection_box = null
+__detection_zone = null
+
+[node name="FSM" type="Node" parent="HeadStepBasic"]
+editor/display_folded = true
+script = ExtResource( 6 )
+__state = NodePath("Idle")
+__context = NodePath("..")
+
+[node name="GroundMovement" type="Node" parent="HeadStepBasic/FSM"]
+script = ExtResource( 7 )
+_WALK_THRESHOLD = 0.01
+_RUN_THRESHOLD = 0.5
+_SPEED = 50.0
+_DECELERATION = 1.0
+_ACCELERATION = 1.0
+
+[node name="Idle" type="Node" parent="HeadStepBasic/FSM"]
+script = ExtResource( 8 )
+_WALK_THRESHOLD = 0.01
+_RUN_THRESHOLD = 0.5
+_SPEED = 50.0
+_DECELERATION = 1.0
+_ACCELERATION = 1.0
+
+[node name="Jump" type="Node" parent="HeadStepBasic/FSM"]
+script = ExtResource( 9 )
+_sections_unfolded = [ "Script", "script" ]
+_JSPD = 1.0
+
+[node name="Airborne" type="Node" parent="HeadStepBasic/FSM"]
+script = ExtResource( 10 )
+_sections_unfolded = [ "Script" ]
+_HSPEED = 20.0
+_GRAV = 4.0
+_DECELERATION = 5.0
+_ACCELERATION = 10.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="HeadStepBasic"]
+frames = SubResource( 2 )
+animation = "Idle"
+frame = 1
+playing = true
+
+[node name="HitBox" type="Area2D" parent="HeadStepBasic"]
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 1048575
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 14 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadStepBasic/HitBox"]
+position = Vector2( 0, -5 )
+shape = SubResource( 3 )
+_sections_unfolded = [ "Script", "Transform", "shape" ]
+
+[node name="CollisionBox" type="Area2D" parent="HeadStepBasic"]
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 1048575
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 14 )
+_sections_unfolded = [ "Collision", "Script" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadStepBasic/CollisionBox"]
+position = Vector2( -0.284798, 1.70875 )
+shape = SubResource( 4 )
+_sections_unfolded = [ "Script" ]
+
+[node name="DetectionZone" type="Area2D" parent="HeadStepBasic"]
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 14 )
+_sections_unfolded = [ "Collision", "Script" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeadStepBasic/DetectionZone"]
+shape = SubResource( 5 )
+_sections_unfolded = [ "Script", "Transform", "shape" ]
+
+
+[editable path="OpenScene"]

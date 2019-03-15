@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Core/World/OpenContent/OpenScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Core/World/OpenContent/Write/MovingPlatform/Goal/MovingPlatform.gd" type="Script" id=2]
+[ext_resource path="res://Core/World/OpenContent/Write/MovingPlatform/Source/moving_platform.png" type="Texture" id=3]
+[ext_resource path="res://Core/Resources/HitBox.gd" type="Script" id=4]
+
+
+
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30.075, 4.41602 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 28.9242, 9.18495 )
+
+[node name="MovingPlatform" type="Node2D"]
+_sections_unfolded = [ "Transform" ]
+
+[node name="OpenScene" parent="." instance=ExtResource( 1 )]
+editor/display_folded = true
+__open_node = NodePath("../MovingPlatform")
+
+[node name="EditorDialog" parent="OpenScene" index="0"]
+_sections_unfolded = [ "Rect", "Visibility" ]
+__tree = NodePath("../../../MovingPlatform/OpenScene/EditorDialog/Tree")
+__moma_open_scene_editor_helper = NodePath("../../../MovingPlatform/OpenScene/EditorDialog/MoMaOpenSceneditor")
+
+[node name="Tree" parent="OpenScene/EditorDialog" index="1"]
+__dnd_behaviour = NodePath("../../../../MovingPlatform/OpenScene/EditorDialog/Tree/DnD")
+
+[node name="DnD" parent="OpenScene/EditorDialog/Tree" index="6"]
+__tree = NodePath("../../../../../MovingPlatform/OpenScene/EditorDialog/Tree")
+
+[node name="MovingPlatform" type="Node2D" parent="."]
+script = ExtResource( 2 )
+_sections_unfolded = [ "Script", "Transform" ]
+__hit_box = NodePath("KinematicBody2D/HitBox")
+_kinematic_body = NodePath("KinematicBody2D")
+motion = Vector2( 200, 0 )
+cycle = 10.0
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="MovingPlatform"]
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+motion/sync_to_physics = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform/KinematicBody2D"]
+position = Vector2( 0, 5 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Script", "Transform", "shape" ]
+
+[node name="Sprite" type="Sprite" parent="MovingPlatform/KinematicBody2D"]
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Offset" ]
+
+[node name="HitBox" type="Area2D" parent="MovingPlatform/KinematicBody2D"]
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 1048575
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 4 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingPlatform/KinematicBody2D/HitBox"]
+position = Vector2( -0.630249, -0.672256 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Script", "Transform", "shape" ]
+
+
+[editable path="OpenScene"]
