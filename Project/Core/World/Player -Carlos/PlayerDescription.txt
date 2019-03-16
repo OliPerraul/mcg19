@@ -1,8 +1,7 @@
 Player Controller
-    * Movement
+    * Movement ✔
     * State machine
     * Footprint + auto/manual destruction
     * Roar at cars
     * Touching a car (car alarm)
     * Run away from car alarm
-
