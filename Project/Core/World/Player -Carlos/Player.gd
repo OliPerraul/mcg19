@@ -23,11 +23,13 @@ export(String) var character_state
 #	danger
 #	involuntary
 export(float) var speed
+export(float) var animation_speed
 export(float) var footprint_decay = 1
 
 #PRIVATES
-var footprint_array
-var footprint_timer
+var footprint_array: Array
+var footprint_timer: Timer
+
 
 
 
@@ -39,8 +41,10 @@ var footprint_timer
 func _ready():
 	call_deferred("_post_ready")
 
+
 func _post_ready():
-	footprint = preload("Footprint.tscn") # Will load when parsing the script.
+	# load nodes
+	footprint = preload("Footprint.tscn") 
 	sprite = get_node("sprite")
 	area_2D = get_node("area_2D")
 
@@ -51,7 +55,7 @@ func _post_ready():
 	#footprint_timer.set_process_mode(1)
 	footprint_timer.set_one_shot(false)
 	footprint_timer.connect("timeout", self, "_footprint_timer_timeout")
-	
+
 
 
 
@@ -60,6 +64,7 @@ func _post_ready():
 func _process(dt):
 	input_handler()
 
+
 func step():
 	var fp = footprint.instance()
 	footprint_array.push_front(fp)
@@ -67,6 +72,7 @@ func step():
 
 	if(footprint_timer.get_time_left()==0):
 		footprint_timer.start()
+
 
 func _footprint_timer_timeout():
 	var fp = footprint_array.pop_back()
@@ -77,3 +83,23 @@ func _footprint_timer_timeout():
 	else:
 		footprint_timer.stop()
 
+
+func input_handler():
+	if Input.is_action_just_released("player_movement"):
+		movement_state = "idle"
+
+	if Input.is_action_pressed("pleayer_up"):
+		movement_state = "walking"
+		facing = "north"
+
+	if Input.is_action_pressed("player_down"):
+		movement_state = "walking"
+		facing = "south"
+
+	if Input.is_action_pressed("player_left"):
+		movement_state = "walking"
+		facing = "east"
+
+	if Input.is_action_pressed("player_right"):
+		movement_state = "walking"
+		facing = "west"
