@@ -1,7 +1,7 @@
 extends Sprite
 
 var speed : float
-var h_frame : int
+var h_frame : int = 0
 var timer: Timer
 
 
@@ -13,10 +13,14 @@ func _ready():
 	timer.set_wait_time(speed)
 	timer.set_one_shot(false)
 	timer.connect("timeout", self, "_update")
+	add_child(timer)
+	timer.start()
+	print("run")
 
 
 
 func _update():
+	print("Update!")
 	match(get_parent().movement_state):
 		"idle":
 			h_frame = 0
@@ -24,18 +28,21 @@ func _update():
 			h_frame = lp()
 
 	set_frame( dir()*get_vframes() + h_frame )
+	print(get_frame())
 
 
 func dir():
 	match(get_parent().facing):
-	"north":
-		return 1
-	"south":
-		return 0
-	"east":
-		return 3
-	"west":
-		return 2
+		"north":
+			return 1
+		"south":
+			return 0
+		"east":
+			return 3
+		"west":
+			return 2
+		_:
+			return 0
 
 func lp():
 	if(get_hframes()!=h_frame+1):
