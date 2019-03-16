@@ -25,10 +25,13 @@ func physics_update(delta):
 	_state.physics_update(_context, delta)
 	
 func set_state(new_state, args):
+	if new_state == _state:
+		return
+		
 	_state.clean()
 	_state = new_state
 	new_state.setup(_context, args)
 
-func set_state_named(name_, args):
+func set_state_named(name_, args=[]):
 	set_state(_states[name_], args)
 	pass

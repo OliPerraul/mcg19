@@ -4,20 +4,19 @@ extends OLI_STATE
 # GO TO EVENT LOCATION
 # (CAR ALARM etc.)
 
-var time_detection
+var time_detection = 0
 export(float) onready var time_detection_limit = 1
 
 
 func setup(context, args):
+	time_detection = 0
 	pass
 	
 func clean():
 	pass
 
 
-func update(context, delta):
-	print(time_detection)
-	
+func update(context, delta):	
 	if context.vision.target != null:
 		time_detection += delta
 		if time_detection > time_detection_limit :			

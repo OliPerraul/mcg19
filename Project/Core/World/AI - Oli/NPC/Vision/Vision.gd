@@ -1,4 +1,3 @@
-tool
 extends Node2D
 
 export(NodePath) onready var __char

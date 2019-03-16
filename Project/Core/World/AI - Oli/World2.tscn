@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Core/Game.gd" type="Script" id=1]
 [ext_resource path="res://Core/World/placeholder_tileset.tres" type="TileSet" id=2]
@@ -9,10 +9,11 @@
 [ext_resource path="res://Core/World/AI - Oli/NPC/Vision/Vision.gd" type="Script" id=7]
 [ext_resource path="res://Core/World/AI - Oli/FSM/FSM.gd" type="Script" id=8]
 [ext_resource path="res://Core/World/AI - Oli/NPC/States/Patrol.gd" type="Script" id=9]
-[ext_resource path="res://Core/World/AI - Oli/NPC/States/Idle.gd" type="Script" id=10]
+[ext_resource path="res://Core/World/AI - Oli/NPC/States/Home.gd" type="Script" id=10]
 [ext_resource path="res://Core/World/AI - Oli/NPC/States/Chase.gd" type="Script" id=11]
-[ext_resource path="res://Core/World/AI - Oli/NPC/PathAgent.gd" type="Script" id=12]
-[ext_resource path="res://Core/World/AI - Oli/Player/Player.gd" type="Script" id=13]
+[ext_resource path="res://Core/World/AI - Oli/NPC/States/Trace.gd" type="Script" id=12]
+[ext_resource path="res://Core/World/AI - Oli/NPC/PathAgent.gd" type="Script" id=13]
+[ext_resource path="res://Core/World/AI - Oli/Player/Player.gd" type="Script" id=14]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -27,7 +28,7 @@ animations = [ {
 [sub_resource type="Curve2D" id=3]
 bake_interval = 0.01
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 120, 0, 0, 0, 0, 0, 220, 0, 0, 0, 0, 0, 210, -110, 0, 0, 0, 0, 120, -120, 0, 0, 0, 0, -10, -130, 0, 0, 0, 0, 0, -10 )
+"points": PoolVector2Array( 0, 0, 0, 0, -140, 10, 0, 0, 0, 0, 60, 20, 0, 0, 0, 0, 70, 80, 0, 0, 0, 0, -140, 80 )
 }
 
 [node name="World" type="Node2D"]
@@ -41,8 +42,8 @@ __player = NodePath("../Middleground/Player")
 editor/display_folded = true
 
 [node name="Solids" type="TileMap" parent="TileMaps" groups=[
-"Solids",
 "Tiles",
+"Solids",
 ]]
 material = SubResource( 1 )
 tile_set = ExtResource( 2 )
@@ -73,6 +74,7 @@ self_modulate = Color( 1, 0, 0, 1 )
 frames = SubResource( 2 )
 
 [node name="Character" type="Node2D" parent="Middleground/NPC"]
+editor/display_folded = true
 script = ExtResource( 6 )
 __astar_agent = NodePath("../AstarAgent")
 __path_agent = NodePath("../Path2D/PathAgent")
@@ -87,18 +89,25 @@ __char = NodePath("..")
 frames = SubResource( 2 )
 
 [node name="FSM" type="Node" parent="Middleground/NPC/Character"]
+editor/display_folded = true
 script = ExtResource( 8 )
 __start_state = NodePath("Patrol")
 __context = NodePath("..")
 
 [node name="Patrol" type="Node" parent="Middleground/NPC/Character/FSM"]
 script = ExtResource( 9 )
+time_detection_limit = 0.5
 
-[node name="Idle" type="Node" parent="Middleground/NPC/Character/FSM"]
+[node name="Home" type="Node" parent="Middleground/NPC/Character/FSM"]
 script = ExtResource( 10 )
 
 [node name="Chase" type="Node" parent="Middleground/NPC/Character/FSM"]
 script = ExtResource( 11 )
+time_detection_limit = 0.5
+time_outside_detection_limit = 0.5
+
+[node name="Trace" type="Node" parent="Middleground/NPC/Character/FSM"]
+script = ExtResource( 12 )
 
 [node name="Path2D" type="Path2D" parent="Middleground/NPC"]
 editor/display_folded = true
@@ -109,13 +118,22 @@ __meta__ = {
 }
 
 [node name="PathAgent" type="PathFollow2D" parent="Middleground/NPC/Path2D"]
-script = ExtResource( 12 )
+editor/display_folded = true
+position = Vector2( -140, 10 )
+rotation = 0.0499586
+script = ExtResource( 13 )
 __path = NodePath("..")
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="Middleground/NPC/Path2D/PathAgent"]
+self_modulate = Color( 0, 0.227451, 1, 1 )
+position = Vector2( 118.852, -25.9676 )
+rotation = -0.0499586
+frames = SubResource( 2 )
 
 [node name="Player" type="Node2D" parent="Middleground"]
 editor/display_folded = true
 position = Vector2( 580, 180 )
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
 }

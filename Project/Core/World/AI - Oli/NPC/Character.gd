@@ -19,8 +19,8 @@ export(NodePath) onready var __fsm
 var fsm
 
 
-var direction = Vector2(0, 1)
-var last_position = Vector2()
+onready var direction = Vector2(0, 1)
+onready var last_position = Vector2()
 
 
 

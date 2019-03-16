@@ -11,6 +11,8 @@ var target_position = Vector2()
 
 var velocity = Vector2()
 
+export(float) onready var ARRIVE_DISTANCE = 10
+
 
 func _ready():
 	_change_state(STATES.IDLE)
@@ -48,7 +50,6 @@ func move_to(world_position):
 
 func _move_to(world_position):
 	var MASS = 10.0
-	var ARRIVE_DISTANCE = 10.0
 
 	var desired_velocity = (world_position - global_position).normalized() * SPEED
 	var steering = desired_velocity - velocity
