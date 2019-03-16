@@ -6,6 +6,14 @@ enum COLLISION_LAYER{
 		WATER=2
 	
 	}
+	
+	
+enum DETECTABLE{
+		PLAYER,
+		FOOTPRINT,
+		CAR_ALARM
+	}
+
 
 
 var game  = null
