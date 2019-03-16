@@ -38,6 +38,10 @@ Shapes="*res://Core/Globals/Shapes.gd"
 TileMaps="*res://Core/Globals/TileMaps.gd"
 Vectors="*res://Core/Globals/Vectors.gd"
 
+[global]
+
+name_casing=false
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
