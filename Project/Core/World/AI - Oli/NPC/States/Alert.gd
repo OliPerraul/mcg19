@@ -12,10 +12,13 @@ func clean():
 	pass
 
 
-
 func update(context):
 	if context.vision.target != null:
-		pass
+		match(context.vision.target.type):
+			Globals.DETECTABLE.PLAYER, Globals.DETECTABLE.ALARM:
+				context.fsm.set_state_named('Chase', [context.vision.target])
+			Globals.DETECTABLE.FOOTPRINT:
+				context.fsm.set_state_named('Trace')
 	
 	
 	

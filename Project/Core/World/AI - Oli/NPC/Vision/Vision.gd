@@ -24,10 +24,9 @@ func _process(delta):
 
 	var detect_count = 0
 	target = null
-	var prio = INF
+	var prio = -INF
 	for node in get_tree().get_nodes_in_group('detectable'):
 		var other_pos = node.global_transform.origin
-		print(pos)
 		#print(pos.distance_to(other_pos))
 		if pos.distance_to(other_pos) < DETECT_RADIUS:		
 			var direction_to_npc = (other_pos - pos).normalized()

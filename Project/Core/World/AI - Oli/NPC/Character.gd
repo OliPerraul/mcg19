@@ -1,6 +1,6 @@
 extends Node2D
 
-export(float) onready var lerp_speed = .5
+export(float) onready var lerp_speed = .02
 
 var alert = 0
 
@@ -16,7 +16,7 @@ var vision
 
 
 export(NodePath) onready var __fsm
-var _fsm
+var fsm
 
 
 var direction = Vector2(0, 1)
@@ -29,5 +29,5 @@ func _ready():
 	astar_agent = get_node(__astar_agent)
 	vision = get_node(__vision)
 	path_agent = get_node(__path_agent)
-	_fsm = get_node(__fsm)	
+	fsm = get_node(__fsm)	
 	
