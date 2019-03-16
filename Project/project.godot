@@ -15,17 +15,23 @@ _global_script_classes=[ {
 "path": "res://Core/World/AI - Oli/Events/Event.gd"
 }, {
 "base": "Node",
+"class": "OLI_FSM",
+"language": "GDScript",
+"path": "res://Core/World/AI - Oli/FSM/FSM.gd"
+}, {
+"base": "Node",
 "class": "OLI_STATE",
 "language": "GDScript",
 "path": "res://Core/World/AI - Oli/FSM/State.gd"
 }, {
-"base": "OLI_STATE",
+"base": "Node",
 "class": "OLI_STATE_ALERT",
 "language": "GDScript",
 "path": "res://Core/World/AI - Oli/NPC/States/Alert.gd"
 } ]
 _global_script_class_icons={
 "OLI_EVENT": "",
+"OLI_FSM": "",
 "OLI_STATE": "",
 "OLI_STATE_ALERT": ""
 }
@@ -44,20 +50,14 @@ Colors="*res://Core/Globals/Colors.gd"
 Defaults="*res://Core/Globals/Defaults.gd"
 Flags="*res://Core/Globals/Flags.gd"
 Floats="*res://Core/Globals/Floats.gd"
-Game="*res://Core/Globals/Game.gd"
 Globals="*res://Core/Globals/Globals.gd"
 Inputs="*res://Core/Globals/Inputs.gd"
 Memory="*res://Core/Globals/Memory.gd"
-MoMa="*res://Core/Globals/MoMa.gd"
 Nodes="*res://Core/Globals/Nodes.gd"
 Resources="*res://Core/Globals/Resources.gd"
 Shapes="*res://Core/Globals/Shapes.gd"
 TileMaps="*res://Core/Globals/TileMaps.gd"
 Vectors="*res://Core/Globals/Vectors.gd"
-
-[global]
-
-name_casing=false
 
 [input]
 

@@ -15,6 +15,10 @@ export(NodePath) onready var __vision
 var vision
 
 
+export(NodePath) onready var __animator
+var animator : AnimatedSprite
+
+
 export(NodePath) onready var __fsm
 var fsm
 
@@ -29,5 +33,27 @@ func _ready():
 	astar_agent = get_node(__astar_agent)
 	vision = get_node(__vision)
 	path_agent = get_node(__path_agent)
-	fsm = get_node(__fsm)	
+	fsm = get_node(__fsm)
+	animator = get_node(__animator)
+	
+
+func _process(delta):
+	if sign(direction.y) == 1 :
+		animator.play('Front')
+	elif sign(direction.y) == -1:
+		animator.play('Back')
+	else:
+		animator.play('Front')
+		
+	# left right overrides		
+	if abs(direction.x) >= 1:	
+		if sign(direction.x) == -1 :
+			animator.play('Left')
+		elif sign(direction.x) == 1:
+			animator.play('Right')
+		else:
+			animator.play('Front')
+			
+		
+		
 	
