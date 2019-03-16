@@ -9,18 +9,21 @@ var area_2D
 
 
 #EXPORTED
-export(String, "north", "south", "east", "west") var facing = "south"
+export(String) var facing = "south"
 # 	north
 # 	east
 # 	south
 # 	west
-export(String, "idle", "walking", "hidden") var animation_state = "idle"
+export(String) var animation_state
+
+
+
 # 	idle
 # 	walking
 # 	hidden
 var cover = null
 var hide_speed = .2
-export(String, "normal", "locked", "danger", "hidden", "enable-hide") var character_state = "normal"
+export(String) var character_state = "normal"
 
 
 
@@ -46,6 +49,7 @@ export(float) var foot_print_distance = 20
 var _last_foot_pos = Vector2(INF, INF)
 
 var can_move = true
+var hiding_place = null
 
 func _ready():
 	call_deferred("_post_ready")
@@ -85,7 +89,7 @@ func _physics_process(dt):
 					
 		"enable_hide":    #DISPLAY UI HERE
 			_player_enable_hide()
-			continue #also do normal movement
+			_player_normal()
 
 		"normal":
 			_player_normal()	
@@ -99,7 +103,7 @@ func _physics_process(dt):
 
 func input_handler():
 
-	movement = Vector2(0,0)
+	movement = Vector2(0, 0)
 
 	#movement input
 	if Input.is_action_pressed("player_up"):
@@ -123,17 +127,15 @@ func input_handler():
 		movement.x += 1
 
 	#NO net movement
-	if movement==Vector2(0,0):
+	if movement ==Vector2(0,0):
 		animation_state = "idle"
 		movement = Vector2(0,0)
 
 
 	movement = movement.normalized()
 
-
-
 func _player_lock():
-	character_state = "locked"
+	character_state = "hidden"
 
 func _player_unlock():
 	character_state = "normal"
@@ -147,7 +149,7 @@ func _player_set_invisible():
 
 #states
 func _player_normal():
-	move_and_slide(movement*250)
+	move_and_slide(movement * 250)
 	pass
 
 func _player_danger():
@@ -156,34 +158,32 @@ func _player_danger():
 
 func _player_enable_hide():
 	if Input.is_action_just_released("ui_accept"):
-		character_state = "hidden"
-		
-	if cover != null and not cover.area.overlaps_body(self): # goes outside
-		character_state = "normal"		
-		cover = null
+		player_hide()
 
 
-func _player_hidden():
-	if cover != null :	
-		global_position = lerp(global_position, cover.global_position, hide_speed)
-		if Vectors.close_enough(global_position, cover.global_position):
-			cover.z_index = 2
-		priority = -1
-		
+func _player_hidden():		
 	if Input.is_action_just_released("ui_accept"):
 		character_state = "normal"
 		priority = 100
 		cover.z_index = 0
 	
 
-func player_hide(cover):
-	if character_state != "hidden":
-		self.cover = cover
-		character_state = "enable_hide"
+func player_hide():
+	$HideTween.interpolate_property(self, "global_position", global_position, cover.global_position, 0.25, Tween.TRANS_CUBIC, Tween.EASE_IN)
+	$HideTween.start()
+	character_state = "hiding"
+	can_move = false
+	cover.z_index = 4
+	priority = -1
 
 
-func objective():
-	pass
-
+func _on_HideTween_tween_completed(object, key):
+	character_state = "hidden"
 	
-	
+
+
+func _on_area_2D_area_exited(area):
+	if area.get_parent() == cover:
+		cover = null
+		add_to_group("detectable")
+		character_state = "normal"

@@ -11,8 +11,4 @@ func _on_StartTimer_timeout():
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
 		if event.pressed:
-			print("lock")
-			$Middleground/Player._player_lock()
-		else:
-			print("unlock")
-			$Middleground/Player._player_unlock()
+			print("char state: ", $Middleground/Player.character_state)

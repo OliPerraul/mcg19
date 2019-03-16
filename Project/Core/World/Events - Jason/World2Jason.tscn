@@ -141,7 +141,6 @@ __meta__ = {
 [node name="Background" type="Node" parent="."]
 
 [node name="Middleground" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="Cover" parent="Middleground" instance=ExtResource( 8 )]
 position = Vector2( 710, 490 )
@@ -170,6 +169,7 @@ randomness = 1.0
 process_material = SubResource( 4 )
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="area_exited" from="Middleground/Player/area_2D" to="Middleground/Player" method="_on_area_2D_area_exited"]
 
 [editable path="EventManager"]
 
