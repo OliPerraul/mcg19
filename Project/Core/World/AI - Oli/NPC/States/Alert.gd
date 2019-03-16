@@ -1,5 +1,6 @@
 class_name OLI_STATE_ALERT
-extends OLI_STATE
+#extends OLI_STATE
+extends "res://Core/World/AI - Oli/FSM/State.gd"
 
 # GO TO EVENT LOCATION
 # (CAR ALARM etc.)

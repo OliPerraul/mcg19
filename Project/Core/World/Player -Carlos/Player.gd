@@ -4,7 +4,7 @@ extends KinematicBody2D
 
 
 #CHILD NODES TO load
-var footprint
+var footprints
 var sprite
 var area_2D
 
@@ -19,26 +19,21 @@ export(String) var animation_state
 # 	idle
 # 	walking
 # 	hidden
-export(String) var character_state
+export(String) var character_state = "normal"
 #	normal
 # 	locked
 #	danger
 #	involuntary
 export(float) var speed = 4
 export(float) var animation_speed = 0.1
-export(float) var footprint_decay = 1
+
+
+export(float) onready var priority = 100
+onready var type = Globals.DETECTABLE.PLAYER
 
 #PRIVATES
-var footprint_array: Array
-var footprint_timer: Timer
 
 var movement : Vector2 = Vector2(0,0)
-
-
-
-
-
-#TODO : CatchEventManager Signals
 
 
 
@@ -47,18 +42,12 @@ func _ready():
 
 func _post_ready():
 	# load nodes
-	footprint = preload("Footprint.tscn") 
+	footprints = preload("Footprints.tscn") 
 	sprite = get_node("sprite")
 	area_2D = get_node("area_2D")
+	add_to_group("detectable")
 
-	#setup footprints and timer for decay
-	footprint_array = []
-	footprint_timer = Timer.new()
-	footprint_timer.set_wait_time(footprint_decay)
-	#footprint_timer.set_process_mode(1)
-	footprint_timer.set_one_shot(false)
-	footprint_timer.connect("timeout", self, "_footprint_timer_timeout")
-	add_child(footprint_timer)
+
 
 
 
@@ -72,35 +61,20 @@ func _physics_process(dt):
 		"normal":
 			_player_normal()
 		"locked":
-			_player_locked()
+			pass
+			#_player_set_locked()
 		"danger":
-			_player_danger()
+			pass
+			#_player_danger()
 		"involuntary":
-			_player_involuntary()
+			pass
+			#_player_involuntary()
 
 			
 
 
 
 
-func step():
-	var fp = footprint.instance()
-	footprint_array.push_front(fp)
-	add_child(footprint_array[0])
-	#print("Step!")
-
-	if(footprint_timer.get_time_left()==0):
-		footprint_timer.start()
-
-func _footprint_timer_timeout():
-	var fp = footprint_array.pop_back()
-	fp.free()
-	#print("footprint cleared	")
-
-	if(!footprint_array.empty()):
-		footprint_timer.start()
-	else:
-		footprint_timer.stop()
 
 
 
@@ -110,33 +84,33 @@ func input_handler():
 	movement = Vector2(0,0)
 
 	if Input.is_action_pressed("player_up"):
-		movement_state = "walking"
+		animation_state = "walking"
 		facing = "north"
 		movement.y -= 1
 
 	if Input.is_action_pressed("player_down"):
-		movement_state = "walking"
+		animation_state = "walking"
 		facing = "south"
 		movement.y += 1
 
 	if Input.is_action_pressed("player_left"):
-		movement_state = "walking"
+		animation_state = "walking"
 		facing = "west"
 		movement.x -= 1
 
 	if Input.is_action_pressed("player_right"):
-		movement_state = "walking"
+		animation_state = "walking"
 		facing = "east"
 		movement.x += 1
 
 	#if Input.is_action_just_released("player_movement"):
 	if movement==Vector2(0,0):
-		movement_state = "idle"
+		animation_state = "idle"
 		movement = Vector2(0,0)
 
 
 	if Input.is_action_just_released("ui_accept"):
-		step()
+		footprints.add()
 		
 
 	movement = movement.normalized()
@@ -153,7 +127,7 @@ func _player_unlock():
 func _player_set_visible():
 	pass
 
-func _player_set_visible():
+func _player_set_invisible():
 	pass
 
 
