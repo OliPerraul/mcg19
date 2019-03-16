@@ -17,7 +17,7 @@ func _ready():
 
 func _change_state(new_state):
 	if new_state == STATES.FOLLOW:
-		path = Globals.game.tm_solids.get_navig_path(position, target_position)
+		path = Globals.game.tm_solids.get_navig_path(global_position, target_position)
 		if not path or len(path) == 1:
 			_change_state(STATES.IDLE)
 			return
@@ -43,12 +43,12 @@ func move_to(world_position):
 	var MASS = 10.0
 	var ARRIVE_DISTANCE = 10.0
 
-	var desired_velocity = (world_position - position).normalized() * SPEED
+	var desired_velocity = (world_position - global_position).normalized() * SPEED
 	var steering = desired_velocity - velocity
 	velocity += steering / MASS
-	position += velocity * get_process_delta_time()
+	global_position += velocity * get_process_delta_time()
 	rotation = velocity.angle()
-	return position.distance_to(world_position) < ARRIVE_DISTANCE
+	return global_position.distance_to(world_position) < ARRIVE_DISTANCE
 
 
 func _input(event):

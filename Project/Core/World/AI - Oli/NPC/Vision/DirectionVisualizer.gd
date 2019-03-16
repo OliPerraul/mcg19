@@ -40,8 +40,8 @@ func draw_triangle_equilateral(center=Vector2(), direction=Vector2(), radius=50,
 	var point_2 = center + direction.rotated(2*PI/3) * radius
 	var point_3 = center + direction.rotated(4*PI/3) * radius
 
-	var points = Vector2Array([point_1, point_2, point_3])
-	draw_polygon(points, ColorArray([_color]))
+	var points = Array([point_1, point_2, point_3])
+	draw_polygon(points, Array([_color]))
 
 
 func _fixed_process(delta):
