@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Core/World/Events - Jason/WorldJason.gd" type="Script" id=1]
 [ext_resource path="res://Core/World/Events - Jason/EventManager.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Core/World/Events - Jason/Prop.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Core/World/Events - Jason/Truck.png" type="Texture" id=4]
 [ext_resource path="res://Core/World/Player -Carlos/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Core/World/Layout/BigHouse1.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 35.8652, 26.0306 )
@@ -28,8 +29,13 @@ shape = SubResource( 1 )
 [node name="Player" parent="." instance=ExtResource( 5 )]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 277.124, 196.737 )
 current = true
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 1
+
+[node name="BigHouse1" parent="." instance=ExtResource( 6 )]
+position = Vector2( 148.24, 78.1926 )
 
 [connection signal="hide_player" from="EventManager" to="." method="_on_EventManager_hide_player"]
 [connection signal="unhide_player" from="EventManager" to="." method="_on_EventManager_unhide_player"]
