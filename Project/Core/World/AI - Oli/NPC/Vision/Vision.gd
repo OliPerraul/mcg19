@@ -10,7 +10,7 @@ var angle = 0
 
 
 var target = null
-
+var hit_pos
 
 func _ready():
 	_char = get_node(__char)
@@ -31,13 +31,19 @@ func _process(delta):
 			var direction_to_npc = (other_pos - pos).normalized()
 			var angle_to_node = rad2deg(_char.direction.angle_to(direction_to_npc))
 			if abs(angle_to_node) < FOV/2:
-				if node.priority < 0:
-					continue
-					
-				if node.priority > prio:
-					target = node
-					prio = node.priority
-					
+				#raycast here
+				var space_state = get_world_2d().direct_space_state
+				var result = space_state.intersect_ray(pos, other_pos)
+				if result:
+					hit_pos = result.position
+					if result.collider.name == "Player":
+						if node.priority < 0:
+							continue
+							
+						if node.priority > prio:
+							target = node
+							prio = node.priority
+						
 	# DRAWING
 	if target != null:
 		draw_color = RED
@@ -56,12 +62,15 @@ func _process(delta):
 # Drawing the FOV
 const RED = Color(1.0, 0, 0, 0.4)
 const GREEN = Color(0, 1.0, 0, 0.4)
+const BLUE = Color(1.0, 0, 0, 1)
 
 var draw_color = GREEN
 
 
 func _draw():
 	draw_circle_arc_poly(Vector2(), DETECT_RADIUS,  angle - FOV/2, angle + FOV/2, draw_color)
+	if target:
+		draw_line(Vector2(), hit_pos, BLUE, 2.5)
 
 
 func draw_circle_arc_poly(center, radius, angle_from, angle_to, color):
