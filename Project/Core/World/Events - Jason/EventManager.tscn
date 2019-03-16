@@ -1,14 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Core/World/Events - Jason/EventManager.gd" type="Script" id=1]
-[ext_resource path="res://Core/World/Events - Jason/Sprite.gd" type="Script" id=2]
-[ext_resource path="res://Core/World/tileset.png" type="Texture" id=3]
-[ext_resource path="res://Core/World/Events - Jason/Truck.png" type="Texture" id=4]
-[ext_resource path="res://Core/World/Player -Carlos/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Core/World/Events - Jason/BlackBars.gd" type="Script" id=6]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 128.379, 120.312 )
+[ext_resource path="res://Core/World/Events - Jason/Truck.png" type="Texture" id=2]
+[ext_resource path="res://Core/World/Player -Carlos/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Core/World/Events - Jason/BlackBars.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 43.8922, 36.047 )
@@ -16,41 +11,43 @@ extents = Vector2( 43.8922, 36.047 )
 [node name="EventManager" type="Node"]
 script = ExtResource( 1 )
 
-[node name="Dummy" type="Area2D" parent="."]
-position = Vector2( 145.467, 70.5 )
-scale = Vector2( 0.245833, 0.245833 )
-script = ExtResource( 2 )
+[node name="CamTween" type="Tween" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy"]
-shape = SubResource( 1 )
+[node name="CamTimer" type="Timer" parent="."]
+one_shot = true
 
-[node name="Sprite" type="Sprite" parent="Dummy"]
-texture = ExtResource( 3 )
-
-[node name="House" type="Area2D" parent="."]
-position = Vector2( 331.526, 123.495 )
+[node name="Truck" type="Area2D" parent="."]
+position = Vector2( 528.379, 305.994 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="House"]
-texture = ExtResource( 4 )
+[node name="Sprite" type="Sprite" parent="Truck"]
+texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="House"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Truck"]
 shape = SubResource( 2 )
 
-[node name="PLayer" parent="." instance=ExtResource( 5 )]
+[node name="PLayer" parent="." instance=ExtResource( 3 )]
 
-[node name="BlackBars" type="Control" parent="."]
+[node name="Camera2D" type="Camera2D" parent="PLayer"]
+current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BlackBars" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 6 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="UpperBar" type="ColorRect" parent="BlackBars"]
+[node name="UpperBar" type="ColorRect" parent="CanvasLayer/BlackBars"]
 anchor_right = 1.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="LowerBar" type="ColorRect" parent="BlackBars"]
+[node name="LowerBar" type="ColorRect" parent="CanvasLayer/BlackBars"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -59,9 +56,5 @@ rect_rotation = 180.0
 rect_pivot_offset = Vector2( 512, 0 )
 color = Color( 0, 0, 0, 1 )
 
-[node name="Tween" type="Tween" parent="BlackBars"]
+[node name="Tween" type="Tween" parent="CanvasLayer/BlackBars"]
 
-[connection signal="lock_controls" from="." to="Dummy" method="_on_EventManager_lock_controls"]
-[connection signal="unlock_controls" from="." to="Dummy" method="_on_EventManager_unlock_controls"]
-[connection signal="area_entered" from="Dummy" to="." method="_on_Dummy_area_entered"]
-[connection signal="area_exited" from="Dummy" to="." method="_on_Dummy_area_exited"]
