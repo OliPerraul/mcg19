@@ -14,7 +14,8 @@
 [ext_resource path="res://Core/World/AI - Oli/NPC/States/Idle.gd" type="Script" id=12]
 [ext_resource path="res://Core/World/AI - Oli/NPC/States/Chase.gd" type="Script" id=13]
 [ext_resource path="res://Core/World/AI - Oli/NPC/PathAgent.gd" type="Script" id=14]
-[ext_resource path="res://Core/World/Player -Carlos/Player.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Core/World/TEST/Player.tscn" type="PackedScene" id=15]
+
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -40,14 +41,12 @@ __tm_solids = NodePath("../TileMaps/Solids")
 __player = NodePath("../Middleground/Player")
 
 [node name="EventManager" parent="." instance=ExtResource( 2 )]
-camera = NodePath("../Middleground/Player/Camera2D")
-player = NodePath("../Middleground/Player")
 
 [node name="TileMaps" type="Node" parent="."]
 
 [node name="Solids2" type="TileMap" parent="TileMaps" groups=[
-"Tiles",
 "Solids",
+"Tiles",
 ]]
 material = SubResource( 1 )
 tile_set = ExtResource( 3 )
@@ -60,8 +59,8 @@ __meta__ = {
 }
 
 [node name="Solids" type="TileMap" parent="TileMaps" groups=[
-"Tiles",
 "Solids",
+"Tiles",
 ]]
 material = SubResource( 1 )
 tile_set = ExtResource( 5 )

@@ -7,9 +7,8 @@
 [ext_resource path="res://Core/World/placeholder_tileset.tres" type="TileSet" id=5]
 [ext_resource path="res://Core/World/AI - Oli/NPC/NavigationTileSet.gd" type="Script" id=6]
 [ext_resource path="res://Core/World/AI - Oli/Events/Covers/Cover.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Core/World/TEST/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Core/World/Player -Carlos/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Core/World/AI - Oli/NPC/NPC.tscn" type="PackedScene" id=9]
-
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -26,6 +25,7 @@ emission_shape = 2
 emission_box_extents = Vector3( 1024, 1024, 1024 )
 flag_disable_z = true
 gravity = Vector3( 0, 10, 0 )
+angular_velocity = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 tangential_accel_curve = SubResource( 3 )
@@ -34,7 +34,7 @@ scale_random = 1.0
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
-goal = NodePath("GOALS")
+goal = NodePath("GoalPos")
 
 [node name="Game" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -45,10 +45,8 @@ wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="GOALS" type="Position2D" parent="."]
-position = Vector2( 710, 492 )
-
-[node name="Position2D" type="Position2D" parent="GOALS"]
+[node name="GoalPos" type="Position2D" parent="."]
+position = Vector2( 707.853, 495.291 )
 
 [node name="EventManager" parent="." instance=ExtResource( 3 )]
 camera_path = NodePath("../Middleground/Player/Camera2D")
