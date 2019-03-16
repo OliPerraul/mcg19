@@ -37,8 +37,6 @@ var movement : Vector2 = Vector2(0,0)
 
 
 export(float) var foot_print_distance = 20
-
-
 var _last_foot_pos = Vector2(INF, INF)
 
 

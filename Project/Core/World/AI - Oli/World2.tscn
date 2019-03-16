@@ -63,6 +63,7 @@ __meta__ = {
 position = Vector2( 520, 410 )
 
 [node name="NPC" type="Node2D" parent="Middleground"]
+editor/display_folded = true
 position = Vector2( 380, 460 )
 __meta__ = {
 "_edit_group_": true
@@ -77,6 +78,7 @@ self_modulate = Color( 1, 0, 0, 1 )
 frames = SubResource( 2 )
 
 [node name="Character" type="Node2D" parent="Middleground/NPC"]
+editor/display_folded = true
 script = ExtResource( 7 )
 __astar_agent = NodePath("../AstarAgent")
 __path_agent = NodePath("../Path2D/PathAgent")
@@ -91,6 +93,7 @@ __char = NodePath("..")
 frames = SubResource( 2 )
 
 [node name="FSM" type="Node" parent="Middleground/NPC/Character"]
+editor/display_folded = true
 script = ExtResource( 9 )
 __start_state = NodePath("Patrol")
 __context = NodePath("..")

@@ -10,6 +10,8 @@ export(float) var footprint_decay = 4
 export(Resource) onready var footprint
 
 
+export(int) onready var max_fp = 20 
+
 
 func _ready():
 
@@ -27,10 +29,16 @@ func _ready():
 func add(direction):
 	var fp = footprint.instance()
 	
+
+	
 	fp._set_reference(footprint_array)
 	fp._set_position(get_parent().global_position)
 	fp.orientation(direction)
 	footprint_array.push_front(fp)
+	
+	if(len(footprint_array)>= max_fp):
+		_footprint_timer_timeout() #TODO: rename
+	
 	get_tree().get_root().add_child(footprint_array[0])
 	print("Step!")
 
@@ -41,9 +49,6 @@ func _footprint_timer_timeout():
 	var fp = footprint_array.pop_back()
 	if is_instance_valid(fp):
 		fp.free()
-		
-	print("footprint cleared	")
-
 	if(!footprint_array.empty()):
 		footprint_timer.start()
 	else:
