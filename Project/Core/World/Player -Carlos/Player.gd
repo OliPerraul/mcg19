@@ -1,3 +1,4 @@
+
 extends KinematicBody2D
 
 
@@ -64,32 +65,7 @@ func _process(dt):
 		footprints.add(facing)
 		_last_foot_pos = global_position
 		
-func _physics_process(dt):
 
-	input_handler()
-
-	match(character_state): #str comparison lol				
-		"locked":
-			pass
-			#_player_set_locked()
-		"danger":
-			pass
-			#_player_danger()
-		"involuntary":
-			pass
-			#_player_involuntary()
-		"hidden":
-			_player_hidden()
-					
-		"enable_hide":    #DISPLAY UI HERE
-			_player_enable_hide()
-			_player_normal()
-
-		"normal":
-			_player_normal()	
-
-			
-			#_player_involuntary()
 
 func input_handler():
 
@@ -131,11 +107,9 @@ func input_handler():
 
 	movement = movement.normalized()
 
-func _player_lock():
-	character_state = "hidden"
 
-func _player_unlock():
-	character_state = "normal"
+
+
 
 func _player_set_visible():
 	$sprite.visible = true
@@ -155,21 +129,41 @@ func _player_danger_update():
 
 func _player_enable_hide_update():
 	if Input.is_action_just_released("ui_accept"):
-		player_hide()
+		init_state("hidden")
+		
+	if cover != null and not cover.area.overlaps_body(self): # goes outside
+		init_state("normal")		
+		cover = null
+		
+		
+func _player_hidden_update():
+	if cover != null :	
+		global_position = lerp(global_position, cover.global_position, hide_speed)
+		if Vectors.close_enough(global_position, cover.global_position):
+			cover.z_index = 2
+		priority = -1
+		
+	if Input.is_action_just_released("ui_accept"):
+		init_state("normal")
+
+func _player_normal_update():
+	move_and_slide(movement*250)
+	pass
 
 
 func _player_hidden():
 	if Input.is_action_just_released("ui_accept"):
 		init_state("normal")
 
+func player_hide(cover):
+	init_state('enable_hide', [cover])
 
 func _physics_process(dt):
+	input_handler()
 	update_state(character_state)
 
 func update_state(state):
 	
-	input_handler()
-
 	match(state):
 		"locked":
 			pass
@@ -222,13 +216,6 @@ func init_state(state, args=[]):
 			pass
 
 
-func player_hide():
-	$HideTween.interpolate_property(self, "global_position", global_position, cover.global_position, 0.25, Tween.TRANS_CUBIC, Tween.EASE_IN)
-	$HideTween.start()
-	character_state = "hiding"
-	can_move = false
-	cover.z_index = 4
-	priority = -1
 
 func _player_lock():
 	init_state('locked')
@@ -241,8 +228,3 @@ func _on_HideTween_tween_completed(object, key):
 	
 
 
-func _on_area_2D_area_exited(area):
-	if area.get_parent() == cover:
-		cover = null
-		add_to_group("detectable")
-		character_state = "normal"
