@@ -11,9 +11,9 @@
 [ext_resource path="res://Core/World/Player -Carlos/Player.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Core/World/AI - Oli/NPC/NPC.tscn" type="PackedScene" id=10]
 
-[sub_resource type="CanvasItemMaterial" id=2]
+[sub_resource type="CanvasItemMaterial" id=1]
 
-[sub_resource type="AnimatedTexture" id=1]
+[sub_resource type="AnimatedTexture" id=2]
 
 [sub_resource type="Curve" id=3]
 min_value = -40.0
@@ -43,6 +43,7 @@ goal = NodePath("GOALS")
 [node name="Game" type="Node" parent="."]
 script = ExtResource( 2 )
 __tm_solids = NodePath("../TileMaps/Solids")
+__foreground = NodePath("../Foreground")
 __player = NodePath("../Middleground/Player")
 __score_label = NodePath("../CanvasLayer/ScoreLabel")
 __alert_label = NodePath("../CanvasLayer/AlertLabel")
@@ -131,7 +132,7 @@ tile_data = PoolIntArray( 917567, 13, 0, 1245247, 14, 0, 2359443, 15, 0, 2424896
 "Tiles",
 ]]
 visible = false
-material = SubResource( 2 )
+material = SubResource( 1 )
 tile_set = ExtResource( 6 )
 cell_size = Vector2( 16, 16 )
 format = 1
@@ -175,7 +176,7 @@ margin_right = 2061.19
 margin_bottom = 1499.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = SubResource( 1 )
+texture = SubResource( 2 )
 expand = true
 stretch_mode = 1
 

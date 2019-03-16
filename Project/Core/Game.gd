@@ -2,9 +2,11 @@ extends Node
 
 export(PackedScene) onready var _gameover_scene
 
-
 export(NodePath) onready var __tm_solids
 onready var tm_solids
+
+export(NodePath) onready var __foreground
+onready var foreground
 
 export(NodePath) onready var __player
 onready var player
@@ -47,7 +49,8 @@ func _ready():
 	player = get_node(__player)
 	Globals.game = self
 	_alert_label = get_node(__alert_label)
-	_score_label = get_node(__score_label)
+	_score_label = get_node(__score_label)	
+	foreground = get_node(__foreground)
 	
 	
 		

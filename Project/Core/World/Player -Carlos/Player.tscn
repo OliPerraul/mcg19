@@ -106,12 +106,39 @@ func _physics_process(dt):
 
 			
 
+func init_state(state, args=[]):
+	if character_state == state:
+		return
+	character_state = state
+	match(state): #str comparison lol				
+		\"locked\":
+			pass
+			#_player_set_locked()
+		\"danger\":
+			pass
+			#_player_danger()
+		\"involuntary\":
+			pass
+			#_player_involuntary()
+		\"hidden\":
+			$HideTween.interpolate_property(self, \"global_position\", global_position, cover.global_position, 0.25, Tween.TRANS_CUBIC, Tween.EASE_IN)
+			$HideTween.start()
+			can_move = false
+			cover.z_index = 4
+			priority = -1
+					
+		\"enable_hide\":    #DISPLAY UI HERE
+			cover = args[0]
+
+		\"normal\":
+			character_state = \"normal\"
+			priority = 100
+			cover = null
+
 
 
 func input_handler():
-
 	movement = Vector2(0, 0)
-
 	#movement input
 	if Input.is_action_pressed(\"player_up\"):
 		animation_state = \"walking\"
@@ -141,11 +168,11 @@ func input_handler():
 
 	movement = movement.normalized()
 
-func _player_lock():
-	character_state = \"hidden\"
-
-func _player_unlock():
-	character_state = \"normal\"
+#func _player_lock():
+#	init_state(\"hidden\")
+#
+#func _player_unlock():
+#	character_state = \"normal\"
 
 func _player_set_visible():
 	$sprite.visible = true
@@ -159,41 +186,34 @@ func _player_normal():
 	move_and_slide(movement * 250)
 	pass
 
-func _player_danger():
-	#no movement
-	pass
+
 
 func _player_enable_hide():
 	if Input.is_action_just_released(\"ui_accept\"):
-		player_hide()
+		init_state('hidden')
 
 
 func _player_hidden():		
 	if Input.is_action_just_released(\"ui_accept\"):
-		character_state = \"normal\"
-		priority = 100
-		cover.z_index = 0
-	
+		init_state('normal')
 
-func player_hide():
 	$HideTween.interpolate_property(self, \"global_position\", global_position, cover.global_position, 0.25, Tween.TRANS_CUBIC, Tween.EASE_IN)
 	$HideTween.start()
-	character_state = \"hiding\"
 	can_move = false
 	cover.z_index = 4
 	priority = -1
 
 
-func _on_HideTween_tween_completed(object, key):
-	character_state = \"hidden\"
 	
+
+#func _on_HideTween_tween_completed(object, key):
+#	init_state('hidden')
 
 
 func _on_area_2D_area_exited(area):
 	if area.get_parent() == cover:
 		cover = null
-		add_to_group(\"detectable\")
-		character_state = \"normal\"
+		init_state('normal')
 "
 
 [sub_resource type="RectangleShape2D" id=2]

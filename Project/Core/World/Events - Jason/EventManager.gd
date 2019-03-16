@@ -25,7 +25,7 @@ func unhide_player():
 	controlsLocked = false
 
 func camera_cinematic(target_pos, travel_duration, focused_duration, use_black_bars = false):
-	player._player_lock()
+	player.init_state('locked')
 	$CamTween.interpolate_property(camera, "position", camera.global_position, target_pos, travel_duration, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$CamTween.connect("tween_completed", self, "camera_cinematic_focus", [focused_duration, travel_duration, camera.position])
 	if use_black_bars:
@@ -42,7 +42,7 @@ func camera_cinematic_return(travel_duration, target_pos):
 	$CamTween.interpolate_property(camera, "position", camera.global_position, target_pos, travel_duration, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$CamTimer.disconnect("timeout", self, "camera_cinematic_return")
 	get_node(black_bars).deactivate_bars()
-	player._player_unlock()
+	player.init_state('normal')
 	if get_node(black_bars).activated:
 		get_node(black_bars).deactivate_bars()
 	$CamTween.start()
