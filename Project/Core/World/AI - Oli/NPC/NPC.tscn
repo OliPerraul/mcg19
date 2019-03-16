@@ -12,7 +12,7 @@
 [ext_resource path="res://Core/World/AI - Oli/NPC/States/Idle.gd" type="Script" id=10]
 [ext_resource path="res://Core/World/AI - Oli/NPC/PathAgent.gd" type="Script" id=11]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
@@ -20,7 +20,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Curve2D" id=3]
+[sub_resource type="Curve2D" id=2]
 bake_interval = 0.01
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -140, 10, 0, 0, 0, 0, 60, 20, 0, 0, 0, 0, 70, 80, 0, 0, 0, 0, -140, 80 )
@@ -38,10 +38,9 @@ script = ExtResource( 1 )
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="AstarAgent"]
 self_modulate = Color( 1, 0, 0, 1 )
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 
 [node name="Character" type="Node2D" parent="."]
-editor/display_folded = true
 script = ExtResource( 3 )
 __astar_agent = NodePath("../AstarAgent")
 __path_agent = NodePath("../Path2D/PathAgent")
@@ -53,10 +52,9 @@ script = ExtResource( 4 )
 __char = NodePath("..")
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Character"]
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 
 [node name="FSM" type="Node" parent="Character"]
-editor/display_folded = true
 script = ExtResource( 5 )
 __start_state = NodePath("Patrol")
 __context = NodePath("..")
@@ -80,7 +78,7 @@ script = ExtResource( 10 )
 [node name="Path2D" type="Path2D" parent="."]
 editor/display_folded = true
 position = Vector2( 20, 10 )
-curve = SubResource( 3 )
+curve = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -96,5 +94,5 @@ __path = NodePath("..")
 self_modulate = Color( 0, 0.227451, 1, 1 )
 position = Vector2( 118.852, -25.9676 )
 rotation = -0.0499586
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 

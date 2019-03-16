@@ -35,11 +35,13 @@ func setup(context, args):
 	_stk = target.footprint_stack
 
 func clean():
+	target = null
+	_stk = []
 	pass
 
 
 func update(context, delta):
-	
+	.update(context, delta)
 	## UPD PLAY	
 	var last_position = context.global_transform.origin
 	context.global_transform.origin = lerp(context.global_transform.origin, context.astar_agent.global_transform.origin, context.lerp_speed)

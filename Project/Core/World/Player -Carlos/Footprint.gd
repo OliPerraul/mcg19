@@ -7,11 +7,26 @@ var footprint_stack
 var sprite: Sprite
 
 
+var time = 0
+export(float) var time_limit = 2
+
+
 func _ready():
 	add_to_group("detectable")
 	#sprite = Sprite.new()
 	#sprite.set_texture(load("House1.png"))
 
+
+func _process(delta):
+	time += delta
+	if time >= time_limit:
+		time = 0
+		var idx = footprint_stack.find(self)
+		if idx != -1:
+			footprint_stack.remove(idx)
+			
+		self.queue_free()	
+			
 
 func _set_reference(ref):
 	footprint_stack = ref
