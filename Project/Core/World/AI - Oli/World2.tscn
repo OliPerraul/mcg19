@@ -60,7 +60,7 @@ __meta__ = {
 [node name="Middleground" type="Node" parent="."]
 
 [node name="Player" parent="Middleground" instance=ExtResource( 4 )]
-position = Vector2( 380, 460 )
+position = Vector2( 520, 410 )
 
 [node name="NPC" type="Node2D" parent="Middleground"]
 position = Vector2( 380, 460 )

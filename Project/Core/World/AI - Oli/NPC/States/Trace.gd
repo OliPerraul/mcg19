@@ -52,7 +52,7 @@ func update(context, delta):
 		
 	_move_to(context, _stk[len(_stk)-1].global_position)
 		
-	if Vectors.close_enough(context.astar_agent.global_position, _stk[len(_stk)-1].global_position, .01):
+	if Vectors.close_enough(context.astar_agent.global_position, _stk[len(_stk)-1].global_position, 2):
 		_stk.pop_back()
 		if len(_stk) == 0:
 			context.fsm.set_state_named("Idle")
