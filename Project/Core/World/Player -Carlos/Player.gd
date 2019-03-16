@@ -42,7 +42,8 @@ func _ready():
 
 func _post_ready():
 	# load nodes
-	footprints = preload("Footprints.tscn") 
+	#footprints = preload("Footprints.tscn").instance()
+	footprints = get_node("Footprints")
 	sprite = get_node("sprite")
 	area_2D = get_node("area_2D")
 	add_to_group("detectable")
@@ -110,6 +111,7 @@ func input_handler():
 
 
 	if Input.is_action_just_released("ui_accept"):
+		print(global_position)
 		footprints.add()
 		
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Core/World/Player -Carlos/Player.gd" type="Script" id=1]
 [ext_resource path="res://Core/World/Player -Carlos/YetiWalkSheet.png" type="Texture" id=2]
 [ext_resource path="res://Core/World/Player -Carlos/sprite.gd" type="Script" id=3]
+[ext_resource path="res://Core/World/Player -Carlos/Footprints.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 19, 17 )
@@ -26,4 +27,6 @@ shape = SubResource( 1 )
 
 [node name="kinematic_collision_shape" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="Footprints" parent="." instance=ExtResource( 4 )]
 
