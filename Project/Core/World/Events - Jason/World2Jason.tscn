@@ -55,6 +55,7 @@ camera_path = NodePath("../Middleground/Player/Camera2D")
 player_path = NodePath("../Middleground/Player")
 
 [node name="TileMaps" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Background" type="TileMap" parent="TileMaps"]
 tile_set = ExtResource( 4 )
@@ -92,6 +93,7 @@ __meta__ = {
 [node name="Background" type="Node" parent="."]
 
 [node name="Middleground" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Cover" parent="Middleground" instance=ExtResource( 7 )]
 position = Vector2( 710, 490 )
