@@ -164,7 +164,6 @@ drag_margin_bottom = 0.0
 
 [node name="NPC" parent="Middleground" instance=ExtResource( 10 )]
 
-<<<<<<< HEAD
 [node name="Foreground" type="Node2D" parent="."]
 z_index = 20
 
@@ -179,9 +178,6 @@ size_flags_vertical = 3
 texture = SubResource( 2 )
 expand = true
 stretch_mode = 1
-=======
-[node name="Foreground" type="CanvasLayer" parent="."]
->>>>>>> 8c49d28151e53afbd1e1270dd2089cda665724df
 
 [node name="Particles2D" type="Particles2D" parent="Foreground"]
 amount = 500
