@@ -18,9 +18,11 @@ export(String) var facing = "south"
 export(String) var movement_state
 # idle
 # walking
+# locked
 export(String) var character_state
 #	normal
 #	danger
+# 	hidden
 #	involuntary
 export(float) var speed = 4
 export(float) var animation_speed = 0.1
@@ -92,31 +94,44 @@ func _footprint_timer_timeout():
 
 
 func input_handler():
-	if Input.is_action_just_released("player_movement"):
-		movement_state = "idle"
-		movement = Vector2(0,0)
+
+	movement = Vector2(0,0)
 
 	if Input.is_action_pressed("player_up"):
 		movement_state = "walking"
 		facing = "north"
-		movement.y -= speed
+		movement.y -= 1
 
 	if Input.is_action_pressed("player_down"):
 		movement_state = "walking"
 		facing = "south"
-		movement.y += speed
+		movement.y += 1
 
 	if Input.is_action_pressed("player_left"):
 		movement_state = "walking"
 		facing = "west"
-		movement.x -= speed
+		movement.x -= 1
 
 	if Input.is_action_pressed("player_right"):
 		movement_state = "walking"
 		facing = "east"
-		movement.x += speed
+		movement.x += 1
+
+	#if Input.is_action_just_released("player_movement"):
+	if movement==Vector2(0,0):
+		movement_state = "idle"
+		movement = Vector2(0,0)
+
 
 	if Input.is_action_just_released("ui_accept"):
 		step()
 		
+
 	movement = movement.normalized()
+
+
+func _player_lock():
+	pass
+
+func _player_unlock():
+	pass
