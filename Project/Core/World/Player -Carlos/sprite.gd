@@ -20,15 +20,15 @@ func _ready():
 
 
 func _update():
-	print("Update!")
+	
 	match(get_parent().movement_state):
 		"idle":
 			h_frame = 0
 		"walking":
-			h_frame = lp()
-
-	set_frame( dir()*get_vframes() + h_frame )
-	print(get_frame())
+			lp()
+	#print("v:"+String(dir()*8)+" h:"+String(h_frame))
+	set_frame( dir()*8 + h_frame)
+	
 
 
 func dir():
@@ -45,7 +45,7 @@ func dir():
 			return 0
 
 func lp():
-	if(get_hframes()!=h_frame+1):
+	if(h_frame<get_hframes()-1):
 		h_frame = h_frame+1
 	else:
 		h_frame = 0
