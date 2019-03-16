@@ -1,5 +1,8 @@
-class_name OLI_STATE
-extends Node
+extends OLI_STATE
+
+# GO TO EVENT LOCATION
+# (CAR ALARM etc.)
+
 
 func setup(context, args):
 	pass
