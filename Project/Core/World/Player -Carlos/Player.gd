@@ -89,7 +89,7 @@ func _physics_process(dt):
 		"enable_hide":    #DISPLAY UI HERE
 			input_handler()
 			_player_normal() # also run normal
-			_player_enable_hide()			
+			_player_enable_hide()
 
 			
 			#_player_involuntary()
@@ -167,11 +167,14 @@ func _player_enable_hide():
 func _player_hidden():
 	if cover != null :	
 		global_position = lerp(global_position, cover.global_position, hide_speed)
+		if Vectors.close_enough(global_position, cover.global_position):
+			cover.z_index = 2
 		priority = -1
 		
 	if Input.is_action_just_released("ui_accept"):
 		character_state = "normal"
-		priority = 100			
+		priority = 100
+		cover.z_index = 0
 	
 
 func player_hide(cover):
