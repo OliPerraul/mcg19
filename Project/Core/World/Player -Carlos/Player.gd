@@ -36,6 +36,12 @@ onready var type = Globals.DETECTABLE.PLAYER
 var movement : Vector2 = Vector2(0,0)
 
 
+export(float) var foot_print_distance = 20
+
+
+var _last_foot_pos = Vector2(INF, INF)
+
+
 
 func _ready():
 	call_deferred("_post_ready")
@@ -50,9 +56,11 @@ func _post_ready():
 
 
 
-
-
-
+func _process(delta):
+		if not Vectors.close_enough(_last_foot_pos, global_position, foot_print_distance):
+			footprints.add(facing)
+			_last_foot_pos = global_position
+	
 
 #Update loop
 func _physics_process(dt):
@@ -72,10 +80,6 @@ func _physics_process(dt):
 			#_player_involuntary()
 
 			
-
-
-
-
 
 
 
