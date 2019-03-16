@@ -6,7 +6,9 @@ extends "res://Core/World/AI - Oli/FSM/State.gd"
 # (CAR ALARM etc.)
 
 var time_detection = 0
-export(float) onready var time_detection_limit = 1
+export(float) onready var time_detection_limit_player = 1
+export(float) onready var time_detection_limit_footprint = 0.1
+
 
 
 func setup(context, args):
@@ -19,13 +21,17 @@ func clean():
 
 func update(context, delta):	
 	if context.vision.target != null:
-		time_detection += delta
-		if time_detection > time_detection_limit :			
-			match(context.vision.target.type):
-				Globals.DETECTABLE.PLAYER, Globals.DETECTABLE.ALARM:
+		time_detection += delta	
+		match(context.vision.target.type):
+			Globals.DETECTABLE.PLAYER:
+				if time_detection > time_detection_limit_player:
 					context.fsm.set_state_named('Chase', [context.vision.target])
-				Globals.DETECTABLE.FOOTPRINT:
-					context.fsm.set_state_named('Trace')
+			Globals.DETECTABLE.ALARM:
+				context.fsm.set_state_named('Chase', [context.vision.target])
+				
+			Globals.DETECTABLE.FOOTPRINT:
+				if time_detection > time_detection_limit_footprint:
+					context.fsm.set_state_named('Trace', [context.vision.target])
 	else:
 		time_detection = 0
 	

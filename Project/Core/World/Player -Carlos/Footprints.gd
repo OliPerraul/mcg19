@@ -38,7 +38,9 @@ func add():
 
 func _footprint_timer_timeout():
 	var fp = footprint_array.pop_back()
-	fp.free()
+	if is_instance_valid(fp):
+		fp.free()
+		
 	print("footprint cleared	")
 
 	if(!footprint_array.empty()):

@@ -26,13 +26,13 @@ func update(context, delta):
 	if context.vision.target != _target:
 		time_outside_detection += delta
 		if time_outside_detection > time_outside_detection_limit :			
-			context.fsm.set_state_named('Home')
+			context.fsm.set_state_named('Idle')
 			return
 	else:
 		time_outside_detection = 0
 		
 	if not Vectors.close_enough(_dest, _target.global_transform.origin):
-		context.astar_agent.global_transform.origin = context.global_transform.origin
+		#context.astar_agent.global_transform.origin = context.global_transform.origin
 		_dest = _target.global_transform.origin
 		context.astar_agent.move_to(_dest)
 		

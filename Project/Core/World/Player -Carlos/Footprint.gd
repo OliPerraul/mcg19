@@ -1,7 +1,7 @@
 extends Node2D
 
 export(float) onready var priority = 100
-onready var type = Globals.DETECTABLE.PLAYER
+onready var type = Globals.DETECTABLE.FOOTPRINT
 
 var footprint_stack 
 var sprite: Sprite

@@ -20,7 +20,6 @@ func _ready():
 
 func _change_state(new_state):
 	if new_state == STATES.FOLLOW:
-		print('SET STATE')
 		path = get_navig_path(global_position, target_position)
 		if not path or len(path) == 1:
 			_change_state(STATES.IDLE)
