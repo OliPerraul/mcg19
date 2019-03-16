@@ -1,37 +1,53 @@
 tool
 extends Node2D
 
+export(NodePath) onready var __char
+var _char
+
 
 const DETECT_RADIUS = 200
 const FOV = 80
-
 var angle = 0
-var direction = Vector2()
+
+
+var target = null
 
 
 func _ready():
+	_char = get_node(__char)
 	pass
 
 
-func _fixed_process(delta):
-	var pos = get_position()
-	direction = (get_global_mouse_position() - pos).normalized()
-	angle = 90 - rad2deg(direction.angle())
+func _process(delta):
+	var pos = global_transform.origin
+	angle = rad2deg(_char.direction.angle())
 
 	var detect_count = 0
+	target = null
+	var prio = INF
 	for node in get_tree().get_nodes_in_group('detectable'):
-		if pos.distance_to(node.pos) < DETECT_RADIUS:
-			var angle_to_node = rad2deg(direction.angle_to(node.direction_from_player))
+		var other_pos = node.global_transform.origin
+		print(pos)
+		#print(pos.distance_to(other_pos))
+		if pos.distance_to(other_pos) < DETECT_RADIUS:		
+			var direction_to_npc = (other_pos - pos).normalized()
+			var angle_to_node = rad2deg(_char.direction.angle_to(direction_to_npc))
 			if abs(angle_to_node) < FOV/2:
-				detect_count += 1
-
-
+				if node.priority > prio:
+					target = node
+					prio = node.priority
+					
 	# DRAWING
-	if detect_count > 0:
+	if target != null:
 		draw_color = RED
 	else:
 		draw_color = GREEN
 	update()
+
+
+
+
+
 
 
 # Drawing the FOV
@@ -55,3 +71,6 @@ func draw_circle_arc_poly(center, radius, angle_from, angle_to, color):
         var angle_point = angle_from + i*(angle_to-angle_from)/nb_points
         points_arc.push_back(center + Vector2( cos( deg2rad(angle_point) ), sin( deg2rad(angle_point) ) ) * radius)
     draw_polygon(points_arc, colors)
+	
+	
+	

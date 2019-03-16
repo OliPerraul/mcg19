@@ -1,12 +1,11 @@
 extends Node2D
 
-var pos = Vector2()
-var direction_from_player = Vector2()
-var direction = Vector2()
-
 
 func _process(delta):
 	pass
+
+export(float) onready var priority
+onready var type = Globals.DETECTABLE.PLAYER
 
 
 func _input(event):
@@ -15,6 +14,11 @@ func _input(event):
 				
 
 func _ready():
-	direction_from_player = (get_position() - Globals.game.player.get_position()).normalized()
-	direction = direction_from_player
-	pos = get_position()
+	add_to_group("detectable")
+#	direction_from_player = (get_position() - Globals.game.player.get_position()).normalized()
+#	direction = direction_from_player
+#	pos = get_position()
+
+
+
+
