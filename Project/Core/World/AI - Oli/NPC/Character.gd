@@ -18,6 +18,9 @@ var vision
 export(NodePath) onready var __animator
 var animator : AnimatedSprite
 
+export(NodePath) onready var __emoji
+var emoji : AnimatedSprite
+
 
 export(NodePath) onready var __fsm
 var fsm
@@ -35,6 +38,8 @@ func _ready():
 	path_agent = get_node(__path_agent)
 	fsm = get_node(__fsm)
 	animator = get_node(__animator)
+	
+	emoji = get_node(__emoji)
 	
 
 func _process(delta):

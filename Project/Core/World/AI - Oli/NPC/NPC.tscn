@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://Core/World/AI - Oli/NPC/AstarAgent.gd" type="Script" id=1]
 [ext_resource path="res://Core/World/AI - Oli/NPC/Character.gd" type="Script" id=2]
@@ -25,26 +25,30 @@
 [ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_05.tres" type="Texture" id=23]
 [ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_06.tres" type="Texture" id=24]
 [ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_07.tres" type="Texture" id=25]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_24.tres" type="Texture" id=26]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_25.tres" type="Texture" id=27]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_26.tres" type="Texture" id=28]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_27.tres" type="Texture" id=29]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_28.tres" type="Texture" id=30]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_29.tres" type="Texture" id=31]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_30.tres" type="Texture" id=32]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_31.tres" type="Texture" id=33]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_16.tres" type="Texture" id=34]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_17.tres" type="Texture" id=35]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_18.tres" type="Texture" id=36]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_19.tres" type="Texture" id=37]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_20.tres" type="Texture" id=38]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_21.tres" type="Texture" id=39]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_22.tres" type="Texture" id=40]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_23.tres" type="Texture" id=41]
-[ext_resource path="res://Core/World/AI - Oli/NPC/PathAgent.gd" type="Script" id=42]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/girl.png" type="Texture" id=43]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_16.tres" type="Texture" id=26]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_17.tres" type="Texture" id=27]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_18.tres" type="Texture" id=28]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_19.tres" type="Texture" id=29]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_20.tres" type="Texture" id=30]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_21.tres" type="Texture" id=31]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_22.tres" type="Texture" id=32]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_23.tres" type="Texture" id=33]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_24.tres" type="Texture" id=34]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_25.tres" type="Texture" id=35]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_26.tres" type="Texture" id=36]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_27.tres" type="Texture" id=37]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_28.tres" type="Texture" id=38]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_29.tres" type="Texture" id=39]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_30.tres" type="Texture" id=40]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/NPC1/npc1_atlas_31.tres" type="Texture" id=41]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/warnign_atlas_00.tres" type="Texture" id=42]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/warnign_atlas_01.tres" type="Texture" id=43]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/new_atlastexture_00.tres" type="Texture" id=44]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/new_atlastexture_01.tres" type="Texture" id=45]
+[ext_resource path="res://Core/World/AI - Oli/NPC/PathAgent.gd" type="Script" id=46]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/girl.png" type="Texture" id=47]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
@@ -58,24 +62,42 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ) ],
 "loop": true,
-"name": "Right",
+"name": "Left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ) ],
 "loop": true,
-"name": "Left",
+"name": "Right",
 "speed": 5.0
 } ]
 
-[sub_resource type="Curve2D" id=2]
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 42 ), ExtResource( 43 ) ],
+"loop": true,
+"name": "Warning",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 44 ), ExtResource( 45 ) ],
+"loop": true,
+"name": "Danger",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "Nothing",
+"speed": 5.0
+} ]
+
+[sub_resource type="Curve2D" id=3]
 bake_interval = 0.01
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -140, 10, 0, 0, 0, 0, 60, 20, 0, 0, 0, 0, 70, 80, 0, 0, 0, 0, -140, 80 )
 }
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 43 ) ],
+"frames": [ ExtResource( 47 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -98,6 +120,7 @@ __astar_agent = NodePath("../AstarAgent")
 __path_agent = NodePath("../Path2D/PathAgent")
 __vision = NodePath("Vision")
 __animator = NodePath("AnimatedSprite")
+__emoji = NodePath("Emoji")
 __fsm = NodePath("FSM")
 
 [node name="Vision" type="Node2D" parent="Character"]
@@ -105,7 +128,6 @@ script = ExtResource( 3 )
 __char = NodePath("..")
 
 [node name="FSM" type="Node" parent="Character"]
-editor/display_folded = true
 script = ExtResource( 4 )
 __start_state = NodePath("Patrol")
 __context = NodePath("..")
@@ -127,14 +149,23 @@ script = ExtResource( 8 )
 script = ExtResource( 9 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Character"]
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 animation = "Front"
-frame = 2
+frame = 4
+playing = true
+
+[node name="Emoji" type="AnimatedSprite" parent="Character"]
+modulate = Color( 1, 1, 1, 0.329412 )
+position = Vector2( -16, -30 )
+frames = SubResource( 2 )
+animation = "Danger"
+frame = 1
+speed_scale = 0.5
 playing = true
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2( 20, 10 )
-curve = SubResource( 2 )
+curve = SubResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -142,7 +173,7 @@ __meta__ = {
 [node name="PathAgent" type="PathFollow2D" parent="Path2D"]
 position = Vector2( -140, 10 )
 rotation = 0.0499586
-script = ExtResource( 42 )
+script = ExtResource( 46 )
 __path = NodePath("..")
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="Path2D/PathAgent"]
@@ -150,5 +181,5 @@ visible = false
 self_modulate = Color( 0, 0.227451, 1, 1 )
 position = Vector2( 118.852, -25.9676 )
 rotation = -0.0499586
-frames = SubResource( 1 )
+frames = SubResource( 4 )
 

@@ -36,7 +36,6 @@ script = ExtResource( 1 )
 __tm_solids = NodePath("../TileMaps/Solids")
 
 [node name="EventManager" parent="." instance=ExtResource( 2 )]
-player = NodePath("../Middleground/Player")
 
 [node name="TileMaps" type="Node" parent="."]
 editor/display_folded = true

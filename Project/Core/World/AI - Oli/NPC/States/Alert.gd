@@ -26,14 +26,21 @@ func update(context, delta):
 			Globals.DETECTABLE.PLAYER:
 				if time_detection > time_detection_limit_player:
 					context.fsm.set_state_named('Chase', [context.vision.target])
+					context.emoji.play('Danger')
+				else:
+					context.emoji.play('Warning')
+										
 			Globals.DETECTABLE.ALARM:
 				context.fsm.set_state_named('Chase', [context.vision.target])
+				context.emoji.play('Warning')
 				
 			Globals.DETECTABLE.FOOTPRINT:
 				if time_detection > time_detection_limit_footprint:
 					context.fsm.set_state_named('Trace', [context.vision.target])
+					context.emoji.play('Warning')
 	else:
 		time_detection = 0
+		context.emoji.play('Nothing')
 	
 	
 	

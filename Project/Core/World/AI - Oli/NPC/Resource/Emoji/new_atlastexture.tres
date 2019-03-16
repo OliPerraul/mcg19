@@ -1,17 +1,17 @@
 [gd_resource type="AtlasTexture" load_steps=3 format=2]
 
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/HunterWalkSheet.png" type="Texture" id=1]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/Emoji/WarningSignal.png" type="Texture" id=1]
 [ext_resource path="res://Tools/AtlasTextureSpriteSheet.gd" type="Script" id=2]
 
 [resource]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 31, 32 )
+region = Rect2( 0, 0, 30, 40 )
 script = ExtResource( 2 )
 generate_frames = false
 flag_generate_reverse = false
-_image_number = 32
+_image_number = 2
 _image_index = 0
-_image_dimension = Vector2( 31, 32 )
+_image_dimension = Vector2( 30, 40 )
 _num_columns = 8
 _num_rows = 1
 

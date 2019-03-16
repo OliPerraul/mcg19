@@ -31,6 +31,9 @@ func _process(delta):
 			var direction_to_npc = (other_pos - pos).normalized()
 			var angle_to_node = rad2deg(_char.direction.angle_to(direction_to_npc))
 			if abs(angle_to_node) < FOV/2:
+				if node.priority < 0:
+					continue
+					
 				if node.priority > prio:
 					target = node
 					prio = node.priority
@@ -38,6 +41,8 @@ func _process(delta):
 	# DRAWING
 	if target != null:
 		draw_color = RED
+		
+		
 	else:
 		draw_color = GREEN
 	update()

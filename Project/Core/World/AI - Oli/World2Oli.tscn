@@ -37,8 +37,8 @@ script = ExtResource( 1 )
 __tm_solids = NodePath("../TileMaps/Solids")
 
 [node name="EventManager" parent="." instance=ExtResource( 2 )]
-camera = NodePath("../Middleground/Player/Camera2D")
-player = NodePath("../Middleground/Player")
+camera_path = NodePath("../Middleground/Player/Camera2D")
+player_path = NodePath("../Middleground/Player")
 
 [node name="TileMaps" type="Node2D" parent="."]
 
@@ -76,7 +76,6 @@ tile_data = PoolIntArray( 131092, 6, 0, 327700, 3, 0, 393229, 8, 0, 458765, 7, 0
 position = Vector2( 710, 490 )
 
 [node name="Player" parent="Middleground" instance=ExtResource( 7 )]
-editor/display_folded = true
 position = Vector2( 520, 410 )
 
 [node name="Camera2D" type="Camera2D" parent="Middleground/Player"]
