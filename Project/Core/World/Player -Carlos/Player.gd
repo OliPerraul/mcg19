@@ -133,10 +133,10 @@ func input_handler():
 
 
 func _player_lock():
-	can_move = false
+	character_state = "locked"
 
 func _player_unlock():
-	can_move = true
+	character_state = "normal"
 
 func _player_set_visible():
 	$sprite.visible = true
