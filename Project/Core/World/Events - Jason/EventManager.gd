@@ -1,8 +1,8 @@
 extends Node
 
 var controlsLocked = false
-
 var interactable
+var score = 0 setget update_score
 
 signal lock_controls
 signal unlock_controls
@@ -44,9 +44,16 @@ func _on_Dummy_area_exited(area):
 	interactable = null
 	print("exited: ", area.name)
 
+func update_score(new_score):
+	score = new_score
+	print("boop")
+	$CanvasLayer/ScoreLabel.text = "Score: " + str(score)
+
 func _input(event):
 	if event is InputEventKey and event.pressed and event.scancode == KEY_SPACE:
 		$CanvasLayer/BlackBars.deactivate_bars() if $CanvasLayer/BlackBars.activated else $CanvasLayer/BlackBars.activate_bars()
 		camera_cinematic($Truck.position, 1, 3)
+		update_score(score + max(score, 1))
+		print(score)
 		if interactable:
 			unhide_player() if controlsLocked else hide_player()
