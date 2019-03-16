@@ -112,7 +112,7 @@ func input_handler():
 
 	if Input.is_action_just_released("ui_accept"):
 		print(global_position)
-		footprints.add()
+		footprints.add(facing)
 		
 
 	movement = movement.normalized()

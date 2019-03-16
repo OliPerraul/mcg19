@@ -19,3 +19,14 @@ func _set_reference(ref):
 func _set_position(pos):
 	print(pos)
 	global_position = pos
+
+func orientation(d):
+	match(d):
+		"north":
+			rotation = 4*2*PI/4 
+		"south":
+			rotation = 2*2*PI/4
+		"east":
+			rotation = 1*2*PI/4
+		"west":
+			rotation = 3*2*PI/4
