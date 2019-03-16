@@ -165,7 +165,6 @@ func _player_enable_hide():
 
 
 func _player_hidden():
-	#print("cover: ", cover)
 	if cover != null :	
 		global_position = lerp(global_position, cover.global_position, hide_speed)
 		if Vectors.close_enough(global_position, cover.global_position):

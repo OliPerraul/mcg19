@@ -32,7 +32,6 @@ func _set_reference(ref):
 	footprint_stack = ref
 
 func _set_position(pos):
-	print(pos)
 	global_position = pos
 
 func orientation(d):
