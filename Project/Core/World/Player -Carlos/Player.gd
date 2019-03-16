@@ -23,7 +23,7 @@ export(String) var character_state
 #	danger
 #	involuntary
 export(float) var speed
-export(float) var animation_speed = 1
+export(float) var animation_speed = 0.2
 export(float) var footprint_decay = 1
 
 #PRIVATES
