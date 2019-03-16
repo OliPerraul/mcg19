@@ -1,3 +1,4 @@
+class_name OLI_FSM
 extends Node
 
 onready var _states

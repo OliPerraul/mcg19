@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "OLI_FSM",
+"language": "GDScript",
+"path": "res://Core/World/AI - Oli/FSM/FSM.gd"
+}, {
+"base": "Node",
+"class": "OLI_STATE",
+"language": "GDScript",
+"path": "res://Core/World/AI - Oli/FSM/State.gd"
+} ]
 _global_script_class_icons={
-
+"OLI_FSM": "",
+"OLI_STATE": ""
 }
 
 [application]
@@ -27,7 +38,7 @@ Colors="*res://Core/Globals/Colors.gd"
 Defaults="*res://Core/Globals/Defaults.gd"
 Flags="*res://Core/Globals/Flags.gd"
 Floats="*res://Core/Globals/Floats.gd"
-Game="*res://Core/Globals/Game.gd"
+Game="*res://Core/Game.gd"
 Globals="*res://Core/Globals/Globals.gd"
 Inputs="*res://Core/Globals/Inputs.gd"
 Memory="*res://Core/Globals/Memory.gd"
@@ -37,6 +48,14 @@ Resources="*res://Core/Globals/Resources.gd"
 Shapes="*res://Core/Globals/Shapes.gd"
 TileMaps="*res://Core/Globals/TileMaps.gd"
 Vectors="*res://Core/Globals/Vectors.gd"
+
+[input]
+
+click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [rendering]
 

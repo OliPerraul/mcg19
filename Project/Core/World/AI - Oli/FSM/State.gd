@@ -1,3 +1,4 @@
+class_name OLI_STATE
 extends Node
 
 func setup(context, args):
