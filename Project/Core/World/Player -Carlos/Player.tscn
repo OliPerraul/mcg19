@@ -5,7 +5,7 @@
 [ext_resource path="res://Core/World/Player -Carlos/sprite.gd" type="Script" id=3]
 [ext_resource path="res://Core/World/Player -Carlos/Footprints.tscn" type="PackedScene" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 19, 17 )
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -27,7 +27,7 @@ script = ExtResource( 3 )
 
 [node name="area_collision_shape" type="CollisionShape2D" parent="area_2D"]
 position = Vector2( 0, -0.5 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="kinematic_collision_shape" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 8.5 )

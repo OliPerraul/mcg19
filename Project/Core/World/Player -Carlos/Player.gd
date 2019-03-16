@@ -48,7 +48,7 @@ var movement : Vector2 = Vector2(0,0)
 export(float) var foot_print_distance = 20
 var _last_foot_pos = Vector2(INF, INF)
 
-
+var can_move = true
 
 func _ready():
 	call_deferred("_post_ready")
@@ -102,30 +102,31 @@ func input_handler():
 
 	movement = Vector2(0,0)
 
-	if Input.is_action_pressed("player_up"):
-		animation_state = "walking"
-		facing = "north"
-		movement.y -= 1
-
-	if Input.is_action_pressed("player_down"):
-		animation_state = "walking"
-		facing = "south"
-		movement.y += 1
-
-	if Input.is_action_pressed("player_left"):
-		animation_state = "walking"
-		facing = "west"
-		movement.x -= 1
-
-	if Input.is_action_pressed("player_right"):
-		animation_state = "walking"
-		facing = "east"
-		movement.x += 1
-
-	#if Input.is_action_just_released("player_movement"):
-	if movement==Vector2(0,0):
-		animation_state = "idle"
-		movement = Vector2(0,0)
+	if can_move:
+		if Input.is_action_pressed("player_up"):
+			animation_state = "walking"
+			facing = "north"
+			movement.y -= 1
+	
+		if Input.is_action_pressed("player_down"):
+			animation_state = "walking"
+			facing = "south"
+			movement.y += 1
+	
+		if Input.is_action_pressed("player_left"):
+			animation_state = "walking"
+			facing = "west"
+			movement.x -= 1
+	
+		if Input.is_action_pressed("player_right"):
+			animation_state = "walking"
+			facing = "east"
+			movement.x += 1
+	
+		#if Input.is_action_just_released("player_movement"):
+		if movement==Vector2(0,0):
+			animation_state = "idle"
+			movement = Vector2(0,0)
 
 		
 
@@ -134,16 +135,16 @@ func input_handler():
 
 
 func _player_lock():
-	pass
+	can_move = false
 
 func _player_unlock():
-	pass
+	can_move = true
 
 func _player_set_visible():
-	pass
+	$sprite.visible = true
 
 func _player_set_invisible():
-	pass
+	$sprite.visible = false
 
 
 #states
