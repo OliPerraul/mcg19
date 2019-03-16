@@ -16,7 +16,10 @@ static func zero_sign(val):
 	return int(sign(val)*int(bool(val)))
 	
 
-
 static func smaller(a, b, significant_figures = SIGNIFICANT_FIGURES):
     return approximate(a, significant_figures) < approximate(b, significant_figures)	
+	
+	
+static func close_enough(v1, v2):
+	return abs(v1-v2) <= .01
 	
