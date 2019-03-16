@@ -1,21 +1,39 @@
 class_name OLI_STATE_ALERT
-extends OLI_STATE
+#extends OLI_STATE
+extends "res://Core/World/AI - Oli/FSM/State.gd"
 
 # GO TO EVENT LOCATION
 # (CAR ALARM etc.)
 
+var time_detection = 0
+export(float) onready var time_detection_limit_player = 1
+export(float) onready var time_detection_limit_footprint = 0.1
+
+
 
 func setup(context, args):
+	time_detection = 0
 	pass
 	
 func clean():
 	pass
 
 
-
-func update(context):
+func update(context, delta):	
 	if context.vision.target != null:
-		pass
+		time_detection += delta	
+		match(context.vision.target.type):
+			Globals.DETECTABLE.PLAYER:
+				if time_detection > time_detection_limit_player:
+					context.fsm.set_state_named('Chase', [context.vision.target])
+			Globals.DETECTABLE.ALARM:
+				context.fsm.set_state_named('Chase', [context.vision.target])
+				
+			Globals.DETECTABLE.FOOTPRINT:
+				if time_detection > time_detection_limit_footprint:
+					context.fsm.set_state_named('Trace', [context.vision.target])
+	else:
+		time_detection = 0
 	
 	
 	

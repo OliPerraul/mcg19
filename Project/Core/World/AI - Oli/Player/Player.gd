@@ -4,7 +4,7 @@ extends Node2D
 func _process(delta):
 	pass
 
-export(float) onready var priority
+export(float) onready var priority = 100
 onready var type = Globals.DETECTABLE.PLAYER
 
 

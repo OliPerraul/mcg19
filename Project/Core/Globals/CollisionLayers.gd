@@ -23,6 +23,9 @@ const UNKNOWN = 0x80
 
 
 func set_mask_all(collision_object, off) :
+	pass
+
+	"""
 	var flags
 	if off : 
 		flags = 0x00000000
@@ -30,3 +33,4 @@ func set_mask_all(collision_object, off) :
 		flags = 0xFFFFFFFF
 		
 	collision_object.set_collison_mask_bit(flags)
+	"""

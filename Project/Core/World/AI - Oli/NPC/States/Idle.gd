@@ -1,15 +1,21 @@
-extends OLI_STATE
+extends OLI_STATE_ALERT
+
+var _dest
+
+
+var time_idle = 0
+export(float) onready var time_limit_idle = 2
 
 
 func setup(context, args):
-	pass
+	time_idle = 0
 	
-func clean():
-	pass
 
-func update(context):
-	pass
+func update(context, delta):	
+	.update(context,delta)
+	time_idle += delta
+	if time_idle >= time_limit_idle:
+		context.fsm.set_state_named('Home')
+		time_idle = 0
+
 	
-		
-func physics_update(context, delta):
-	pass

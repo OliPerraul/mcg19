@@ -11,4 +11,7 @@ const ONE_Y = Vector2(0,1)
 
 func midpoint(v1, v2):
 	return v1.linear_interpolate(v1, .5)
-	
+
+func close_enough(pos0, pos1, tol=.02):
+	#print((pos0.distance_to(pos1) <= .2))
+	return (pos0.distance_to(pos1) <= tol)
