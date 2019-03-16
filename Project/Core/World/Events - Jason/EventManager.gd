@@ -13,6 +13,7 @@ signal hide_player
 signal unhide_player
 
 func _ready():
+	Globals.events = self	
 	get_node(player).get_node("area_2D").connect("area_entered", self, "_on_Player_area_entered")
 	get_node(player).get_node("area_2D").connect("area_exited", self, "_on_Player_area_exited")
 

@@ -5,10 +5,10 @@
 [ext_resource path="res://Core/World/Player -Carlos/sprite.gd" type="Script" id=3]
 [ext_resource path="res://Core/World/Player -Carlos/Footprints.tscn" type="PackedScene" id=4]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 19, 13.1708 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 19, 3.04376 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -24,13 +24,14 @@ hframes = 8
 script = ExtResource( 3 )
 
 [node name="area_2D" type="Area2D" parent="."]
+editor/display_folded = true
 
 [node name="area_collision_shape" type="CollisionShape2D" parent="area_2D"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="kinematic_collision_shape" type="CollisionShape2D" parent="."]
 position = Vector2( 0.418121, 12.4039 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Footprints" parent="." instance=ExtResource( 4 )]
 

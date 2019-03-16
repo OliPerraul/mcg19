@@ -12,7 +12,7 @@ func _input(event):
 	if event.is_action_pressed('click'):
 		transform.origin = get_global_mouse_position()
 				
-
+				
 func _ready():
 	add_to_group("detectable")
 #	direction_from_player = (get_position() - Globals.game.player.get_position()).normalized()

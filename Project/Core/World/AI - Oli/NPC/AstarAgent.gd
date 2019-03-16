@@ -1,6 +1,6 @@
 extends Node2D
 
-export(float) var SPEED = 200.0
+export(float) var SPEED = 100.0
 
 enum STATES { IDLE, FOLLOW }
 var _state = null

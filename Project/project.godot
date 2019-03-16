@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "OLI_EVENT",
+"language": "GDScript",
+"path": "res://Core/World/AI - Oli/Events/Event.gd"
+}, {
 "base": "Node",
 "class": "OLI_FSM",
 "language": "GDScript",
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://Core/World/AI - Oli/NPC/States/Alert.gd"
 } ]
 _global_script_class_icons={
+"OLI_EVENT": "",
 "OLI_FSM": "",
 "OLI_STATE": "",
 "OLI_STATE_ALERT": ""
