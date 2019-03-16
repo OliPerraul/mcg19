@@ -2,13 +2,13 @@ class_name OLI_FSM
 extends Node
 
 onready var _states
-export(NodePath) onready var __state
+export(NodePath) onready var __start_state
 var _state
 export(NodePath) onready var __context
 var _context
 
 func _ready():
-	_state = get_node(__state)
+	_state = get_node(__start_state)
 	_context = get_node(__context)
 	
 	_states = Dictionary()
@@ -18,7 +18,7 @@ func _ready():
 		_states[st.name] = st
 
 
-func update():
+func _process(delta):
 	_state.update(_context)
 
 func physics_update(delta):
