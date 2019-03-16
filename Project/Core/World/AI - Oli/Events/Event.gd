@@ -12,7 +12,7 @@ func _ready():
 func _process(delta):
 	var overlaps = area.get_overlapping_bodies()
 	for o in overlaps:
-		if o != null : #TODO safe check for other non contextable areas
+		if o != null: #TODO safe check for other non contextable areas
 			handle(o)
 			
 

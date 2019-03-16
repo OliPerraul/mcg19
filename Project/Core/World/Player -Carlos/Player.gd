@@ -9,18 +9,21 @@ var area_2D
 
 
 #EXPORTED
-export(String, "north", "south", "east", "west") var facing = "south"
+export(String) var facing = "south"
 # 	north
 # 	east
 # 	south
 # 	west
-export(String, "idle", "walking", "hidden") var animation_state = "idle"
+export(String) var animation_state
+
+
+
 # 	idle
 # 	walking
 # 	hidden
 var cover = null
 var hide_speed = .2
-export(String, "normal", "locked", "danger", "hidden", "enable-hide") var character_state = "normal"
+export(String) var character_state = "normal"
 
 
 
@@ -46,6 +49,7 @@ export(float) var foot_print_distance = 20
 var _last_foot_pos = Vector2(INF, INF)
 
 var can_move = true
+var hiding_place = null
 
 func _ready():
 	footprints = get_node("Footprints")
@@ -59,10 +63,37 @@ func _process(dt):
 	if not Vectors.close_enough(_last_foot_pos, global_position, foot_print_distance):
 		footprints.add(facing)
 		_last_foot_pos = global_position
-	
+		
+func _physics_process(dt):
+
+	input_handler()
+
+	match(character_state): #str comparison lol				
+		"locked":
+			pass
+			#_player_set_locked()
+		"danger":
+			pass
+			#_player_danger()
+		"involuntary":
+			pass
+			#_player_involuntary()
+		"hidden":
+			_player_hidden()
+					
+		"enable_hide":    #DISPLAY UI HERE
+			_player_enable_hide()
+			_player_normal()
+
+		"normal":
+			_player_normal()	
+
+			
+			#_player_involuntary()
+
 func input_handler():
 
-	movement = Vector2(0,0)
+	movement = Vector2(0, 0)
 
 	#movement input
 	if Input.is_action_pressed("player_up"):
@@ -86,7 +117,7 @@ func input_handler():
 		movement.x += 1
 
 	#NO net movement
-	if movement==Vector2(0,0):
+	if movement ==Vector2(0,0):
 		animation_state = "idle"
 		movement = Vector2(0,0)
 
@@ -100,10 +131,22 @@ func input_handler():
 
 	movement = movement.normalized()
 
+func _player_lock():
+	character_state = "hidden"
+
+func _player_unlock():
+	character_state = "normal"
+
+func _player_set_visible():
+	$sprite.visible = true
+
+func _player_set_invisible():
+	$sprite.visible = false
+
 
 #states
-func _player_normal_update():
-	move_and_slide(movement*250)
+func _player_normal():
+	move_and_slide(movement * 250)
 	pass
 
 func _player_danger_update():
@@ -112,22 +155,10 @@ func _player_danger_update():
 
 func _player_enable_hide_update():
 	if Input.is_action_just_released("ui_accept"):
-		init_state("hidden")
-		
-	if cover != null and not cover.area.overlaps_body(self): # goes outside
-		init_state("normal")		
-		cover = null
-	
-	
+		player_hide()
 
 
-func _player_hidden_update():
-	if cover != null :	
-		global_position = lerp(global_position, cover.global_position, hide_speed)
-		if Vectors.close_enough(global_position, cover.global_position):
-			cover.z_index = 2
-		priority = -1
-		
+func _player_hidden():
 	if Input.is_action_just_released("ui_accept"):
 		init_state("normal")
 
@@ -191,8 +222,13 @@ func init_state(state, args=[]):
 			pass
 
 
-func player_hide(cover):
-	init_state('enable_hide', [cover])
+func player_hide():
+	$HideTween.interpolate_property(self, "global_position", global_position, cover.global_position, 0.25, Tween.TRANS_CUBIC, Tween.EASE_IN)
+	$HideTween.start()
+	character_state = "hiding"
+	can_move = false
+	cover.z_index = 4
+	priority = -1
 
 func _player_lock():
 	init_state('locked')
@@ -200,16 +236,13 @@ func _player_lock():
 func _player_unlock():
 	init_state('normal')
 
-func objective():
-	pass
+func _on_HideTween_tween_completed(object, key):
+	character_state = "hidden"
 	
 
 
-func _player_set_visible():
-	$sprite.visible = true
-
-func _player_set_invisible():
-	$sprite.visible = false
-
-	
-	
+func _on_area_2D_area_exited(area):
+	if area.get_parent() == cover:
+		cover = null
+		add_to_group("detectable")
+		character_state = "normal"

@@ -3,5 +3,7 @@ extends OLI_EVENT
 # OVERRIDE
 func handle(player):
 	if player.is_in_group("detectable"):
-		player.player_hide(self)
+		player.cover = self
+		player.character_state = "enable_hide"
+		player.remove_from_group("detectable")
 	
