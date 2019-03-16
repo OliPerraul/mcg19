@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Core/Start/TitleScreen.png" type="Texture" id=1]
+[ext_resource path="res://Core/Start/Menu.gd" type="Script" id=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 1 )
+expand = true
+
+[node name="Play" type="Button" parent="."]
+margin_left = 30.0
+margin_top = 520.0
+margin_right = 290.0
+margin_bottom = 570.0
+text = "Play"
+
+[node name="HowTo" type="Button" parent="."]
+margin_left = 340.0
+margin_top = 520.0
+margin_right = 600.0
+margin_bottom = 570.0
+text = "How To Play"
+
+[node name="Menu" type="Node" parent="."]
+script = ExtResource( 2 )
+__play = NodePath("../Play")
+__howto = NodePath("../HowTo")
+__popup = NodePath("../AcceptDialog")
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+editor/display_folded = true
+margin_left = 190.0
+margin_top = 110.0
+margin_right = 830.0
+margin_bottom = 430.0
+window_title = "How to play"
+resizable = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AcceptDialog"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 632.0
+margin_bottom = 284.0
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+text = "Play as the Urban Legend himself and pursue your daily activities without getting caught.
+
+- Do no remain in the villagers line of sight using the arrow keys.
+
+- Feast upon delicious trash using the action key."
+

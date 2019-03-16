@@ -26,6 +26,10 @@ export(NodePath) onready var __fsm
 var fsm
 
 
+export(float) onready var _distance_kill = 4
+
+
+
 onready var direction = Vector2(0, 1)
 onready var last_position = Vector2()
 
@@ -43,6 +47,15 @@ func _ready():
 	
 
 func _process(delta):
+	
+	if Vectors.close_enough(global_position, Globals.game.player.global_position, _distance_kill):
+		# END THE GAME IF CLOSE ENOUGH
+		Globals.game.alert = INF
+		return
+	
+	
+	
+	# ANIMATION
 	if sign(direction.y) == 1 :
 		animator.play('Front')
 	elif sign(direction.y) == -1:
