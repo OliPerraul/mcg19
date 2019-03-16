@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="New Game Project"
-run/main_scene="res://Core/World/World1/World.tscn"
+run/main_scene="res://Core/World/Dialog_Mikambi/World4.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -105,6 +105,10 @@ player_right={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
+
+[editor_plugins]
+
+enabled=PoolStringArray( "GodotTIE" )
 
 [rendering]
 
