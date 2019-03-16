@@ -9,21 +9,18 @@ var area_2D
 
 
 #EXPORTED
-export(String) var facing = "south"
+export(String, "north", "south", "east", "west") var facing = "south"
 # 	north
 # 	east
 # 	south
 # 	west
-export(String) var animation_state
-
-
-
+export(String, "idle", "walking", "hidden") var animation_state = "idle"
 # 	idle
 # 	walking
 # 	hidden
 var cover = null
 var hide_speed = .2
-export(String) var character_state = "normal"
+export(String, "normal", "locked", "danger", "hidden", "enable-hide") var character_state = "normal"
 
 
 
@@ -63,17 +60,17 @@ func _post_ready():
 
 
 
-func _process(delta):
+func _process(dt):
 	if not Vectors.close_enough(_last_foot_pos, global_position, foot_print_distance):
 		footprints.add(facing)
 		_last_foot_pos = global_position
 	
 
 func _physics_process(dt):
-	match(character_state): #str comparison lol
-		"normal":
-			input_handler()
-			_player_normal()					
+
+	input_handler()
+
+	match(character_state): #str comparison lol				
 		"locked":
 			pass
 			#_player_set_locked()
@@ -87,9 +84,11 @@ func _physics_process(dt):
 			_player_hidden()
 					
 		"enable_hide":    #DISPLAY UI HERE
-			input_handler()
-			_player_normal() # also run normal
 			_player_enable_hide()
+			continue #also do normal movement
+
+		"normal":
+			_player_normal()	
 
 			
 			#_player_involuntary()
@@ -102,33 +101,32 @@ func input_handler():
 
 	movement = Vector2(0,0)
 
-	if can_move:
-		if Input.is_action_pressed("player_up"):
-			animation_state = "walking"
-			facing = "north"
-			movement.y -= 1
-	
-		if Input.is_action_pressed("player_down"):
-			animation_state = "walking"
-			facing = "south"
-			movement.y += 1
-	
-		if Input.is_action_pressed("player_left"):
-			animation_state = "walking"
-			facing = "west"
-			movement.x -= 1
-	
-		if Input.is_action_pressed("player_right"):
-			animation_state = "walking"
-			facing = "east"
-			movement.x += 1
-	
-		#if Input.is_action_just_released("player_movement"):
-		if movement==Vector2(0,0):
-			animation_state = "idle"
-			movement = Vector2(0,0)
+	#movement input
+	if Input.is_action_pressed("player_up"):
+		animation_state = "walking"
+		facing = "north"
+		movement.y -= 1
 
-		
+	if Input.is_action_pressed("player_down"):
+		animation_state = "walking"
+		facing = "south"
+		movement.y += 1
+
+	if Input.is_action_pressed("player_left"):
+		animation_state = "walking"
+		facing = "west"
+		movement.x -= 1
+
+	if Input.is_action_pressed("player_right"):
+		animation_state = "walking"
+		facing = "east"
+		movement.x += 1
+
+	#NO net movement
+	if movement==Vector2(0,0):
+		animation_state = "idle"
+		movement = Vector2(0,0)
+
 
 	movement = movement.normalized()
 
@@ -183,6 +181,9 @@ func player_hide(cover):
 		self.cover = cover
 		character_state = "enable_hide"
 
+
+func objective():
+	pass
 
 	
 	
