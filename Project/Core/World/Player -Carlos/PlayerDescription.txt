@@ -1,0 +1,4 @@
+Player Controller
+    * Movement
+    * State machine
+    * Footprint + auto/manual destruction
