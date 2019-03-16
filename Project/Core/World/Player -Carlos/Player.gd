@@ -48,11 +48,6 @@ var _last_foot_pos = Vector2(INF, INF)
 var can_move = true
 
 func _ready():
-	call_deferred("_post_ready")
-
-func _post_ready():
-	# load nodes
-	#footprints = preload("Footprints.tscn").instance()
 	footprints = get_node("Footprints")
 	sprite = get_node("sprite")
 	area_2D = get_node("area_2D")
@@ -134,6 +129,9 @@ func _physics_process(dt):
 	update_state(character_state)
 
 func update_state(state):
+	
+	input_handler()
+
 	match(state):
 		"locked":
 			pass
@@ -147,13 +145,11 @@ func update_state(state):
 		"hidden":
 			_player_hidden_update()
 					
-		"enable_hide":    #DISPLAY UI HERE
-			input_handler()
+		"enable_hide":    #DISPLAY UI HERE\
 			_player_normal_update()	
 			_player_enable_hide_update()
 
 		"normal":
-			input_handler()
 			_player_normal_update()	
 
 
