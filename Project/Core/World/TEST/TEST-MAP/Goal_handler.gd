@@ -1,6 +1,7 @@
 extends Node2D
 
 
+export(Resource) var Garbage
 
 var goal_array 		: Array
 var goal_points		: Array
@@ -11,22 +12,31 @@ func _ready():
 
 	goal_points = [self]
 	goal_states = [true]
+	goal_array = [Garbage.instance()]
+	goal_array[0].position = goal_points[0].position
+	goal_array[0].z_index = 1
+	add_child(goal_array[0])
 	
 	
 	for GOAL in get_children():
 		goal_points.push_back(GOAL)
 		goal_states.push_back(false)
+		goal_array.push_back(null)
 
 
 func add():
 	randomize()
 	var vacant = _get_vacant()
+	if(vacant.size()==0): return
 	var index = randi()%vacant.size()
 	
 	#make at
-	#goal_array[vacant[index]]
+	goal_array[vacant[index]] = Garbage.instance()
+	add_child(goal_array[vacant[index]])
 	goal_states[vacant[index]]=true
-	print("add to"+String(goal_array[vacant[index]]))
+	goal_array[vacant[index]].z_index = 1
+	goal_array[vacant[index]].position = goal_points[vacant[index]].position
+	print("add to"+String(goal_points[vacant[index]].position))
 	
 	pass
 	

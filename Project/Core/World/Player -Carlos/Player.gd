@@ -91,6 +91,13 @@ func input_handler():
 		movement = Vector2(0,0)
 
 
+	if Input.is_action_just_released("ui_accept"):
+		get_parent().get_parent().get_node("GOALS").add()
+		print(get_parent().get_parent().get_node("GOALS"))
+
+	#if Input.is_action_just_released("ui_cancel"):
+		#get_parent().get_parent().get_node("GOALS").remove()
+
 	movement = movement.normalized()
 
 
@@ -179,8 +186,8 @@ func init_state(state, args=[]):
 			#continue #also do normal movement
 		"normal":
 			priority = 100
-			cover.z_index = 0
-			self.cover = null
+			#cover.z_index = 0
+			#self.cover = null
 			pass
 
 
