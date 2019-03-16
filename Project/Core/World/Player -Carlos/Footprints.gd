@@ -24,11 +24,12 @@ func _ready():
 
 
 
-func add():
+func add(direction):
 	var fp = footprint.instance()
 	
 	fp._set_reference(footprint_array)
 	fp._set_position(get_parent().global_position)
+	fp.orientation(direction)
 	footprint_array.push_front(fp)
 	get_tree().get_root().add_child(footprint_array[0])
 	print("Step!")
