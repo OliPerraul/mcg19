@@ -7,3 +7,6 @@ Player Controller
     * Run away from car alarm
 
     ffotprint keeps reference to parent
+
+
+    1024*576
