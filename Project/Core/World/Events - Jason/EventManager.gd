@@ -19,11 +19,9 @@ func _ready():
 
 func hide_player():
 	controlsLocked = true
-	emit_signal("hide_player")
 
 func unhide_player():
 	controlsLocked = false
-	emit_signal("unhide_player")
 
 func camera_cinematic(target_pos, travel_duration, focused_duration, black_bars = false):
 	player._player_lock()

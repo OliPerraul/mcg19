@@ -5,8 +5,9 @@
 [ext_resource path="res://Core/World/placeholder_tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://Core/World/AI - Oli/NPC/NavigationTileSet.gd" type="Script" id=4]
 [ext_resource path="res://Core/World/AI - Oli/Events/Covers/Cover.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Core/World/Player -Carlos/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Core/World/TEST/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Core/World/AI - Oli/NPC/NPC.tscn" type="PackedScene" id=7]
+
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -23,6 +24,7 @@ emission_shape = 2
 emission_box_extents = Vector3( 1024, 1024, 1024 )
 flag_disable_z = true
 gravity = Vector3( 0, 10, 0 )
+angular_velocity = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 tangential_accel_curve = SubResource( 3 )
