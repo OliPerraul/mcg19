@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Core/World/Player -Carlos/Player.gd" type="Script" id=1]
 [ext_resource path="res://Core/World/Player -Carlos/YetiWalkSheet.png" type="Texture" id=2]
+[ext_resource path="res://Core/World/Player -Carlos/sprite.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 19, 17 )
@@ -13,11 +14,10 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 8
+script = ExtResource( 3 )
 
 [node name="area_2D" type="Area2D" parent="."]
 
 [node name="collision_shape" type="CollisionShape2D" parent="area_2D"]
 shape = SubResource( 1 )
-
-[node name="footprint_timer" type="Timer" parent="."]
 
