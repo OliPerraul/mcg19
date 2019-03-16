@@ -18,7 +18,7 @@ onready var half_cell_size = cell_size / 2
 
 func _ready():
 	var walkable_cells_list = astar_add_walkable_cells(obstacles)
-	astar_connect_walkable_cells(walkable_cells_list)
+	astar_connect_walkable_cells_diagonal(walkable_cells_list)
 
 
 # Click and Shift force the start and end position of the path to update
@@ -105,3 +105,5 @@ func is_outside_map_bounds(point):
 
 func calculate_point_index(point):
 	return point.x + map_size.x * point.y
+
+		

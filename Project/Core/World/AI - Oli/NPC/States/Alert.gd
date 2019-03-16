@@ -4,6 +4,9 @@ extends OLI_STATE
 # GO TO EVENT LOCATION
 # (CAR ALARM etc.)
 
+var time_detection
+export(float) onready var time_detection_limit = 1
+
 
 func setup(context, args):
 	pass
@@ -12,13 +15,19 @@ func clean():
 	pass
 
 
-func update(context):
+func update(context, delta):
+	print(time_detection)
+	
 	if context.vision.target != null:
-		match(context.vision.target.type):
-			Globals.DETECTABLE.PLAYER, Globals.DETECTABLE.ALARM:
-				context.fsm.set_state_named('Chase', [context.vision.target])
-			Globals.DETECTABLE.FOOTPRINT:
-				context.fsm.set_state_named('Trace')
+		time_detection += delta
+		if time_detection > time_detection_limit :			
+			match(context.vision.target.type):
+				Globals.DETECTABLE.PLAYER, Globals.DETECTABLE.ALARM:
+					context.fsm.set_state_named('Chase', [context.vision.target])
+				Globals.DETECTABLE.FOOTPRINT:
+					context.fsm.set_state_named('Trace')
+	else:
+		time_detection = 0
 	
 	
 	

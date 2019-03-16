@@ -5,8 +5,8 @@ export(NodePath) onready var __char
 var _char
 
 
-const DETECT_RADIUS = 200
-const FOV = 80
+const DETECT_RADIUS = 360
+const FOV = 60
 var angle = 0
 
 

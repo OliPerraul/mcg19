@@ -10,7 +10,7 @@ func setup(context, args):
 func clean():
 	pass
 
-func update(context):
+func update(context, delta):
 	pass
 	
 func physics_update(context, delta):

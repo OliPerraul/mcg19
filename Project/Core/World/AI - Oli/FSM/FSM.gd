@@ -19,7 +19,7 @@ func _ready():
 
 
 func _process(delta):
-	_state.update(_context)
+	_state.update(_context, delta)
 
 func physics_update(delta):
 	_state.physics_update(_context, delta)

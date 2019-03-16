@@ -112,13 +112,16 @@ func _draw():
 	var point_start = _point_path[0]
 	var point_end = _point_path[len(_point_path) - 1]
 
-	var last_point = Globals.game.tm_solids.map_to_world(Vector2(point_start.x, point_start.y)) + Globals.game.tm_solids.half_cell_size
+	var last_point = (Globals.game.tm_solids.map_to_world(Vector2(point_start.x, point_start.y)) + Globals.game.tm_solids.half_cell_size)
+	
 	for index in range(1, len(_point_path)):
-		var current_point = Globals.game.tm_solids.map_to_world(Vector2(_point_path[index].x, _point_path[index].y)) + Globals.game.tm_solids.half_cell_size
-		draw_line(last_point, current_point, DRAW_COLOR, BASE_LINE_WIDTH, true)
-		draw_circle(current_point, BASE_LINE_WIDTH * 2.0, DRAW_COLOR)
+		var current_point = (Globals.game.tm_solids.map_to_world(Vector2(_point_path[index].x, _point_path[index].y)) + Globals.game.tm_solids.half_cell_size)
+		draw_segment(last_point, current_point)
 		last_point = current_point
 
+func draw_segment(last_point, current_point):
+		draw_line(last_point, current_point, DRAW_COLOR, BASE_LINE_WIDTH, true)
+		draw_circle(current_point, BASE_LINE_WIDTH * 2.0, DRAW_COLOR)
 
 # Setters for the start and end path values.
 func _set_path_start_position(value):

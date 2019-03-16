@@ -38,6 +38,7 @@ __tm_solids = NodePath("../TileMaps/Solids")
 __player = NodePath("../Middleground/Player")
 
 [node name="TileMaps" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Solids" type="TileMap" parent="TileMaps" groups=[
 "Solids",
@@ -64,6 +65,7 @@ __meta__ = {
 }
 
 [node name="AstarAgent" type="Node2D" parent="Middleground/NPC"]
+editor/display_folded = true
 script = ExtResource( 4 )
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="Middleground/NPC/AstarAgent"]
@@ -71,7 +73,6 @@ self_modulate = Color( 1, 0, 0, 1 )
 frames = SubResource( 2 )
 
 [node name="Character" type="Node2D" parent="Middleground/NPC"]
-editor/display_folded = true
 script = ExtResource( 6 )
 __astar_agent = NodePath("../AstarAgent")
 __path_agent = NodePath("../Path2D/PathAgent")

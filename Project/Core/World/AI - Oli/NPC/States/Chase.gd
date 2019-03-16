@@ -14,8 +14,8 @@ func setup(context, args):
 	context.astar_agent.move_to(_dest)
 	
 
-func update(context):
-	.update(context)
+func update(context, delta):
+	.update(context, delta)
 	var last_position = context.global_transform.origin
 	context.global_transform.origin = lerp(context.global_transform.origin, context.astar_agent.global_transform.origin, context.lerp_speed)
 	context.direction = context.global_transform.origin - last_position
