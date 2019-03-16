@@ -15,8 +15,8 @@ func _ready():
 	player = get_node(player_path)
 	camera = get_node(camera_path)
 	
-	player.get_node("area_2D").connect("area_entered", self, "_on_Player_area_entered")
-	player.get_node("area_2D").connect("area_exited", self, "_on_Player_area_exited")
+	player.get_node("player_area").connect("area_entered", self, "_on_Player_area_entered")
+	player.get_node("player_area").connect("area_exited", self, "_on_Player_area_exited")
 
 func hide_player():
 	controlsLocked = true
