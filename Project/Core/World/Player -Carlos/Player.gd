@@ -1,4 +1,4 @@
-extends Node2D
+extends KinematicBody2D
 
 
 
@@ -22,13 +22,15 @@ export(String) var character_state
 #	normal
 #	danger
 #	involuntary
-export(float) var speed
-export(float) var animation_speed = 0.2
+export(float) var speed = 4
+export(float) var animation_speed = 0.1
 export(float) var footprint_decay = 1
 
 #PRIVATES
 var footprint_array: Array
 var footprint_timer: Timer
+
+var movement : Vector2 = Vector2(0,0)
 
 
 
@@ -62,8 +64,10 @@ func _post_ready():
 
 
 #Update loop
-func _process(dt):
+func _physics_process(dt):
 	input_handler()
+	move_and_slide(movement*250)
+
 
 
 func step():
@@ -90,22 +94,29 @@ func _footprint_timer_timeout():
 func input_handler():
 	if Input.is_action_just_released("player_movement"):
 		movement_state = "idle"
+		movement = Vector2(0,0)
 
 	if Input.is_action_pressed("player_up"):
 		movement_state = "walking"
 		facing = "north"
+		movement.y -= speed
 
 	if Input.is_action_pressed("player_down"):
 		movement_state = "walking"
 		facing = "south"
+		movement.y += speed
 
 	if Input.is_action_pressed("player_left"):
 		movement_state = "walking"
-		facing = "east"
+		facing = "west"
+		movement.x -= speed
 
 	if Input.is_action_pressed("player_right"):
 		movement_state = "walking"
-		facing = "west"
+		facing = "east"
+		movement.x += speed
 
 	if Input.is_action_just_released("ui_accept"):
 		step()
+		
+	movement = movement.normalized()
