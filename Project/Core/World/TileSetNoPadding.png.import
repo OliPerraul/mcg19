@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/House1.png-2f55b2fb4d59521fc97eb288a8fb165d.stex"
+path="res://.import/TileSetNoPadding.png-6da9340ddabd64a408bbf8c2ed60869d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Core/World/Layout/House1.png"
-dest_files=[ "res://.import/House1.png-2f55b2fb4d59521fc97eb288a8fb165d.stex" ]
+source_file="res://Core/World/TileSetNoPadding.png"
+dest_files=[ "res://.import/TileSetNoPadding.png-6da9340ddabd64a408bbf8c2ed60869d.stex" ]
 
 [params]
 
