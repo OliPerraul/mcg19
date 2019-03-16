@@ -37,8 +37,21 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="Tween" type="Tween" parent="CanvasLayer/BlackBars"]
 
-[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "Score: 0"
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+margin_right = 200.0
+margin_bottom = 40.0
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/Panel"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 69.0
+margin_bottom = 24.0
+text = "Score: $$"
+
+[node name="AlertLabel" type="Label" parent="CanvasLayer/Panel"]
+margin_left = 100.0
+margin_top = 10.0
+margin_right = 184.0
+margin_bottom = 24.0
+text = "Alert: $$/@@"
 

@@ -1,0 +1,68 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://Core/World/AI - Oli/NPC/NPC.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_08.tres" type="Texture" id=2]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_09.tres" type="Texture" id=3]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_10.tres" type="Texture" id=4]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_11.tres" type="Texture" id=5]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_12.tres" type="Texture" id=6]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_13.tres" type="Texture" id=7]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_14.tres" type="Texture" id=8]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_15.tres" type="Texture" id=9]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_24.tres" type="Texture" id=10]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_25.tres" type="Texture" id=11]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_26.tres" type="Texture" id=12]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_27.tres" type="Texture" id=13]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_28.tres" type="Texture" id=14]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_29.tres" type="Texture" id=15]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_30.tres" type="Texture" id=16]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_31.tres" type="Texture" id=17]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_00.tres" type="Texture" id=18]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_01.tres" type="Texture" id=19]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_02.tres" type="Texture" id=20]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_03.tres" type="Texture" id=21]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_04.tres" type="Texture" id=22]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_05.tres" type="Texture" id=23]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_06.tres" type="Texture" id=24]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_07.tres" type="Texture" id=25]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_16.tres" type="Texture" id=26]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_17.tres" type="Texture" id=27]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_18.tres" type="Texture" id=28]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_19.tres" type="Texture" id=29]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_20.tres" type="Texture" id=30]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_21.tres" type="Texture" id=31]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_22.tres" type="Texture" id=32]
+[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/report_atlas_23.tres" type="Texture" id=33]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "Back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "Right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "Front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ) ],
+"loop": true,
+"name": "Left",
+"speed": 5.0
+} ]
+
+[node name="NPC" instance=ExtResource( 1 )]
+
+[node name="AnimatedSprite" parent="Character" index="2"]
+frames = SubResource( 1 )
+frame = 3
+
+[node name="Emoji" parent="Character" index="3"]
+frame = 1
+

@@ -219,6 +219,7 @@ hframes = 8
 script = ExtResource( 2 )
 
 [node name="area_2D" type="Area2D" parent="."]
+editor/display_folded = true
 
 [node name="area_collision_shape" type="CollisionShape2D" parent="area_2D"]
 position = Vector2( 0, -0.5 )
