@@ -1,36 +1,12 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Core/Game.gd" type="Script" id=1]
 [ext_resource path="res://Core/World/placeholder_tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Core/World/AI - Oli/NPC/NavigationTileSet.gd" type="Script" id=3]
 [ext_resource path="res://Core/World/Player -Carlos/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Core/World/AI - Oli/NPC/AstarAgent.gd" type="Script" id=5]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Resource/girl.png" type="Texture" id=6]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Character.gd" type="Script" id=7]
-[ext_resource path="res://Core/World/AI - Oli/NPC/Vision/Vision.gd" type="Script" id=8]
-[ext_resource path="res://Core/World/AI - Oli/FSM/FSM.gd" type="Script" id=9]
-[ext_resource path="res://Core/World/AI - Oli/NPC/States/Patrol.gd" type="Script" id=10]
-[ext_resource path="res://Core/World/AI - Oli/NPC/States/Home.gd" type="Script" id=11]
-[ext_resource path="res://Core/World/AI - Oli/NPC/States/Chase.gd" type="Script" id=12]
-[ext_resource path="res://Core/World/AI - Oli/NPC/States/Trace.gd" type="Script" id=13]
-[ext_resource path="res://Core/World/AI - Oli/NPC/States/Idle.gd" type="Script" id=14]
-[ext_resource path="res://Core/World/AI - Oli/NPC/PathAgent.gd" type="Script" id=15]
+[ext_resource path="res://Core/World/AI - Oli/NPC/NPC.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CanvasItemMaterial" id=1]
-
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="Curve2D" id=3]
-bake_interval = 0.01
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -140, 10, 0, 0, 0, 0, 60, 20, 0, 0, 0, 0, 70, 80, 0, 0, 0, 0, -140, 80 )
-}
 
 [node name="World" type="Node2D"]
 
@@ -62,78 +38,7 @@ __meta__ = {
 [node name="Player" parent="Middleground" instance=ExtResource( 4 )]
 position = Vector2( 520, 410 )
 
-[node name="NPC" type="Node2D" parent="Middleground"]
-editor/display_folded = true
-position = Vector2( 380, 460 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="AstarAgent" type="Node2D" parent="Middleground/NPC"]
-editor/display_folded = true
-script = ExtResource( 5 )
-
-[node name="AnimatedSprite2" type="AnimatedSprite" parent="Middleground/NPC/AstarAgent"]
-self_modulate = Color( 1, 0, 0, 1 )
-frames = SubResource( 2 )
-
-[node name="Character" type="Node2D" parent="Middleground/NPC"]
-editor/display_folded = true
-script = ExtResource( 7 )
-__astar_agent = NodePath("../AstarAgent")
-__path_agent = NodePath("../Path2D/PathAgent")
-__vision = NodePath("Vision")
-__fsm = NodePath("FSM")
-
-[node name="Vision" type="Node2D" parent="Middleground/NPC/Character"]
-script = ExtResource( 8 )
-__char = NodePath("..")
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Middleground/NPC/Character"]
-frames = SubResource( 2 )
-
-[node name="FSM" type="Node" parent="Middleground/NPC/Character"]
-editor/display_folded = true
-script = ExtResource( 9 )
-__start_state = NodePath("Patrol")
-__context = NodePath("..")
-
-[node name="Patrol" type="Node" parent="Middleground/NPC/Character/FSM"]
-script = ExtResource( 10 )
-
-[node name="Home" type="Node" parent="Middleground/NPC/Character/FSM"]
-script = ExtResource( 11 )
-
-[node name="Chase" type="Node" parent="Middleground/NPC/Character/FSM"]
-script = ExtResource( 12 )
-time_outside_detection_limit = 0.5
-
-[node name="Trace" type="Node" parent="Middleground/NPC/Character/FSM"]
-script = ExtResource( 13 )
-
-[node name="Idle" type="Node" parent="Middleground/NPC/Character/FSM"]
-script = ExtResource( 14 )
-
-[node name="Path2D" type="Path2D" parent="Middleground/NPC"]
-editor/display_folded = true
-position = Vector2( 20, 10 )
-curve = SubResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="PathAgent" type="PathFollow2D" parent="Middleground/NPC/Path2D"]
-editor/display_folded = true
-position = Vector2( -140, 10 )
-rotation = 0.0499586
-script = ExtResource( 15 )
-__path = NodePath("..")
-
-[node name="AnimatedSprite3" type="AnimatedSprite" parent="Middleground/NPC/Path2D/PathAgent"]
-self_modulate = Color( 0, 0.227451, 1, 1 )
-position = Vector2( 118.852, -25.9676 )
-rotation = -0.0499586
-frames = SubResource( 2 )
+[node name="NPC" parent="Middleground" instance=ExtResource( 5 )]
 
 [node name="Foreground" type="Node" parent="."]
 
