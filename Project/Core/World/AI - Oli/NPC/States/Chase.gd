@@ -1,5 +1,4 @@
-class_name OLI_STATE
-extends Node
+extends OLI_STATE
 
 func setup(context, args):
 	pass

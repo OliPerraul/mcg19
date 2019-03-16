@@ -1,5 +1,5 @@
-class_name OLI_STATE
-extends Node
+extends OLI_STATE
+
 
 func setup(context, args):
 	pass
@@ -10,5 +10,6 @@ func clean():
 func update(context):
 	pass
 	
+		
 func physics_update(context, delta):
 	pass
