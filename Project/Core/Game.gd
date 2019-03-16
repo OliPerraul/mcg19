@@ -53,7 +53,7 @@ func _ready():
 		
 func _process(delta):
 	if alert >= _alert_limit :
-		_end_game()
+		end_game()
 		
 	elif alert > (old_alert + .02) or alert > (old_alert - .02):
 		time_no_alert = 0
@@ -71,7 +71,7 @@ func _process(delta):
 	_alert_label.text = _alert_format.replace('$$', self.alert).replace('@@', self._alert_limit)			
 
 	
-func _end_game():
+func end_game():
 	get_tree().change_scene("res://Core/Start/GameOverScreen.tscn")
 		
 	

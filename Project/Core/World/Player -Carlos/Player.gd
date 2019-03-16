@@ -52,11 +52,6 @@ var can_move = true
 var hiding_place = null
 
 func _ready():
-	call_deferred("_post_ready")
-
-func _post_ready():
-	# load nodes
-	#footprints = preload("Footprints.tscn").instance()
 	footprints = get_node("Footprints")
 	sprite = get_node("sprite")
 	area_2D = get_node("area_2D")
@@ -68,8 +63,7 @@ func _process(dt):
 	if not Vectors.close_enough(_last_foot_pos, global_position, foot_print_distance):
 		footprints.add(facing)
 		_last_foot_pos = global_position
-	
-
+		
 func _physics_process(dt):
 
 	input_handler()
@@ -96,10 +90,6 @@ func _physics_process(dt):
 
 			
 			#_player_involuntary()
-
-			
-
-
 
 func input_handler():
 
@@ -152,21 +142,78 @@ func _player_normal():
 	move_and_slide(movement * 250)
 	pass
 
-func _player_danger():
+func _player_danger_update():
 	#no movement
 	pass
 
-func _player_enable_hide():
+func _player_enable_hide_update():
 	if Input.is_action_just_released("ui_accept"):
 		player_hide()
 
 
-func _player_hidden():		
+func _player_hidden():
 	if Input.is_action_just_released("ui_accept"):
-		character_state = "normal"
-		priority = 100
-		cover.z_index = 0
+		init_state("normal")
+
+
+func _physics_process(dt):
+	update_state(character_state)
+
+func update_state(state):
 	
+	input_handler()
+
+	match(state):
+		"locked":
+			pass
+			#_player_set_locked()
+		"danger":
+			pass
+			#_player_danger()
+		"involuntary":
+			pass
+			#_player_involuntary()
+		"hidden":
+			_player_hidden_update()
+					
+		"enable_hide":    #DISPLAY UI HERE\
+			_player_normal_update()	
+			_player_enable_hide_update()
+
+		"normal":
+			_player_normal_update()	
+
+
+
+func init_state(state, args=[]):
+	if state == character_state:
+		return 
+		
+	character_state = state					
+					
+	match(state):
+		"locked":
+			pass
+			#_player_set_locked()
+		"danger":
+			pass
+			#_player_danger()
+		"involuntary":
+			pass
+			#_player_involuntary()
+		"hidden":
+			pass
+						
+		"enable_hide":    #DISPLAY UI HERE
+			self.cover = args[0]
+			
+			#continue #also do normal movement
+		"normal":
+			priority = 100
+			cover.z_index = 0
+			self.cover = null
+			pass
+
 
 func player_hide():
 	$HideTween.interpolate_property(self, "global_position", global_position, cover.global_position, 0.25, Tween.TRANS_CUBIC, Tween.EASE_IN)
@@ -176,6 +223,11 @@ func player_hide():
 	cover.z_index = 4
 	priority = -1
 
+func _player_lock():
+	init_state('locked')
+
+func _player_unlock():
+	init_state('normal')
 
 func _on_HideTween_tween_completed(object, key):
 	character_state = "hidden"

@@ -26,8 +26,8 @@ export(NodePath) onready var __fsm
 var fsm
 
 
-export(float) onready var _distance_kill = 4
-
+export(NodePath) onready var __area_kill
+var kill : Area2D
 
 
 onready var direction = Vector2(0, 1)
@@ -41,20 +41,19 @@ func _ready():
 	vision = get_node(__vision)
 	path_agent = get_node(__path_agent)
 	fsm = get_node(__fsm)
-	animator = get_node(__animator)
-	
+	animator = get_node(__animator)	
 	emoji = get_node(__emoji)
-	
+	kill = get_node(__area_kill)
+	kill.connect('body_entered', self, '_on_player_kill') 
 
-func _process(delta):
-	
-	if Vectors.close_enough(global_position, Globals.game.player.global_position, _distance_kill):
-		# END THE GAME IF CLOSE ENOUGH
+
+func _on_player_kill(body):
+	if body.is_in_group('detectable'):
 		Globals.game.alert = INF
-		return
-	
-	
-	
+		Globals.game.end_game()
+
+
+func _process(delta):	
 	# ANIMATION
 	if sign(direction.y) == 1 :
 		animator.play('Front')
