@@ -11,18 +11,18 @@ var area_2D
 
 #EXPORTED
 export(String) var facing = "south"
-# north
-# east
-# south
-# west
-export(String) var movement_state
-# idle
-# walking
-# locked
+# 	north
+# 	east
+# 	south
+# 	west
+export(String) var animation_state
+# 	idle
+# 	walking
+# 	hidden
 export(String) var character_state
 #	normal
+# 	locked
 #	danger
-# 	hidden
 #	involuntary
 export(float) var speed = 4
 export(float) var animation_speed = 0.1
@@ -44,7 +44,6 @@ var movement : Vector2 = Vector2(0,0)
 
 func _ready():
 	call_deferred("_post_ready")
-
 
 func _post_ready():
 	# load nodes
@@ -68,7 +67,19 @@ func _post_ready():
 #Update loop
 func _physics_process(dt):
 	input_handler()
-	move_and_slide(movement*250)
+
+	match(character_state):
+		"normal":
+			_player_normal()
+		"locked":
+			_player_locked()
+		"danger":
+			_player_danger()
+		"involuntary":
+			_player_involuntary()
+
+			
+
 
 
 
@@ -81,7 +92,6 @@ func step():
 	if(footprint_timer.get_time_left()==0):
 		footprint_timer.start()
 
-
 func _footprint_timer_timeout():
 	var fp = footprint_array.pop_back()
 	fp.free()
@@ -91,6 +101,8 @@ func _footprint_timer_timeout():
 		footprint_timer.start()
 	else:
 		footprint_timer.stop()
+
+
 
 
 func input_handler():
@@ -130,8 +142,31 @@ func input_handler():
 	movement = movement.normalized()
 
 
+
+
 func _player_lock():
 	pass
 
 func _player_unlock():
+	pass
+
+func _player_set_visible():
+	pass
+
+func _player_set_visible():
+	pass
+
+
+
+#states
+func _player_normal():
+	move_and_slide(movement*250)
+	pass
+
+func _player_danger():
+	#no movement
+	pass
+
+func _player_hidden():
+	#TBD
 	pass

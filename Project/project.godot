@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="New Game Project"
-run/main_scene="res://Core/World/Dialog_Mikambi/World4.tscn"
+run/main_scene="res://Core/World/World1/World.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -106,9 +106,17 @@ player_right={
  ]
 }
 
-[editor_plugins]
+[layer_names]
 
-enabled=PoolStringArray( "GodotTIE" )
+2d_render/layer_1="background"
+2d_physics/layer_1="environment"
+2d_physics/layer_2="player"
+2d_render/layer_3="middleground"
+2d_physics/layer_3="children"
+2d_physics/layer_4="adults"
+2d_render/layer_5="foreground"
+2d_physics/layer_5="animals"
+2d_physics/layer_6="items"
 
 [rendering]
 

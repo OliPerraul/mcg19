@@ -21,11 +21,17 @@ func _ready():
 
 func _update():
 	
-	match(get_parent().movement_state):
-		"idle":
-			h_frame = 0
+	match(get_parent().animation_state):
 		"walking":
 			lp()
+		"hidden":
+			#do hidden stuff
+			continue
+		"idle":
+			continue
+		_:
+			h_frame = 0
+
 	#print("v:"+String(dir()*8)+" h:"+String(h_frame))
 	set_frame( dir()*8 + h_frame)
 	
@@ -43,6 +49,7 @@ func dir():
 			return 2
 		_:
 			return 0
+
 
 func lp():
 	if(h_frame<get_hframes()-1):
