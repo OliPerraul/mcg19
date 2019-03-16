@@ -87,3 +87,5 @@ lifetime = 10.0
 randomness = 1.0
 process_material = SubResource( 4 )
 
+
+[editable path="Middleground/Player"]

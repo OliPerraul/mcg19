@@ -40,7 +40,7 @@ func add(direction):
 		_footprint_timer_timeout() #TODO: rename
 	
 	get_tree().get_root().add_child(footprint_array[0])
-	print("Step!")
+	#print("Step!")
 
 	if(footprint_timer.get_time_left()==0):
 		footprint_timer.start()
