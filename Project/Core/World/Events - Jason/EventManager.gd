@@ -13,8 +13,8 @@ signal hide_player
 signal unhide_player
 
 func _ready():
-	get_node(player).get_node("Area2D").connect("area_entered", self, "_on_Player_area_entered")
-	get_node(player).get_node("Area2D").connect("area_exited", self, "_on_Player_area_exited")
+	get_node(player).get_node("area_2D").connect("area_entered", self, "_on_Player_area_entered")
+	get_node(player).get_node("area_2D").connect("area_exited", self, "_on_Player_area_exited")
 
 func hide_player():
 	controlsLocked = true

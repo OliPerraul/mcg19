@@ -2,9 +2,9 @@
 
 [ext_resource path="res://Core/World/Events - Jason/WorldJason.gd" type="Script" id=1]
 [ext_resource path="res://Core/World/Events - Jason/EventManager.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Core/World/Events - Jason/SuperPlayer.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Core/World/Events - Jason/Prop.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Core/World/Events - Jason/Truck.png" type="Texture" id=5]
+[ext_resource path="res://Core/World/Events - Jason/Prop.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Core/World/Events - Jason/Truck.png" type="Texture" id=4]
+[ext_resource path="res://Core/World/Player -Carlos/Player.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 35.8652, 26.0306 )
@@ -16,25 +16,24 @@ script = ExtResource( 1 )
 camera = NodePath("../Player/Camera2D")
 player = NodePath("../Player")
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-current = true
-
-[node name="Truck" parent="." instance=ExtResource( 4 )]
+[node name="Truck" parent="." instance=ExtResource( 3 )]
 position = Vector2( 413.554, 200.315 )
 
 [node name="Sprite" parent="Truck" index="1"]
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" parent="Truck/StaticBody2D" index="0"]
 shape = SubResource( 1 )
 
-[connection signal="hide_player" from="EventManager" to="." method="_on_EventManager_hide_player"]
-[connection signal="lock_controls" from="EventManager" to="Player" method="_on_EventManager_lock_controls"]
-[connection signal="unhide_player" from="EventManager" to="." method="_on_EventManager_unhide_player"]
-[connection signal="unlock_controls" from="EventManager" to="Player" method="_on_EventManager_unlock_controls"]
+[node name="Player" parent="." instance=ExtResource( 5 )]
 
-[editable path="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 277.124, 196.737 )
+current = true
+
+[connection signal="hide_player" from="EventManager" to="." method="_on_EventManager_hide_player"]
+[connection signal="unhide_player" from="EventManager" to="." method="_on_EventManager_unhide_player"]
 
 [editable path="Truck"]
+
+[editable path="Player"]
