@@ -356,7 +356,10 @@ editor/display_folded = true
 position = Vector2( 579, 1940 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter/Character" index="2"]
-frame = 2
+frame = 5
+
+[node name="Emoji" parent="Middleground/NPCs/Reporter/Character" index="3"]
+frame = 1
 
 [node name="Kill" parent="Middleground/NPCs/Reporter/Character" index="4"]
 editor/display_folded = false
@@ -376,7 +379,10 @@ position = Vector2( -110, 2766 )
 editor/display_folded = false
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter3/Character" index="2"]
-frame = 2
+frame = 5
+
+[node name="Emoji" parent="Middleground/NPCs/Reporter3/Character" index="3"]
+frame = 1
 
 [node name="Kill" parent="Middleground/NPCs/Reporter3/Character" index="4"]
 editor/display_folded = false
@@ -394,7 +400,10 @@ editor/display_folded = true
 position = Vector2( 560, 1540 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter2/Character" index="2"]
-frame = 2
+frame = 5
+
+[node name="Emoji" parent="Middleground/NPCs/Reporter2/Character" index="3"]
+frame = 1
 
 [node name="Path2D" parent="Middleground/NPCs/Reporter2" index="2"]
 position = Vector2( 20, 10.4181 )
@@ -408,7 +417,10 @@ rotation = 0.0
 position = Vector2( 370, 1320 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter4/Character" index="2"]
-frame = 2
+frame = 5
+
+[node name="Emoji" parent="Middleground/NPCs/Reporter4/Character" index="3"]
+frame = 1
 
 [node name="Path2D" parent="Middleground/NPCs/Reporter4" index="2"]
 position = Vector2( 20, 10.4181 )
@@ -422,7 +434,10 @@ rotation = 0.0
 position = Vector2( 190, 580 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter5/Character" index="2"]
-frame = 2
+frame = 5
+
+[node name="Emoji" parent="Middleground/NPCs/Reporter5/Character" index="3"]
+frame = 1
 
 [node name="Kill" parent="Middleground/NPCs/Reporter5/Character" index="4"]
 editor/display_folded = false
@@ -442,7 +457,10 @@ position = Vector2( 189, 540 )
 editor/display_folded = false
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter6/Character" index="2"]
-frame = 2
+frame = 5
+
+[node name="Emoji" parent="Middleground/NPCs/Reporter6/Character" index="3"]
+frame = 1
 
 [node name="Kill" parent="Middleground/NPCs/Reporter6/Character" index="4"]
 editor/display_folded = false
@@ -469,7 +487,10 @@ editor/display_folded = true
 editor/display_folded = false
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Hunter3/Character" index="2"]
-frame = 2
+frame = 5
+
+[node name="Emoji" parent="Middleground/NPCs/Hunter3/Character" index="3"]
+frame = 1
 
 [node name="Path2D" parent="Middleground/NPCs/Hunter3" index="2"]
 editor/display_folded = true
@@ -484,7 +505,10 @@ rotation = 1.53147e-08
 position = Vector2( -20, 1956 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Hunter4/Character" index="2"]
-frame = 2
+frame = 5
+
+[node name="Emoji" parent="Middleground/NPCs/Hunter4/Character" index="3"]
+frame = 1
 
 [node name="Kill" parent="Middleground/NPCs/Hunter4/Character" index="4"]
 editor/display_folded = false
@@ -504,10 +528,7 @@ position = Vector2( 339, 1000 )
 editor/display_folded = false
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Hunter5/Character" index="2"]
-frame = 2
-
-[node name="Emoji" parent="Middleground/NPCs/Hunter5/Character" index="3"]
-frame = 1
+frame = 5
 
 [node name="Kill" parent="Middleground/NPCs/Hunter5/Character" index="4"]
 editor/display_folded = false
@@ -523,12 +544,6 @@ __path = NodePath("../../../NPCs/NPC/Path2D")
 
 [node name="Hunter2" parent="Middleground/NPCs" instance=ExtResource( 18 )]
 position = Vector2( -30, 3210 )
-
-[node name="AnimatedSprite" parent="Middleground/NPCs/Hunter2/Character" index="2"]
-frame = 6
-
-[node name="Emoji" parent="Middleground/NPCs/Hunter2/Character" index="3"]
-frame = 1
 
 [node name="Kill" parent="Middleground/NPCs/Hunter2/Character" index="4"]
 editor/display_folded = false
