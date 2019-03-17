@@ -21,7 +21,7 @@ onready var _alert_label
 export(NodePath) onready var __goals
 onready var goals
 
-var time_goal = 0
+var time_goal = 5
 export(float) onready var time_goal_limit = 5
 
 

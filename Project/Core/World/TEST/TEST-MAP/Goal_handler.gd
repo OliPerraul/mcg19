@@ -10,6 +10,7 @@ var goal_states		: Array
 var GoalDirection = preload("res://Core/World/Events - Jason/GoalDirection.tscn")
 
 signal on_destroy
+var first_trash = true
 
 func _ready():
 
@@ -30,7 +31,12 @@ func add():
 	randomize()
 	var vacant = _get_vacant()
 	if(vacant.size()==0): return
-	var index = randi()%vacant.size()
+	var index
+	if first_trash:
+		index = 0
+		first_trash = false
+	else:
+		index  = randi()%vacant.size()
 	
 	#make at
 	goal_array[vacant[index]] = Garbage.instance()
@@ -38,7 +44,7 @@ func add():
 	goal_states[vacant[index]]=true
 	goal_array[vacant[index]].z_index = 1
 	goal_array[vacant[index]].position = goal_points[vacant[index]].position
-	print("add to"+String(goal_points[vacant[index]].position))
+	print("add ", index, " to " + str(goal_points[vacant[index]].global_position))
 	
 	var dial = GoalDirection.instance()
 	dial.init(goal_array[vacant[index]], $"../Middleground/Player/Camera2D")
