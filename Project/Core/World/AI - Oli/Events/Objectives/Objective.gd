@@ -1,6 +1,6 @@
 extends OLI_EVENT
 
-export(float) onready var score = 10
+export(int) onready var score = 10
 
 export(NodePath) onready var __sprite
 var sprite :Sprite
