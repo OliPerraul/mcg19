@@ -20,27 +20,28 @@ func clean():
 
 
 func update(context, delta):	
-	if context.vision.target != null:
+	if context.vision.target != null  and context.vision.target.priority > -1:
+	
 		time_detection += delta	
 		match(context.vision.target.type):
 			Globals.DETECTABLE.PLAYER:
 				if time_detection > time_detection_limit_player:
 					context.fsm.set_state_named('Chase', [context.vision.target])
-					context.emoji.play('Danger')
+					context.vision.draw_color = context.vision.RED
 				else:
 					context.emoji.play('Warning')
-										
-			Globals.DETECTABLE.ALARM:
-				context.fsm.set_state_named('Chase', [context.vision.target])
-				context.emoji.play('Warning')
+					context.vision.draw_color = context.vision.YELLOW
+					
 				
 			Globals.DETECTABLE.FOOTPRINT:
 				if time_detection > time_detection_limit_footprint:
 					context.fsm.set_state_named('Trace', [context.vision.target])
 					context.emoji.play('Warning')
+					context.vision.draw_color = context.vision.YELLOW
 	else:
 		time_detection = 0
 		context.emoji.play('Nothing')
+		context.vision.draw_color = context.vision.GREEN
 	
 	
 	

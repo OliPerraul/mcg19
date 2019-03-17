@@ -7,39 +7,45 @@ var _dest
 var time_outside_detection = 0
 export(float) onready var time_outside_detection_limit = 1
 
+export(float) var spd = 2 
+export(float) onready var alert_raise_incr = .1
+
 
 func setup(context, args):
 	.setup(context, args)
 	time_outside_detection = 0
 	_target = args[0]
-	context.astar_agent.global_transform.origin = context.global_transform.origin
+	#context.astar_agent.global_transform.origin = context.global_transform.origin
 	_dest = _target.global_transform.origin
-	context.astar_agent.move_to(_dest)
 	
+	#context.astar_agent.move_to(_dest)
 	
 	
 func update(context, delta):
 	.update(context, delta)
-	var last_position = context.global_transform.origin
-	context.global_transform.origin = lerp(context.global_transform.origin, context.astar_agent.global_transform.origin, context.lerp_speed)
-	context.direction = context.global_transform.origin - last_position
 	
 	if context.vision.target != _target:
 		time_outside_detection += delta
-		if time_outside_detection > time_outside_detection_limit :			
+		if time_outside_detection > time_outside_detection_limit :
+			context.emoji.play('Warning')
 			context.fsm.set_state_named('Idle')
-			return
+			return	
+				
 	else:
-		time_outside_detection = 0
-		
-	if not Vectors.close_enough(_dest, _target.global_transform.origin):
-		#context.astar_agent.global_transform.origin = context.global_transform.origin
-		_dest = _target.global_transform.origin
-		context.astar_agent.move_to(_dest)
+		if context.vision.target != null and context.vision.target.priority > 0:
+			context.emoji.play('Danger')
+			time_outside_detection = 0
+			context.direction = (context.vision.target.global_position - context.global_position).normalized()
+			Globals.game.update_alert(alert_raise_incr)
+		else:
+			context.emoji.play('Warning')
+			context.fsm.set_state_named('Idle')
+			return	
+
 		
 	
-
-
+	
+	
 
 
 

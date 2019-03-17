@@ -9,6 +9,7 @@ var alert_incr = 20
 export(NodePath) onready var __astar_agent
 var astar_agent
 
+
 export(NodePath) onready var __path_agent
 var path_agent
 
@@ -46,17 +47,17 @@ func _ready():
 	animator = get_node(__animator)	
 	emoji = get_node(__emoji)
 	kill = get_node(__area_kill)
-	kill.connect('body_entered', self, '_on_player_kill') 
+	kill.connect('body_entered', self, '_on_player_kill')
 
 
 func _on_player_kill(body): # DO NOT KILL 
 	if body.is_in_group('detectable'):
 		if body.priority < 0:
 			return					
-		Globals.game.alert += alert_incr
+		Globals.game.update_alert(alert_incr)
 
 
-func _process(delta):	
+func _process(delta):
 	# ANIMATION
 	if sign(direction.y) == 1 :
 		animator.play('Front')
@@ -74,6 +75,5 @@ func _process(delta):
 		else:
 			animator.play('Front')
 			
-		
-		
+				
 	

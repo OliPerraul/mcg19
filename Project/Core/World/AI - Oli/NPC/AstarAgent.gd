@@ -80,8 +80,9 @@ const DRAW_COLOR = Color('#fff')
 
 
 func get_navig_path(world_start, world_end):
-	self.path_start_position = Globals.game.tm_solids.world_to_map(world_start)
-	self.path_end_position = Globals.game.tm_solids.world_to_map(world_end)
+	var v = Globals.game.tm_solids.to_local(world_start)
+	self.path_start_position = Globals.game.tm_solids.world_to_map(Globals.game.tm_solids.to_local(world_start))
+	self.path_end_position = Globals.game.tm_solids.world_to_map(Globals.game.tm_solids.to_local(world_end))
 	_recalculate_path()
 	var path_world = []
 	for point in _point_path:
@@ -158,7 +159,7 @@ func _set_path_end_position(value):
 onready var astar_node = AStar.new()
 
 # The Tilemap node doesn't have clear bounds so we're defining the map's limits here
-export(Vector2) var map_size = Vector2(64, 64)
+export(Vector2) var map_size = Vector2(32, 32)
 
 # The path start and end variables use setter methods
 # You can find them at the bottom of the script
@@ -194,26 +195,23 @@ func _ready2():
 # adds all points to the astar_node, except the obstacles
 func astar_add_walkable_cells(obstacles = []):
 	var points_array = []
-	for y in range(map_size.y):
-		for x in range(map_size.x):
+	
+	var relcenter = Globals.game.tm_solids.world_to_map(Globals.game.tm_solids.to_local(global_position))
+	
+	for y in range(relcenter.y + -map_size.y, relcenter.y + map_size.y):
+		for x in range(relcenter.x + -map_size.x, relcenter.x + map_size.x):
 			var point = Vector2(x, y)
 			if point in obstacles:
 				continue
-
-
-			var pt = Vector2(x, y) + Globals.game.tm_solids.world_to_map(global_position)
-			
-			if is_outside_map_bounds(pt):
-				continue
-
-			points_array.append(pt)
+				
+			points_array.append(point)
 			# The AStar class references points with indices
 			# Using a function to calculate the index from a point's coordinates
 			# ensures we always get the same index with the same input point
-			var point_index = calculate_point_index(pt)
+			var point_index = calculate_point_index(point)
 			# AStar works for both 2d and 3d, so we have to convert the point
 			# coordinates from and to Vector3s
-			astar_node.add_point(point_index, Vector3(pt.x, pt.y, 0.0))
+			astar_node.add_point(point_index, Vector3(point.x, point.y, 0.0))
 	return points_array
 
 

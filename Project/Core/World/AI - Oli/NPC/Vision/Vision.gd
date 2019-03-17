@@ -35,22 +35,15 @@ func _process(delta):
 				var space_state = get_world_2d().direct_space_state
 				var result = space_state.intersect_ray(pos, other_pos)
 				if result:
-					hit_pos = result.position
-					if result.collider.name == "Player":
-						if node.priority < 0:
-							continue
-							
-						if node.priority > prio:
-							target = node
-							prio = node.priority
+#					hit_pos = result.position
+#					if result.collider.name == "Player" :
+#						if node.priority < 0:
+#							continue
+					if node.priority > prio:
+						target = node
+						prio = node.priority
 						
 	# DRAWING
-	if target != null:
-		draw_color = RED
-		
-		
-	else:
-		draw_color = GREEN
 	update()
 
 
@@ -62,7 +55,7 @@ func _process(delta):
 # Drawing the FOV
 const RED = Color(1.0, .5, .5, 0.5)
 const GREEN = Color(1.0, 1.0, 1.0, .5)
-const BLUE = Color(1.0, 0, 0, 1)
+const YELLOW = Color(1, 1, .1, .4)
 var draw_color = GREEN
 
 

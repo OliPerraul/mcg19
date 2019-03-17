@@ -54,6 +54,7 @@ func astar_add_walkable_cells(obstacles = []):
 	return points_array
 
 
+
 # Once you added all points to the AStar node, you've got to connect them
 # The points don't have to be on a grid: you can use this class
 # to create walkable graphs however you'd like

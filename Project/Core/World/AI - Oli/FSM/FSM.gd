@@ -21,7 +21,7 @@ func _ready():
 func _process(delta):
 	_state.update(_context, delta)
 
-func physics_update(delta):
+func _physics_process(delta):
 	_state.physics_update(_context, delta)
 	
 func set_state(new_state, args):

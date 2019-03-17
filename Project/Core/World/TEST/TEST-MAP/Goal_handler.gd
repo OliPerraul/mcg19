@@ -38,7 +38,7 @@ func add():
 	goal_states[vacant[index]]=true
 	goal_array[vacant[index]].z_index = 1
 	goal_array[vacant[index]].position = goal_points[vacant[index]].position
-	print("add to"+String(goal_points[vacant[index]].position))
+	#print("add to"+String(goal_points[vacant[index]].position))
 	
 	var dial = GoalDirection.instance()
 	dial.init(goal_array[vacant[index]], $"../Middleground/Player/Camera2D")

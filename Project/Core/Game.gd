@@ -5,6 +5,10 @@ export(PackedScene) onready var _gameover_scene
 export(NodePath) onready var __tm_solids
 onready var tm_solids
 
+export(NodePath) onready var __tm_all
+onready var tm_all
+
+
 export(NodePath) onready var __foreground
 onready var foreground
 
@@ -37,9 +41,11 @@ export(float) onready var time_no_alert_limit_incr = .5
 
 export(float) onready var _alert_limit = 200
 export(float) onready var _alert_limit_min = 50
+
+
 func update_alert(val):
 	old_alert = alert
-	alert = val
+	alert += val
 	alert = clamp(alert, _alert_limit_min, INF) 
 
 var score = 0
@@ -52,6 +58,7 @@ func update_score(val):
 	score = val
 
 func _ready():
+	tm_all = get_node(__tm_all)
 	tm_solids = get_node(__tm_solids)
 	player = get_node(__player)
 	Globals.game = self
@@ -79,8 +86,8 @@ func _process(delta):
 			if(alert < 0):
 				alert = 0
 								
-	_score_label.text = _score_format.replace('$$', self.score)
-	_alert_label.text = _alert_format.replace('$$', self.alert).replace('@@', self._alert_limit)			
+	_score_label.text = _score_format.replace('$$', round(self.score))
+	_alert_label.text = _alert_format.replace('$$', round(self.alert)).replace('@@', self._alert_limit)			
 
 
 	time_goal += delta
