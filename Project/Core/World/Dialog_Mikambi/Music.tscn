@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Audio/Level_1_music.wav" type="AudioStream" id=1]
+[ext_resource path="res://Assets/Audio/Ambience_outside.wav" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Audio/JerryAttinburough2.wav" type="AudioStream" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Level1Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -18.732
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -26.585
+
+[node name="Jerry_Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+
+[connection signal="finished" from="Jerry_Audio" to="Ambience" method="play" flags=6]
+[connection signal="finished" from="Jerry_Audio" to="Level1Music" method="play" flags=6]
