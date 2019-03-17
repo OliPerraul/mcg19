@@ -3,6 +3,9 @@ extends Node2D
 
 var footprint_array: Array
 var footprint_timer: Timer
+var sfx_player: AudioStreamPlayer2D
+
+export(Array, AudioStream) onready var soundArray
 
 export(float) var footprint_decay = 4
 
@@ -23,13 +26,13 @@ func _ready():
 	footprint_timer.set_one_shot(false)
 	footprint_timer.connect("timeout", self, "_footprint_timer_timeout")
 	add_child(footprint_timer)
-
+	sfx_player = get_node("AudioStreamPlayer2D")
+	sfx_player.volume_db = -21.244
 
 
 func add(direction):
 	var fp = footprint.instance()
-	
-
+	_play_footstep()
 	
 	fp._set_reference(footprint_array)
 	fp._set_position(get_parent().global_position)
@@ -53,4 +56,8 @@ func _footprint_timer_timeout():
 		footprint_timer.start()
 	else:
 		footprint_timer.stop()
+
+func _play_footstep():
+	sfx_player.set_stream(soundArray[randi()%5])
+	sfx_player.play()
 
