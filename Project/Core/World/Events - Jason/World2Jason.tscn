@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Core/World/Events - Jason/World2Jason.gd" type="Script" id=1]
 [ext_resource path="res://Core/Game.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Core/World/AI - Oli/Events/Covers/Cover.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Core/World/Player -Carlos/Player.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Core/World/AI - Oli/NPC/NPC.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Core/World/AI - Oli/Events/Objectives/Garbage.tscn" type="PackedScene" id=13]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -91,6 +92,7 @@ one_shot = true
 autostart = true
 
 [node name="GOALS" type="Position2D" parent="."]
+editor/display_folded = true
 position = Vector2( 713.324, 495.324 )
 script = ExtResource( 4 )
 Garbage = ExtResource( 5 )
@@ -131,8 +133,8 @@ format = 1
 tile_data = PoolIntArray( 917567, 13, 0, 1245247, 14, 0, 2359443, 15, 0, 2424896, 13, 0, 2490462, 15, 0, 2752576, 14, 0, 2752659, 16, 0, 2883678, 16, 0, 3670138, 13, 0, 3997818, 14, 0, 4653066, 13, 0, 4980746, 14, 0, 5439648, 13, 0, 5767200, 15, 0, 5767328, 14, 0, 5832812, 15, 0, 6160416, 16, 0, 6226028, 16, 0 )
 
 [node name="Solids" type="TileMap" parent="TileMaps" groups=[
-"Solids",
 "Tiles",
+"Solids",
 ]]
 visible = false
 material = SubResource( 1 )
@@ -153,11 +155,9 @@ __meta__ = {
 position = Vector2( 710, 490 )
 
 [node name="Player" parent="Middleground" instance=ExtResource( 11 )]
+editor/display_folded = true
 position = Vector2( 120, 172.105 )
 z_index = 1
-
-[node name="area_collision_shape" parent="Middleground/Player/player_area" index="0"]
-shape = null
 
 [node name="Camera2D" type="Camera2D" parent="Middleground/Player"]
 current = true
@@ -169,6 +169,12 @@ drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
 [node name="NPC" parent="Middleground" instance=ExtResource( 12 )]
+
+[node name="Garbage" parent="Middleground" instance=ExtResource( 13 )]
+position = Vector2( 400, 280 )
+
+[node name="Garbage" parent="Middleground/Garbage" instance=ExtResource( 13 )]
+position = Vector2( 10, 20 )
 
 [node name="Foreground" type="Node2D" parent="."]
 editor/display_folded = true
