@@ -16,27 +16,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_left = -0.880249
+margin_top = -0.880249
+margin_right = 1023.12
+margin_bottom = 599.12
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 1 )
 expand = true
 
 [node name="Play" type="TextureButton" parent="."]
-margin_left = 118.31
-margin_top = 458.269
-margin_right = 265.31
-margin_bottom = 514.269
+margin_left = 740.495
+margin_top = 358.61
+margin_right = 809.495
+margin_bottom = 385.61
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 
 [node name="HowTo" type="TextureButton" parent="."]
-margin_left = 405.161
-margin_top = 527.716
-margin_right = 828.161
-margin_bottom = 586.716
+margin_left = 677.705
+margin_top = 402.809
+margin_right = 878.705
+margin_bottom = 430.809
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 7 )

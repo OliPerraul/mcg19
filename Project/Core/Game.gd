@@ -25,7 +25,7 @@ onready var _alert_label
 export(NodePath) onready var __goals
 onready var goals
 
-var time_goal = 0
+var time_goal = 5
 export(float) onready var time_goal_limit = 5
 
 
@@ -48,14 +48,14 @@ func update_alert(val):
 	alert += val
 	alert = clamp(alert, _alert_limit_min, INF) 
 
-var score = 0
+
 export(float) onready var _score_alert_raise_perc = .5
 
 # increase the difficulty curve as score increases
 func update_score(val):
 	self.alert +=  _score_alert_raise_perc*val
 	self.time_no_alert_limit += time_no_alert_limit_incr
-	score = val
+	Globals.score = val
 
 func _ready():
 	tm_all = get_node(__tm_all)
@@ -86,8 +86,8 @@ func _process(delta):
 			if(alert < 0):
 				alert = 0
 								
-	_score_label.text = _score_format.replace('$$', round(self.score))
-	_alert_label.text = _alert_format.replace('$$', round(self.alert)).replace('@@', self._alert_limit)			
+    _score_label.text = _score_format.replace('$$', round(Globals.score))
+    _alert_label.text = _alert_format.replace('$$', round(self.alert)).replace('@@', self._alert_limit)				
 
 
 	time_goal += delta
@@ -100,6 +100,7 @@ func _process(delta):
 	
 	
 func end_game():
+	Globals.high_score = max(Globals.high_score, Globals.score)
 	get_tree().change_scene("res://Core/Start/GameOverScreen.tscn")
 		
 	

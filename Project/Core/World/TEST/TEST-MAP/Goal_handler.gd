@@ -10,6 +10,7 @@ var goal_states		: Array
 var GoalDirection = preload("res://Core/World/Events - Jason/GoalDirection.tscn")
 
 signal on_destroy
+var first_trash = true
 
 func _ready():
 
@@ -44,6 +45,8 @@ func add():
 	dial.init(goal_array[vacant[index]], $"../Middleground/Player/Camera2D")
 	$"../CanvasLayer".add_child(dial)
 	goal_array[vacant[index]].dial = dial
+	
+	get_parent().goal = goal_array[vacant[index]]
 	
 
 

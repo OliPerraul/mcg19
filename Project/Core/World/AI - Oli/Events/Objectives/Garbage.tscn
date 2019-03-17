@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Core/World/AI - Oli/Events/Objectives/Objective.gd" type="Script" id=1]
-[ext_resource path="res://Core/World/AI - Oli/Events/Objectives/TrashCans21x29.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/TrashCans74x32.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20, 20 )
@@ -17,7 +17,6 @@ texture = ExtResource( 2 )
 hframes = 2
 
 [node name="Area2D" type="Area2D" parent="."]
-editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
