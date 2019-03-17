@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Core/World/Events - Jason/World2Jason.gd" type="Script" id=1]
 [ext_resource path="res://Core/Game.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Assets/Audio/Ambience_outside.wav" type="AudioStream" id=12]
 [ext_resource path="res://Assets/Audio/Adult_Man_Bark.wav" type="AudioStream" id=13]
 [ext_resource path="res://Assets/Audio/Car_alarm.wav" type="AudioStream" id=14]
+[ext_resource path="res://Assets/Audio/JerryAttinburough2.wav" type="AudioStream" id=15]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -130,8 +131,8 @@ format = 1
 tile_data = PoolIntArray( 917567, 13, 0, 1245247, 14, 0, 2359443, 15, 0, 2424896, 13, 0, 2490462, 15, 0, 2752576, 14, 0, 2752659, 16, 0, 2883678, 16, 0, 3670138, 13, 0, 3997818, 14, 0, 4653066, 13, 0, 4980746, 14, 0, 5439648, 13, 0, 5767200, 15, 0, 5767328, 14, 0, 5832812, 15, 0, 6160416, 16, 0, 6226028, 16, 0 )
 
 [node name="Solids" type="TileMap" parent="TileMaps" groups=[
-"Solids",
 "Tiles",
+"Solids",
 ]]
 material = SubResource( 1 )
 tile_set = ExtResource( 6 )
@@ -153,6 +154,7 @@ position = Vector2( 710, 490 )
 script = null
 
 [node name="Player" parent="Middleground" instance=ExtResource( 9 )]
+editor/display_folded = true
 position = Vector2( 120, 172.105 )
 z_index = 1
 
@@ -169,7 +171,13 @@ drag_margin_bottom = 0.0
 editor/display_folded = true
 
 [node name="AnimatedSprite" parent="Middleground/NPC/Character" index="2"]
-frame = 5
+frame = 6
+
+[node name="Emoji" parent="Middleground/NPC/Character" index="3"]
+frame = 1
+
+[node name="Path2D" parent="Middleground/NPC" index="2"]
+editor/display_folded = true
 
 [node name="Foreground" type="Node2D" parent="."]
 z_index = 20
@@ -198,12 +206,10 @@ process_material = SubResource( 5 )
 [node name="Level1Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 volume_db = -18.732
-autoplay = true
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
 volume_db = -26.585
-autoplay = true
 
 [node name="AudioManager" type="Node" parent="."]
 editor/display_folded = true
@@ -214,7 +220,13 @@ stream = ExtResource( 13 )
 [node name="Car_Alarm" type="AudioStreamPlayer" parent="AudioManager"]
 stream = ExtResource( 14 )
 
+[node name="Jerry_Audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+autoplay = true
+
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="finished" from="Jerry_Audio" to="Level1Music" method="play" flags=6]
+[connection signal="finished" from="Jerry_Audio" to="Ambience" method="play" flags=6]
 
 [editable path="EventManager"]
 

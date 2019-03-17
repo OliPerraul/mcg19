@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Core/Start/TitleScreen.png" type="Texture" id=1]
-[ext_resource path="res://Core/Start/Menu.gd" type="Script" id=2]
+[ext_resource path="res://Assets/text_buttons/play_normal.png" type="Texture" id=2]
+[ext_resource path="res://Assets/text_buttons/play_pressed.png" type="Texture" id=3]
+[ext_resource path="res://Assets/text_buttons/play_hover.png" type="Texture" id=4]
+[ext_resource path="res://Assets/text_buttons/how_normal.png" type="Texture" id=5]
+[ext_resource path="res://Assets/text_buttons/how_pressed.png" type="Texture" id=6]
+[ext_resource path="res://Assets/text_buttons/how_hover.png" type="Texture" id=7]
+[ext_resource path="res://Core/Start/Menu.gd" type="Script" id=8]
+[ext_resource path="res://Assets/Audio/Ui_select.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Audio/Ui_up_and_down.wav" type="AudioStream" id=10]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -15,22 +23,26 @@ size_flags_vertical = 3
 texture = ExtResource( 1 )
 expand = true
 
-[node name="Play" type="Button" parent="."]
-margin_left = 30.0
-margin_top = 520.0
-margin_right = 290.0
-margin_bottom = 570.0
-text = "Play"
+[node name="Play" type="TextureButton" parent="."]
+margin_left = 118.31
+margin_top = 458.269
+margin_right = 265.31
+margin_bottom = 514.269
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
 
-[node name="HowTo" type="Button" parent="."]
-margin_left = 340.0
-margin_top = 520.0
-margin_right = 600.0
-margin_bottom = 570.0
-text = "How To Play"
+[node name="HowTo" type="TextureButton" parent="."]
+margin_left = 405.161
+margin_top = 527.716
+margin_right = 828.161
+margin_bottom = 586.716
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
 
 [node name="Menu" type="Node" parent="."]
-script = ExtResource( 2 )
+script = ExtResource( 8 )
 __play = NodePath("../Play")
 __howto = NodePath("../HowTo")
 __popup = NodePath("../AcceptDialog")
@@ -56,3 +68,15 @@ text = "Play as the Urban Legend himself and pursue your daily activities withou
 
 - Feast upon delicious trash using the action key."
 
+[node name="Select_Player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = 5.0
+
+[node name="Move_Player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = 5.0
+
+[connection signal="button_down" from="Play" to="Select_Player" method="play"]
+[connection signal="focus_exited" from="Play" to="Move_Player" method="play"]
+[connection signal="button_down" from="HowTo" to="Select_Player" method="play"]
+[connection signal="focus_exited" from="HowTo" to="Move_Player" method="play"]
