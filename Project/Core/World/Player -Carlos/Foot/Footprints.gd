@@ -27,7 +27,7 @@ func _ready():
 	footprint_timer.connect("timeout", self, "_footprint_timer_timeout")
 	add_child(footprint_timer)
 	sfx_player = get_node("AudioStreamPlayer2D")
-	sfx_player.volume_db = -21.244
+	sfx_player.volume_db = -28
 
 
 func add(direction):

@@ -169,13 +169,9 @@ drag_margin_bottom = 0.0
 editor/display_folded = true
 
 [node name="AnimatedSprite" parent="Middleground/NPC/Character" index="2"]
-frame = 2
-
-[node name="Emoji" parent="Middleground/NPC/Character" index="3"]
-frame = 1
+frame = 5
 
 [node name="Foreground" type="Node2D" parent="."]
-editor/display_folded = true
 z_index = 20
 
 [node name="TextureRect" type="TextureRect" parent="Foreground"]
@@ -206,7 +202,7 @@ autoplay = true
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
-volume_db = -29.619
+volume_db = -26.585
 autoplay = true
 
 [node name="AudioManager" type="Node" parent="."]

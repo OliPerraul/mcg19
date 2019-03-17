@@ -7,6 +7,7 @@ extends KinematicBody2D
 var footprints
 var sprite
 var area_2D
+var sfx_player: AudioStreamPlayer2D
 
 
 #EXPORTED
@@ -41,6 +42,8 @@ export(float) var animation_speed = 0.1
 export(float) onready var priority = 100
 onready var type = Globals.DETECTABLE.PLAYER
 
+
+export(Array, AudioStream) onready var soundArray
 #PRIVATES
 
 var movement : Vector2 = Vector2(0,0)
@@ -57,6 +60,7 @@ func _ready():
 	sprite = get_node("sprite")
 	area_2D = get_node("area_2D")
 	add_to_group("detectable")
+	sfx_player = get_node("AudioStreamPlayer2D")
 
 
 
@@ -76,26 +80,32 @@ func input_handler():
 		animation_state = "walking"
 		facing = "north"
 		movement.y -= 1
+		sfx_player.stop()
 
 	if Input.is_action_pressed("player_down"):
 		animation_state = "walking"
 		facing = "south"
-		movement.y += 1
+		movement.y += 1	
+		sfx_player.stop()
 
 	if Input.is_action_pressed("player_left"):
 		animation_state = "walking"
 		facing = "west"
 		movement.x -= 1
+		sfx_player.stop()
 
 	if Input.is_action_pressed("player_right"):
 		animation_state = "walking"
 		facing = "east"
 		movement.x += 1
+		sfx_player.stop()
 
 	#NO net movement
 	if movement ==Vector2(0,0):
 		animation_state = "idle"
 		movement = Vector2(0,0)
+		if ! sfx_player.playing:
+			sfx_player.play()
 
 
 #	if Input.is_action_just_released("ui_accept"):
