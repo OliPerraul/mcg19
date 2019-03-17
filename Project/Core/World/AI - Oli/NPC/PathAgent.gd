@@ -12,7 +12,7 @@ func reset(character):
 	offset = path.curve.get_closest_offset(character.global_position)
 
 func _ready():
-	path = get_node(__path)
+	path = get_parent()
 	set_process(true)
 	
 
