@@ -1,12 +1,12 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Core/World/Events - Jason/World2Jason.gd" type="Script" id=1]
 [ext_resource path="res://Core/Game.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Sprites/UI_background.png" type="Texture" id=3]
-[ext_resource path="res://Core/World/Events - Jason/BlackBars.gd" type="Script" id=4]
-[ext_resource path="res://Assets/text_buttons/PressStart2P-Regular.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://Core/World/Events - Jason/GoalDirectionEnd.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Core/World/Events - Jason/ENDGOALDIRE.gd" type="Script" id=7]
+[ext_resource path="res://Core/World/Events - Jason/GoalDirectionEnd.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Core/World/Events - Jason/ENDGOALDIRE.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Sprites/UI_background.png" type="Texture" id=5]
+[ext_resource path="res://Core/World/Events - Jason/BlackBars.gd" type="Script" id=6]
+[ext_resource path="res://Assets/text_buttons/PressStart2P-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Core/World/TEST/TEST-MAP/Goal_handler.gd" type="Script" id=8]
 [ext_resource path="res://Core/World/AI - Oli/Events/Objectives/Garbage.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Core/World/AI - Oli/EventManager2.tscn" type="PackedScene" id=10]
@@ -15,22 +15,27 @@
 [ext_resource path="res://Core/World/Objects.tres" type="TileSet" id=13]
 [ext_resource path="res://Core/World/Events - Jason/Collide.tres" type="TileSet" id=14]
 [ext_resource path="res://Core/World/AI - Oli/NPC/NavigationTileSet.gd" type="Script" id=15]
-[ext_resource path="res://Core/World/Jack/B1.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Core/World/Jack/B2.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Core/World/Jack/B3.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Core/World/Player -Carlos/Player.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Core/World/AI - Oli/NPC/NPC2.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Core/World/AI - Oli/NPC/NPC.tscn" type="PackedScene" id=21]
-[ext_resource path="res://Core/World/AI - Oli/Events/EndObjective/EndObjective.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Core/World/ObscureObject.png" type="Texture" id=23]
+[ext_resource path="res://Core/World/AI - Oli/Events/EndObjective/EndObjective.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Core/World/Jack/B1.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Core/World/Jack/B2.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Core/World/Jack/B3.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Core/World/Player -Carlos/Player.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Core/World/AI - Oli/NPC/NPC2.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Core/World/AI - Oli/NPC/NPC.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Core/World/Layout/BigHouse1.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Core/World/Layout/House1.tscn" type="PackedScene" id=24]
+[ext_resource path="res://Core/World/Layout/House2.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Core/World/Layout/House3.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Core/World/Jack/Structures.gd" type="Script" id=27]
+[ext_resource path="res://Core/World/ObscureObject.png" type="Texture" id=28]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8
-font_data = ExtResource( 5 )
+font_data = ExtResource( 7 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 8
-font_data = ExtResource( 5 )
+font_data = ExtResource( 7 )
 
 [sub_resource type="CanvasItemMaterial" id=3]
 
@@ -102,21 +107,26 @@ __player = NodePath("../Middleground/Player")
 __score_label = NodePath("../CanvasLayer/ScoreLabel")
 __alert_label = NodePath("../CanvasLayer/AlertLabel")
 __goals = NodePath("../GOALS")
-time_goal_limit = 10.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GoalDirection" parent="CanvasLayer" instance=ExtResource( 3 )]
+position = Vector2( 860, 390.611 )
+script = ExtResource( 4 )
+__cam = NodePath("../../Middleground/Player/Camera2D")
+__obj = NodePath("../../Middleground/FryShop")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 margin_right = 209.0
 margin_bottom = 57.0
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 stretch_mode = 1
 
 [node name="BlackBars" type="Control" parent="CanvasLayer"]
 editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -153,12 +163,6 @@ margin_bottom = 26.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.180392, 0.215686, 0.298039, 1 )
 text = "Alert: $$/@@"
-
-[node name="GoalDirection" parent="CanvasLayer" instance=ExtResource( 6 )]
-position = Vector2( 890, 370 )
-script = ExtResource( 7 )
-__cam = NodePath("../../Middleground/Player/Camera2D")
-__obj = NodePath("../../Middleground/EndGoal")
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -286,8 +290,8 @@ format = 1
 tile_data = PoolIntArray( 3670013, 14, 0, 3670030, 15, 0, 3801081, 14, 0, 3801086, 14, 0, 3735553, 14, 0, 3866618, 14, 0, 3801101, 14, 0, 4063232, 13, 0, 4194296, 5, 0, 4194298, 4, 0, 4259832, 6, 0, 4259834, 5, 0, 4521977, 21, 0, 4849657, 21, 0, 5177337, 21, 0, 5111809, 22, 0, 5242877, 1, 0, 5177346, 22, 0, 5177349, 19, 0, 5308414, 20, 0, 5505017, 21, 0, 5570558, 24, 0, 5505025, 23, 0, 5570562, 22, 0, 5570564, 13, 0, 5767167, 14, 0, 5701633, 15, 0, 5701636, 17, 0, 5832697, 21, 0, 5767173, 16, 0, 5898239, 0, 0, 5832707, 6, 0, 5832710, 2, 0, 6422535, 22, 0, 6553604, 23, 0, 6619141, 23, 0, 6684675, 22, 0, 6815745, 23, 0, 6946814, 22, 0, 7012349, 23, 0, 7077887, 23, 0, 7077912, 10, 0, 7077915, 10, 0 )
 
 [node name="Solids2" type="TileMap" parent="TileMaps" groups=[
-"Tiles",
 "Solids",
+"Tiles",
 ]]
 visible = false
 material = SubResource( 3 )
@@ -303,36 +307,40 @@ __meta__ = {
 
 [node name="Background" type="Node" parent="."]
 
-[node name="Middleground" type="Node" parent="."]
+[node name="Middleground" type="YSort" parent="."]
+
+[node name="FryShop" parent="Middleground" instance=ExtResource( 16 )]
+position = Vector2( 894.5, -200 )
 
 [node name="Bushes" type="Node2D" parent="Middleground"]
+editor/display_folded = true
 
-[node name="B1" parent="Middleground/Bushes" instance=ExtResource( 16 )]
+[node name="B1" parent="Middleground/Bushes" instance=ExtResource( 17 )]
 editor/display_folded = true
 position = Vector2( 100, 2800 )
 
-[node name="B4" parent="Middleground/Bushes" instance=ExtResource( 16 )]
+[node name="B4" parent="Middleground/Bushes" instance=ExtResource( 17 )]
 position = Vector2( -30, 1880 )
 
-[node name="B5" parent="Middleground/Bushes" instance=ExtResource( 16 )]
+[node name="B5" parent="Middleground/Bushes" instance=ExtResource( 17 )]
 position = Vector2( 560, 1620 )
 
-[node name="B2" parent="Middleground/Bushes" instance=ExtResource( 17 )]
+[node name="B2" parent="Middleground/Bushes" instance=ExtResource( 18 )]
 editor/display_folded = true
 position = Vector2( 80, 2360 )
 
-[node name="B6" parent="Middleground/Bushes" instance=ExtResource( 17 )]
+[node name="B6" parent="Middleground/Bushes" instance=ExtResource( 18 )]
 position = Vector2( 340, 1050 )
 
-[node name="B3" parent="Middleground/Bushes" instance=ExtResource( 18 )]
+[node name="B3" parent="Middleground/Bushes" instance=ExtResource( 19 )]
 
-[node name="B7" parent="Middleground/Bushes" instance=ExtResource( 18 )]
+[node name="B7" parent="Middleground/Bushes" instance=ExtResource( 19 )]
 position = Vector2( 450, 750 )
 
-[node name="B8" parent="Middleground/Bushes" instance=ExtResource( 18 )]
+[node name="B8" parent="Middleground/Bushes" instance=ExtResource( 19 )]
 position = Vector2( 604.5, 130 )
 
-[node name="Player" parent="Middleground" instance=ExtResource( 19 )]
+[node name="Player" parent="Middleground" instance=ExtResource( 20 )]
 editor/display_folded = true
 position = Vector2( 849.876, 3790.82 )
 z_index = 1
@@ -347,22 +355,22 @@ drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
 [node name="NPCs" type="Node2D" parent="Middleground"]
+editor/display_folded = true
 
-[node name="Reporter" parent="Middleground/NPCs" instance=ExtResource( 18 )]
+[node name="Reporter" parent="Middleground/NPCs" instance=ExtResource( 19 )]
 position = Vector2( 579, 1940 )
 
-[node name="Reporter3" parent="Middleground/NPCs" instance=ExtResource( 18 )]
+[node name="Reporter3" parent="Middleground/NPCs" instance=ExtResource( 19 )]
 position = Vector2( -110, 2766 )
 
-[node name="Reporter2" parent="Middleground/NPCs" instance=ExtResource( 18 )]
+[node name="Reporter2" parent="Middleground/NPCs" instance=ExtResource( 19 )]
 position = Vector2( 560, 1540 )
 
-[node name="Reporter5" parent="Middleground/NPCs" instance=ExtResource( 20 )]
-editor/display_folded = true
-position = Vector2( 190, 580 )
+[node name="Reporter4" parent="Middleground/NPCs" instance=ExtResource( 19 )]
+position = Vector2( 370, 1320 )
 
-[node name="AnimatedSprite" parent="Middleground/NPCs/Reporter5/Character" index="2"]
-frame = 6
+[node name="Reporter5" parent="Middleground/NPCs" instance=ExtResource( 21 )]
+position = Vector2( 190, 580 )
 
 [node name="Kill" parent="Middleground/NPCs/Reporter5/Character" index="4"]
 editor/display_folded = false
@@ -379,11 +387,8 @@ curve = SubResource( 4 )
 position = Vector2( -160, -0.418091 )
 rotation = 0.0
 
-[node name="Reporter6" parent="Middleground/NPCs" instance=ExtResource( 20 )]
+[node name="Reporter6" parent="Middleground/NPCs" instance=ExtResource( 21 )]
 position = Vector2( 189, 540 )
-
-[node name="AnimatedSprite" parent="Middleground/NPCs/Reporter6/Character" index="2"]
-frame = 6
 
 [node name="Kill" parent="Middleground/NPCs/Reporter6/Character" index="4"]
 editor/display_folded = false
@@ -401,14 +406,11 @@ editor/display_folded = true
 position = Vector2( 361, -0.418091 )
 rotation = 3.14159
 
-[node name="Hunter" parent="Middleground/NPCs" instance=ExtResource( 21 )]
+[node name="Hunter" parent="Middleground/NPCs" instance=ExtResource( 22 )]
 position = Vector2( 228.585, 3544.03 )
 
-[node name="Hunter3" parent="Middleground/NPCs" instance=ExtResource( 21 )]
+[node name="Hunter3" parent="Middleground/NPCs" instance=ExtResource( 22 )]
 position = Vector2( -50, 2150 )
-
-[node name="AnimatedSprite" parent="Middleground/NPCs/Hunter3/Character" index="2"]
-frame = 6
 
 [node name="Path2D" parent="Middleground/NPCs/Hunter3" index="2"]
 position = Vector2( 24.4012, 10.8801 )
@@ -418,11 +420,8 @@ curve = SubResource( 6 )
 position = Vector2( -314.401, -0.880127 )
 rotation = 1.53147e-008
 
-[node name="Hunter4" parent="Middleground/NPCs" instance=ExtResource( 21 )]
+[node name="Hunter4" parent="Middleground/NPCs" instance=ExtResource( 22 )]
 position = Vector2( -20, 1956 )
-
-[node name="AnimatedSprite" parent="Middleground/NPCs/Hunter4/Character" index="2"]
-frame = 6
 
 [node name="Kill" parent="Middleground/NPCs/Hunter4/Character" index="4"]
 editor/display_folded = false
@@ -435,11 +434,8 @@ curve = SubResource( 7 )
 position = Vector2( -244.401, -6.88013 )
 rotation = 2.21515e-007
 
-[node name="Hunter5" parent="Middleground/NPCs" instance=ExtResource( 21 )]
+[node name="Hunter5" parent="Middleground/NPCs" instance=ExtResource( 22 )]
 position = Vector2( 339, 1000 )
-
-[node name="AnimatedSprite" parent="Middleground/NPCs/Hunter5/Character" index="2"]
-frame = 6
 
 [node name="Kill" parent="Middleground/NPCs/Hunter5/Character" index="4"]
 editor/display_folded = false
@@ -453,11 +449,11 @@ position = Vector2( -273.401, -10.8801 )
 rotation = 0.0
 __path = NodePath("../../../NPCs/NPC/Path2D")
 
-[node name="Hunter2" parent="Middleground/NPCs" instance=ExtResource( 21 )]
+[node name="Hunter2" parent="Middleground/NPCs" instance=ExtResource( 22 )]
 position = Vector2( -30, 3210 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Hunter2/Character" index="2"]
-frame = 0
+frame = 6
 
 [node name="Kill" parent="Middleground/NPCs/Hunter2/Character" index="4"]
 editor/display_folded = false
@@ -470,8 +466,66 @@ curve = SubResource( 9 )
 position = Vector2( 165.599, -40.8801 )
 rotation = 3.14159
 
-[node name="EndGoal" parent="Middleground" instance=ExtResource( 22 )]
-position = Vector2( 910, -200 )
+[node name="BigHouse1" parent="Middleground" instance=ExtResource( 23 )]
+visible = false
+position = Vector2( 785.143, 155.296 )
+
+[node name="BigHouse2" parent="Middleground" instance=ExtResource( 23 )]
+visible = false
+position = Vector2( 1090.94, 300.003 )
+
+[node name="BigHouse3" parent="Middleground" instance=ExtResource( 23 )]
+visible = false
+position = Vector2( 690.542, 714.972 )
+
+[node name="BigHouse4" parent="Middleground" instance=ExtResource( 23 )]
+visible = false
+position = Vector2( 707.518, 1468.59 )
+
+[node name="House1" parent="Middleground" instance=ExtResource( 24 )]
+visible = false
+position = Vector2( 872.082, 288.524 )
+
+[node name="House2" parent="Middleground" instance=ExtResource( 24 )]
+visible = false
+position = Vector2( 264.204, 464.285 )
+
+[node name="House3" parent="Middleground" instance=ExtResource( 24 )]
+visible = false
+position = Vector2( 1031.8, -142.762 )
+
+[node name="House4" parent="Middleground" instance=ExtResource( 24 )]
+visible = false
+position = Vector2( 472.173, 1408.29 )
+
+[node name="House5" parent="Middleground" instance=ExtResource( 25 )]
+visible = false
+position = Vector2( 832.13, -53.1827 )
+
+[node name="House6" parent="Middleground" instance=ExtResource( 25 )]
+visible = false
+position = Vector2( 973.086, 298.109 )
+
+[node name="House7" parent="Middleground" instance=ExtResource( 25 )]
+visible = false
+position = Vector2( 445.26, 459.314 )
+
+[node name="House8" parent="Middleground" instance=ExtResource( 25 )]
+visible = false
+position = Vector2( 412.756, 3482.76 )
+
+[node name="House9" parent="Middleground" instance=ExtResource( 26 )]
+visible = false
+position = Vector2( 687.682, 312.611 )
+
+[node name="House10" parent="Middleground" instance=ExtResource( 26 )]
+visible = false
+position = Vector2( 673.165, 1298.65 )
+
+[node name="House11" parent="Middleground" instance=ExtResource( 26 )]
+visible = false
+position = Vector2( 32.0117, 3059.7 )
+script = ExtResource( 27 )
 
 [node name="Foreground" type="Node2D" parent="."]
 z_index = 20
@@ -479,18 +533,18 @@ z_index = 20
 [node name="TextureRect" type="TextureRect" parent="Foreground"]
 modulate = Color( 0.0392157, 0.788235, 0.752941, 0.486275 )
 self_modulate = Color( 0.12549, 0.113725, 0.270588, 1 )
-margin_left = -1680.0
-margin_top = -1170.0
-margin_right = 2620.0
-margin_bottom = 5410.0
+margin_left = -1579.74
+margin_top = -1089.26
+margin_right = 2720.26
+margin_bottom = 5490.74
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource( 23 )
+texture = ExtResource( 28 )
 expand = true
 stretch_mode = 1
 
 [node name="Particles2D" type="Particles2D" parent="Foreground"]
-position = Vector2( 585.5, 2240 )
+position = Vector2( 800, 3000 )
 z_index = 30
 amount = 20000
 lifetime = 10.0
@@ -499,7 +553,7 @@ randomness = 1.0
 process_material = SubResource( 12 )
 
 [node name="Particles2D5" type="Particles2D" parent="Foreground"]
-position = Vector2( -170, 3680 )
+position = Vector2( -210, 2940 )
 z_index = 30
 amount = 20000
 lifetime = 10.0
@@ -508,7 +562,7 @@ randomness = 1.0
 process_material = SubResource( 12 )
 
 [node name="Particles2D6" type="Particles2D" parent="Foreground"]
-position = Vector2( 74.5, 3070 )
+position = Vector2( 290, 2930 )
 z_index = 30
 amount = 20000
 lifetime = 10.0
@@ -517,7 +571,7 @@ randomness = 1.0
 process_material = SubResource( 12 )
 
 [node name="Particles2D7" type="Particles2D" parent="Foreground"]
-position = Vector2( -80, 2620 )
+position = Vector2( -210, 2360 )
 z_index = 30
 amount = 20000
 lifetime = 10.0
@@ -526,7 +580,7 @@ randomness = 1.0
 process_material = SubResource( 12 )
 
 [node name="Particles2D8" type="Particles2D" parent="Foreground"]
-position = Vector2( -70, 2050 )
+position = Vector2( 318.585, 2300 )
 z_index = 30
 amount = 20000
 lifetime = 10.0
@@ -535,7 +589,7 @@ randomness = 1.0
 process_material = SubResource( 12 )
 
 [node name="Particles2D9" type="Particles2D" parent="Foreground"]
-position = Vector2( -100, 1638 )
+position = Vector2( 660, 2240 )
 z_index = 30
 amount = 20000
 lifetime = 10.0
@@ -544,7 +598,34 @@ randomness = 1.0
 process_material = SubResource( 12 )
 
 [node name="Particles2D10" type="Particles2D" parent="Foreground"]
-position = Vector2( -130, 1240 )
+position = Vector2( -90, 1710 )
+z_index = 30
+amount = 20000
+lifetime = 10.0
+speed_scale = 2.0
+randomness = 1.0
+process_material = SubResource( 12 )
+
+[node name="Particles2D14" type="Particles2D" parent="Foreground"]
+position = Vector2( 530, 1020 )
+z_index = 30
+amount = 20000
+lifetime = 10.0
+speed_scale = 2.0
+randomness = 1.0
+process_material = SubResource( 12 )
+
+[node name="Particles2D15" type="Particles2D" parent="Foreground"]
+position = Vector2( 40, 1032 )
+z_index = 30
+amount = 20000
+lifetime = 10.0
+speed_scale = 2.0
+randomness = 1.0
+process_material = SubResource( 12 )
+
+[node name="Particles2D16" type="Particles2D" parent="Foreground"]
+position = Vector2( 40, 1032 )
 z_index = 30
 amount = 20000
 lifetime = 10.0
@@ -571,7 +652,7 @@ randomness = 1.0
 process_material = SubResource( 12 )
 
 [node name="Particles2D3" type="Particles2D" parent="Foreground"]
-position = Vector2( 10, 440 )
+position = Vector2( 869.876, -94.262 )
 z_index = 30
 amount = 20000
 lifetime = 10.0
@@ -597,6 +678,15 @@ speed_scale = 2.0
 randomness = 1.0
 process_material = SubResource( 12 )
 
+[node name="Particles2D13" type="Particles2D" parent="Foreground"]
+position = Vector2( -280, 3720 )
+z_index = 30
+amount = 20000
+lifetime = 10.0
+speed_scale = 2.0
+randomness = 1.0
+process_material = SubResource( 12 )
+
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 
 [editable path="EventManager"]
@@ -612,6 +702,8 @@ process_material = SubResource( 12 )
 [editable path="Middleground/NPCs/Reporter"]
 
 [editable path="Middleground/NPCs/Reporter2"]
+
+[editable path="Middleground/NPCs/Reporter4"]
 
 [editable path="Middleground/NPCs/Reporter5"]
 

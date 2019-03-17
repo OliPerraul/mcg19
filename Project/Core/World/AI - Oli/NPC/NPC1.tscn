@@ -7,20 +7,21 @@
 [node name="Vision" parent="Character" index="0"]
 FOV = 80.0
 
-[node name="FSM" parent="Character" index="1"]
-editor/display_folded = true
-
 [node name="Patrol" parent="Character/FSM" index="0"]
-time_detection_limit_player = 0.5
+time_detection_limit_player = 0.1
+time_detection_limit_footprint = 0.01
 
 [node name="Home" parent="Character/FSM" index="1"]
-time_detection_limit_player = 0.5
+time_detection_limit_player = 0.1
+time_detection_limit_footprint = 0.1
 
 [node name="Trace" parent="Character/FSM" index="3"]
-time_detection_limit_player = 0.5
+time_detection_limit_player = 0.1
+time_detection_limit_footprint = 0.1
 
 [node name="Idle" parent="Character/FSM" index="4"]
-time_detection_limit_player = 0.5
+time_detection_limit_player = 0.1
+time_detection_limit_footprint = 0.1
 
 [node name="AnimatedSprite" parent="Character" index="2"]
 frame = 7
