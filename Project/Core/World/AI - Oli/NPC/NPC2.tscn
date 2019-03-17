@@ -59,13 +59,10 @@ animations = [ {
 
 [node name="NPC" instance=ExtResource( 1 )]
 
-[node name="Vision" parent="Character" index="0"]
-visible = true
-
 [node name="AnimatedSprite" parent="Character" index="2"]
 frames = SubResource( 1 )
-frame = 5
+frame = 0
 
 [node name="Emoji" parent="Character" index="3"]
-frame = 1
+frame = 0
 

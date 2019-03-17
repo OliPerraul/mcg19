@@ -116,7 +116,7 @@ __meta__ = {
 editor/display_folded = true
 script = ExtResource( 1 )
 
-[node name="Character" type="Node2D" parent="."]
+[node name="Character" type="KinematicBody2D" parent="."]
 script = ExtResource( 2 )
 __astar_agent = NodePath("../AstarAgent")
 __path_agent = NodePath("../Path2D/PathAgent")
@@ -155,7 +155,7 @@ script = ExtResource( 9 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Character"]
 frames = SubResource( 1 )
 animation = "Front"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Emoji" type="AnimatedSprite" parent="Character"]
@@ -163,6 +163,7 @@ modulate = Color( 1, 1, 1, 0.329412 )
 position = Vector2( -16, -30 )
 frames = SubResource( 2 )
 animation = "Danger"
+frame = 1
 speed_scale = 0.5
 playing = true
 

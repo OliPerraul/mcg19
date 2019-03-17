@@ -1,7 +1,7 @@
 extends TileMap
 
 # You can only create an AStar node from code, not from the Scene tab
-onready var astar_node = AStar.new()
+onready var astar_node = null#AStar.new()
 # The Tilemap node doesn't have clear bounds so we're defining the map's limits here
 export(Vector2) var map_size = Vector2(256, 256)
 
@@ -17,8 +17,10 @@ onready var obstacles = get_used_cells_by_id(0)
 onready var half_cell_size = cell_size / 2
 
 func _ready():
-	var walkable_cells_list = astar_add_walkable_cells(obstacles)
-	astar_connect_walkable_cells_diagonal(walkable_cells_list)
+	pass
+	#PER AGENT INSTEAD
+	#var walkable_cells_list = astar_add_walkable_cells(obstacles)
+	#astar_connect_walkable_cells_diagonal(walkable_cells_list)
 
 
 # Click and Shift force the start and end position of the path to update

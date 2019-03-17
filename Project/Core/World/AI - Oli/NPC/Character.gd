@@ -49,7 +49,7 @@ func _ready():
 	kill.connect('body_entered', self, '_on_player_kill') 
 
 
-func _on_player_kill(body):
+func _on_player_kill(body): # DO NOT KILL 
 	if body.is_in_group('detectable'):
 		if body.priority < 0:
 			return					
