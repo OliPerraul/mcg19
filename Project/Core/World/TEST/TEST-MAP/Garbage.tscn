@@ -30,7 +30,8 @@ extents = Vector2( 11, 9 )
 extents = Vector2( 11, 14 )
 
 [node name="Node2D" type="RigidBody2D"]
-script = SubResource( 3 )
+script = SubResource( 1 )
+__area = NodePath("Area2D")
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

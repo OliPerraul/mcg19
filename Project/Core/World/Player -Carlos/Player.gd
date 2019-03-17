@@ -98,9 +98,9 @@ func input_handler():
 		movement = Vector2(0,0)
 
 
-	if Input.is_action_just_released("ui_accept"):
-		get_parent().get_parent().get_node("GOALS").add()
-		print(get_parent().get_parent().get_node("GOALS"))
+#	if Input.is_action_just_released("ui_accept"):
+#		get_parent().get_parent().get_node("GOALS").add()
+#		print(get_parent().get_parent().get_node("GOALS"))
 
 	#if Input.is_action_just_released("ui_cancel"):
 		#get_parent().get_parent().get_node("GOALS").remove()
@@ -140,7 +140,8 @@ func _player_hidden_update():
 	if cover != null :	
 		global_position = lerp(global_position, cover.global_position, hide_speed)
 		if Vectors.close_enough(global_position, cover.global_position):
-			cover.z_index = 2
+			z_index = 1 
+			cover.z_index = 20
 		priority = -1
 		
 	if Input.is_action_just_released("ui_accept"):
@@ -158,12 +159,15 @@ func _player_hidden():
 func player_hide(cover):
 	init_state('enable_hide', [cover])
 
+
+
 func _physics_process(dt):
 	input_handler()
 	update_state(character_state)
 
-func update_state(state):
-	
+
+
+func update_state(state):	
 	match(state):
 		"locked":
 			pass
@@ -178,6 +182,8 @@ func update_state(state):
 			_player_hidden_update()
 					
 		"enable_hide":    #DISPLAY UI HERE\
+			z_index = 2
+			cover.z_index = 1
 			_player_normal_update()	
 			_player_enable_hide_update()
 
@@ -185,35 +191,45 @@ func update_state(state):
 			_player_normal_update()	
 
 
-
 func init_state(state, args=[]):
 	if state == character_state:
-		return 
-		
-	character_state = state					
-					
+		return 								
 	match(state):
+		
 		"locked":
 			pass
 			#_player_set_locked()
+		
 		"danger":
 			pass
 			#_player_danger()
+		
 		"involuntary":
 			pass
 			#_player_involuntary()
+		
 		"hidden":
-			pass
+			priority = -1
+					
 						
 		"enable_hide":    #DISPLAY UI HERE
+			if character_state == 'hidden':
+				return							
 			self.cover = args[0]
+
+		
 			
-			#continue #also do normal movement
+		#continue #also do normal movement
 		"normal":
 			priority = 100
-			#cover.z_index = 0
-			#self.cover = null
+			z_index = 1
+			if(cover!= null):
+				cover.z_index = 0
+				self.cover = null
 			pass
+		
+	# Assigned state if not returned early
+	character_state = state			
 
 
 
@@ -223,8 +239,9 @@ func _player_lock():
 func _player_unlock():
 	init_state('normal')
 
+
 func _on_HideTween_tween_completed(object, key):
-	character_state = "hidden"
+	init_state("hidden")
 	
 
 

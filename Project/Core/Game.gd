@@ -18,6 +18,13 @@ export(NodePath) onready var __alert_label
 onready var _alert_label
 
 
+export(NodePath) onready var __goals
+onready var goals
+
+var time_goal = 0
+export(float) onready var time_goal_limit = 5
+
+
 var _score_format = 'Score: $$'
 var _alert_format = 'Alert: $$/@@'
 
@@ -50,7 +57,9 @@ func _ready():
 	Globals.game = self
 	_alert_label = get_node(__alert_label)
 	_score_label = get_node(__score_label)	
-	foreground = get_node(__foreground)
+	foreground = get_node(__foreground)	
+	goals = get_node(__goals)
+	
 	
 	
 		
@@ -73,6 +82,13 @@ func _process(delta):
 	_score_label.text = _score_format.replace('$$', self.score)
 	_alert_label.text = _alert_format.replace('$$', self.alert).replace('@@', self._alert_limit)			
 
+
+	time_goal += delta
+	if time_goal >= time_goal_limit:
+		pass
+
+	
+	
 	
 func end_game():
 	get_tree().change_scene("res://Core/Start/GameOverScreen.tscn")
