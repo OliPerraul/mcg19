@@ -7,7 +7,9 @@ var goal_array 		: Array
 var goal_points		: Array
 var goal_states		: Array
 
+var GoalDirection = preload("res://Core/World/Events - Jason/GoalDirection.tscn")
 
+signal on_destroy
 
 func _ready():
 
@@ -37,12 +39,20 @@ func add():
 	goal_array[vacant[index]].z_index = 1
 	goal_array[vacant[index]].position = goal_points[vacant[index]].position
 	print("add to"+String(goal_points[vacant[index]].position))
+	
+	var dial = GoalDirection.instance()
+	dial.init(goal_array[vacant[index]], $"../Middleground/Player/Camera2D")
+	$"../CanvasLayer".add_child(dial)
+	goal_array[vacant[index]].dial = dial
+	
 
 
 func remove(G):
+	emit_signal("on_destroy", G)
 	var g = goal_array.find(G)
 	#goal_array[g].free()	
 	goal_states[g] = false
+	goal_array[g].dial.queue_free()
 	goal_array[g].queue_free()
 	
 	
