@@ -35,7 +35,7 @@ var _alert_format = 'Alert: $$/@@'
 var old_alert = 0 
 var alert = 0
 var time_no_alert = 0
-export(float) onready var alert_decr = .5
+export(float) onready var alert_decr = .01
 export(float) onready var time_no_alert_limit = 4
 export(float) onready var time_no_alert_limit_incr = .5
 
@@ -44,6 +44,7 @@ export(float) onready var _alert_limit_min = 50
 
 
 func update_alert(val):
+	time_no_alert = 0
 	old_alert = alert
 	alert += val
 	alert = clamp(alert, _alert_limit_min, INF) 
@@ -68,26 +69,21 @@ func _ready():
 	goals = get_node(__goals)
 	
 	
-	
 		
 func _process(delta):
+	time_no_alert += delta
+		
 	if alert >= _alert_limit :
 		end_game()
-		
-	elif alert > (old_alert + .02) or alert > (old_alert - .02):
-		time_no_alert = 0
-		
-	elif alert <= (old_alert + .02) or alert <= (old_alert - .02):
-		time_no_alert += delta
-		
-		# start decreasing the alert
-		if time_no_alert >= time_no_alert_limit:
-			alert -= alert_decr
-			if(alert < 0):
-				alert = 0
+				
+	# start decreasing the alert
+	if time_no_alert >= time_no_alert_limit:
+		alert -= alert_decr
+		if(alert < 0):
+			alert = 0
 								
-    _score_label.text = _score_format.replace('$$', round(Globals.score))
-    _alert_label.text = _alert_format.replace('$$', round(self.alert)).replace('@@', self._alert_limit)				
+	_score_label.text = _score_format.replace('$$', round(Globals.score))
+	_alert_label.text = _alert_format.replace('$$', round(self.alert)).replace('@@', self._alert_limit)				
 
 
 	time_goal += delta
@@ -96,14 +92,16 @@ func _process(delta):
 		time_goal = 0
 	
 	
-	
-	
-	
+		
 func end_game():
 	Globals.high_score = max(Globals.high_score, Globals.score)
 	get_tree().change_scene("res://Core/Start/GameOverScreen.tscn")
 		
-	
+
+func wingame():
+	Globals.high_score = max(Globals.high_score, Globals.score)
+	get_tree().change_scene("res://Core/Start/WinScreen.tscn")
+		
 	
 	
 	

@@ -1,3 +1,4 @@
+class_name JASON_GOALDIR
 extends Node2D
 
 export (float) var margin_h = 50
@@ -29,6 +30,7 @@ func vec_min(a : Vector2, b : Vector2):
 	return a if a.length_squared() < b.length_squared() else b
 
 func init(goal, camera):
+	z_index = -2	
 	self.goal = goal
 	self.camera = camera
 

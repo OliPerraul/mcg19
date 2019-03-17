@@ -66,8 +66,9 @@ margin_bottom = 284.0
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 text = "Play as the Urban Legend himself and pursue your daily activities without getting caught.
 
-- Do no remain in the villagers line of sight using the arrow keys.
+-  using the arrow keys, try to stay awway of the villagers line of sight.
 
+- Beware the footsteps you leave behind!
 - Feast upon delicious trash using the action key."
 
 [node name="Select_Player" type="AudioStreamPlayer" parent="."]

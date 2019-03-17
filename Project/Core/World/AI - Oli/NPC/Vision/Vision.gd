@@ -5,7 +5,7 @@ var _char
 
 
 const DETECT_RADIUS = 120
-const FOV = 60
+export(float) onready var FOV = 60
 var angle = 0
 
 

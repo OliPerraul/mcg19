@@ -6,8 +6,8 @@ extends "res://Core/World/AI - Oli/FSM/State.gd"
 # (CAR ALARM etc.)
 
 var time_detection = 0
-export(float) onready var time_detection_limit_player = 1
-export(float) onready var time_detection_limit_footprint = 0.1
+export(float) onready var time_detection_limit_player = 0.5
+export(float) onready var time_detection_limit_footprint = 0.5
 
 
 

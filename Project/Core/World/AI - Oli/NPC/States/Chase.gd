@@ -1,11 +1,11 @@
-extends OLI_STATE_ALERT
+extends OLI_STATE
 
 
 var _target
 var _dest
 
 var time_outside_detection = 0
-export(float) onready var time_outside_detection_limit = 1
+export(float) onready var time_outside_detection_limit = .5
 
 export(float) var spd = 2 
 export(float) onready var alert_raise_incr = .1
