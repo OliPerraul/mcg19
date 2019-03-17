@@ -78,14 +78,14 @@ animations = [ {
 "name": "Warning",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 44 ), ExtResource( 45 ) ],
-"loop": true,
-"name": "Danger",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "Nothing",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 44 ), ExtResource( 45 ) ],
+"loop": true,
+"name": "Danger",
 "speed": 5.0
 } ]
 
@@ -127,7 +127,6 @@ __fsm = NodePath("FSM")
 __area_kill = NodePath("Kill")
 
 [node name="Vision" type="Node2D" parent="Character"]
-visible = false
 script = ExtResource( 3 )
 __char = NodePath("..")
 
@@ -156,7 +155,7 @@ script = ExtResource( 9 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Character"]
 frames = SubResource( 1 )
 animation = "Front"
-frame = 4
+frame = 1
 playing = true
 
 [node name="Emoji" type="AnimatedSprite" parent="Character"]

@@ -4,7 +4,7 @@ export(NodePath) onready var __char
 var _char
 
 
-const DETECT_RADIUS = 360
+const DETECT_RADIUS = 120
 const FOV = 60
 var angle = 0
 
@@ -60,8 +60,8 @@ func _process(delta):
 
 
 # Drawing the FOV
-const RED = Color(1.0, 0, 0, 0.4)
-const GREEN = Color(0, 1.0, 0, 0.4)
+const RED = Color(1.0, 0, 0, 0.1)
+const GREEN = Color(1.0, 1.0, 1.0, 0.1)
 const BLUE = Color(1.0, 0, 0, 1)
 
 var draw_color = GREEN
