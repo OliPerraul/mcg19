@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Adult_Man_Ramble.wav-487ed685d507cafdd6d503df33b64296.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Adult_Man_Ramble.wav"
+dest_files=[ "res://.import/Adult_Man_Ramble.wav-487ed685d507cafdd6d503df33b64296.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

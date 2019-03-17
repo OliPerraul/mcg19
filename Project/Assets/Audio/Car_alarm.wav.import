@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Car_alarm.wav-7149ba59a3ed4af2ada0a0a857eacf29.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Car_alarm.wav"
+dest_files=[ "res://.import/Car_alarm.wav-7149ba59a3ed4af2ada0a0a857eacf29.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
