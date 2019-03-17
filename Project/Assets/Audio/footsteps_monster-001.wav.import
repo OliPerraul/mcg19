@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/footsteps_monster-001.wav-8e05fcdb433d5dc15b3f69cc5ccf6a87.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/footsteps_monster-001.wav"
+dest_files=[ "res://.import/footsteps_monster-001.wav-8e05fcdb433d5dc15b3f69cc5ccf6a87.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
