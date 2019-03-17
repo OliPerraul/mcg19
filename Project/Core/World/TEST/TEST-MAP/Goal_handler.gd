@@ -31,12 +31,7 @@ func add():
 	randomize()
 	var vacant = _get_vacant()
 	if(vacant.size()==0): return
-	var index
-	if first_trash:
-		index = 0
-		first_trash = false
-	else:
-		index  = randi()%vacant.size()
+	var index = randi()%vacant.size()
 	
 	#make at
 	goal_array[vacant[index]] = Garbage.instance()
@@ -50,6 +45,8 @@ func add():
 	dial.init(goal_array[vacant[index]], $"../Middleground/Player/Camera2D")
 	$"../CanvasLayer".add_child(dial)
 	goal_array[vacant[index]].dial = dial
+	
+	get_parent().goal = goal_array[vacant[index]]
 	
 
 

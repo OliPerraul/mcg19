@@ -102,7 +102,6 @@ scale_random = 1.0
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
-goal = NodePath("GOALS/Position2D")
 
 [node name="Game" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -288,8 +287,8 @@ format = 1
 tile_data = PoolIntArray( 3670013, 14, 0, 3670030, 15, 0, 3801081, 14, 0, 3801086, 14, 0, 3735553, 14, 0, 3866618, 14, 0, 3801101, 14, 0, 4063232, 13, 0, 4194296, 5, 0, 4194298, 4, 0, 4259832, 6, 0, 4259834, 5, 0, 4521977, 21, 0, 4849657, 21, 0, 5177337, 21, 0, 5111809, 22, 0, 5242877, 1, 0, 5177346, 22, 0, 5177349, 19, 0, 5308414, 20, 0, 5505017, 21, 0, 5570558, 24, 0, 5505025, 23, 0, 5570562, 22, 0, 5570564, 13, 0, 5767167, 14, 0, 5701633, 15, 0, 5701636, 17, 0, 5832697, 21, 0, 5767173, 16, 0, 5898239, 0, 0, 5832707, 6, 0, 5832710, 2, 0, 6422535, 22, 0, 6553604, 23, 0, 6619141, 23, 0, 6684675, 22, 0, 6815745, 23, 0, 6946814, 22, 0, 7012349, 23, 0, 7077887, 23, 0, 7077912, 10, 0, 7077915, 10, 0 )
 
 [node name="Solids2" type="TileMap" parent="TileMaps" groups=[
-"Solids",
 "Tiles",
+"Solids",
 ]]
 visible = false
 material = SubResource( 3 )
@@ -357,7 +356,7 @@ position = Vector2( 579, 1940 )
 editor/display_folded = false
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter/Character" index="2"]
-frame = 2
+frame = 7
 
 [node name="Kill" parent="Middleground/NPCs/Reporter/Character" index="4"]
 editor/display_folded = false
@@ -377,7 +376,7 @@ position = Vector2( 560, 1540 )
 position = Vector2( 370, 1320 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter4/Character" index="2"]
-frame = 2
+frame = 7
 
 [node name="Path2D" parent="Middleground/NPCs/Reporter4" index="2"]
 position = Vector2( 20, 10.4181 )
@@ -391,7 +390,7 @@ rotation = 0.0
 position = Vector2( 190, 580 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter5/Character" index="2"]
-frame = 2
+frame = 7
 
 [node name="Kill" parent="Middleground/NPCs/Reporter5/Character" index="4"]
 editor/display_folded = false
@@ -411,7 +410,7 @@ position = Vector2( 189, 540 )
 editor/display_folded = false
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter6/Character" index="2"]
-frame = 2
+frame = 7
 
 [node name="Kill" parent="Middleground/NPCs/Reporter6/Character" index="4"]
 editor/display_folded = false
@@ -435,7 +434,7 @@ position = Vector2( -50, 2150 )
 editor/display_folded = true
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Hunter3/Character" index="2"]
-frame = 2
+frame = 7
 
 [node name="Emoji" parent="Middleground/NPCs/Hunter3/Character" index="3"]
 frame = 0
@@ -453,7 +452,7 @@ rotation = 1.53147e-008
 position = Vector2( -20, 1956 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Hunter4/Character" index="2"]
-frame = 2
+frame = 7
 
 [node name="Emoji" parent="Middleground/NPCs/Hunter4/Character" index="3"]
 frame = 0
@@ -473,7 +472,7 @@ rotation = 2.21515e-007
 position = Vector2( 339, 1000 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Hunter5/Character" index="2"]
-frame = 2
+frame = 7
 
 [node name="Emoji" parent="Middleground/NPCs/Hunter5/Character" index="3"]
 frame = 0
@@ -494,7 +493,7 @@ __path = NodePath("../../../NPCs/NPC/Path2D")
 position = Vector2( -30, 3210 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Hunter2/Character" index="2"]
-frame = 7
+frame = 4
 
 [node name="Emoji" parent="Middleground/NPCs/Hunter2/Character" index="3"]
 frame = 0

@@ -38,7 +38,6 @@ scale_random = 1.0
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
-goal = NodePath("GOALS")
 
 [node name="Game" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -112,8 +111,8 @@ black_bars = NodePath("../CanvasLayer/BlackBars")
 [node name="TileMaps" type="Node2D" parent="."]
 
 [node name="Solids2" type="TileMap" parent="TileMaps" groups=[
-"Solids",
 "Tiles",
+"Solids",
 ]]
 material = SubResource( 1 )
 tile_set = ExtResource( 7 )
