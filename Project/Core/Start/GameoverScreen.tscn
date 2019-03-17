@@ -16,6 +16,7 @@ font_data = ExtResource( 3 )
 size = 42
 font_data = ExtResource( 3 )
 
+
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -69,4 +70,3 @@ custom_colors/font_color = Color( 1, 0.8, 0.4, 1 )
 text = "YOU HAVE BEEN DETECTED"
 align = 1
 valign = 1
-
