@@ -363,10 +363,6 @@ curve = SubResource( 2 )
 position = Vector2( -169, -30.4181 )
 rotation = 4.78103e-007
 
-[node name="Reporter3" parent="Middleground/NPCs" instance=ExtResource( 15 )]
-editor/display_folded = true
-position = Vector2( -110, 2766 )
-
 [node name="Reporter2" parent="Middleground/NPCs" instance=ExtResource( 16 )]
 editor/display_folded = true
 position = Vector2( 560, 1540 )
@@ -581,8 +577,6 @@ process_material = SubResource( 13 )
 [editable path="Middleground/Player"]
 
 [editable path="Middleground/NPCs/Reporter"]
-
-[editable path="Middleground/NPCs/Reporter3"]
 
 [editable path="Middleground/NPCs/Reporter2"]
 
