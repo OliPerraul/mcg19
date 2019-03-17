@@ -7,10 +7,9 @@
 extents = Vector2( 30, 30 )
 
 [node name="B2" type="Node2D"]
-editor/display_folded = true
 position = Vector2( -30, 3262 )
 script = ExtResource( 1 )
-__area = NodePath("../Bushes/Cover/Area2D")
+__area = NodePath("Area2D")
 
 [node name="Area2D" type="Area2D" parent="."]
 editor/display_folded = true
