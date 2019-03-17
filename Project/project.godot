@@ -15,17 +15,23 @@ _global_script_classes=[ {
 "path": "res://Core/World/AI - Oli/Events/Event.gd"
 }, {
 "base": "Node",
+"class": "OLI_FSM",
+"language": "GDScript",
+"path": "res://Core/World/AI - Oli/FSM/FSM.gd"
+}, {
+"base": "Node",
 "class": "OLI_STATE",
 "language": "GDScript",
 "path": "res://Core/World/AI - Oli/FSM/State.gd"
 }, {
-"base": "OLI_STATE",
+"base": "Node",
 "class": "OLI_STATE_ALERT",
 "language": "GDScript",
 "path": "res://Core/World/AI - Oli/NPC/States/Alert.gd"
 } ]
 _global_script_class_icons={
 "OLI_EVENT": "",
+"OLI_FSM": "",
 "OLI_STATE": "",
 "OLI_STATE_ALERT": ""
 }
