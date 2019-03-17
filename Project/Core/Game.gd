@@ -93,6 +93,7 @@ func _process(delta):
 	
 	
 func end_game():
+	Globals.high_score = max(Globals.high_score, Globals.score)
 	get_tree().change_scene("res://Core/Start/GameOverScreen.tscn")
 		
 	

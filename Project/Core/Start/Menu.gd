@@ -18,6 +18,7 @@ func _ready():
 #	pass
 
 func _on_play():
+	Globals.score = 0
 	get_tree().change_scene("res://Core/World/Jack/ThirdWorld.tscn")
 
 func _on_howto():
