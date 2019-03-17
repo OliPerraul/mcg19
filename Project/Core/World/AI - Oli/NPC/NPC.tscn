@@ -144,6 +144,8 @@ script = ExtResource( 5 )
 [node name="Home" type="Node" parent="Character/FSM"]
 script = ExtResource( 6 )
 
+[node name="Tween" type="Tween" parent="Character/FSM/Home"]
+
 [node name="Chase" type="Node" parent="Character/FSM"]
 script = ExtResource( 7 )
 
@@ -201,3 +203,4 @@ frames = SubResource( 6 )
 
 [node name="ZombieAgent" type="Node2D" parent="."]
 
+[connection signal="tween_completed" from="Character/FSM/Home/Tween" to="Character/FSM/Home" method="_on_Tween_tween_completed"]
