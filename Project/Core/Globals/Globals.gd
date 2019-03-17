@@ -17,6 +17,7 @@ enum DETECTABLE{
 
 var game  = null
 var events = null
+var score : int = 0
 
 var current_camera : Camera2D = null
 var canvas_layer : CanvasLayer = null

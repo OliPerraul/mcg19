@@ -42,14 +42,14 @@ func update_alert(val):
 	alert = val
 	alert = clamp(alert, _alert_limit_min, INF) 
 
-var score = 0
+
 export(float) onready var _score_alert_raise_perc = .5
 
 # increase the difficulty curve as score increases
 func update_score(val):
 	self.alert +=  _score_alert_raise_perc*val
 	self.time_no_alert_limit += time_no_alert_limit_incr
-	score = val
+	Globals.score = val
 
 func _ready():
 	tm_solids = get_node(__tm_solids)
@@ -79,7 +79,7 @@ func _process(delta):
 			if(alert < 0):
 				alert = 0
 								
-	_score_label.text = _score_format.replace('$$', self.score)
+	_score_label.text = _score_format.replace('$$', Globals.score)
 	_alert_label.text = _alert_format.replace('$$', self.alert).replace('@@', self._alert_limit)			
 
 

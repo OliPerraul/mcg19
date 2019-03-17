@@ -24,7 +24,7 @@ func handle(player):
 func _on_body_stay(b):
 	if Input.is_action_just_released("ui_accept") && sprite.frame == 0:
 		sprite.frame = 1
-		Globals.game.score += score
+		Globals.score += score
 		start_timer = true
 
 		

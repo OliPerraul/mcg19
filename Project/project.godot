@@ -38,9 +38,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Abominable"
+config/name="New Game Project"
 run/main_scene="res://Core/Start/StartScreen.tscn"
-config/icon="res://Assets/Sprites/PersonPlaceholder.png"
+config/icon="res://icon.png"
 
 [autoload]
 

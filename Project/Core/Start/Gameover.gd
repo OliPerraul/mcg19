@@ -5,7 +5,7 @@ extends Node
 # var b = "text"
 
 func _ready():
-	$Score.set_text("Score: "+String(Globals.game.score))
+	$Score.set_text("Score: "+String(Globals.score))
 
 # Called when the node enters the scene tree for the first time.
 func _input(event):
