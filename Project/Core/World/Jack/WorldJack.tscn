@@ -206,6 +206,9 @@ editor/display_folded = true
 position = Vector2( 120, 172.105 )
 z_index = 1
 
+[node name="area_collision_shape" parent="Middleground/Player/player_area" index="0"]
+shape = null
+
 [node name="Camera2D" type="Camera2D" parent="Middleground/Player"]
 current = true
 smoothing_enabled = true

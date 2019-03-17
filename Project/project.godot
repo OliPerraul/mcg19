@@ -50,11 +50,9 @@ Colors="*res://Core/Globals/Colors.gd"
 Defaults="*res://Core/Globals/Defaults.gd"
 Flags="*res://Core/Globals/Flags.gd"
 Floats="*res://Core/Globals/Floats.gd"
-Game="*res://Core/Globals/Game.gd"
 Globals="*res://Core/Globals/Globals.gd"
 Inputs="*res://Core/Globals/Inputs.gd"
 Memory="*res://Core/Globals/Memory.gd"
-MoMa="*res://Core/Globals/MoMa.gd"
 Nodes="*res://Core/Globals/Nodes.gd"
 Resources="*res://Core/Globals/Resources.gd"
 Shapes="*res://Core/Globals/Shapes.gd"
@@ -140,6 +138,17 @@ player_right={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":15,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+any={
+"deadzone": 0.51,
+"events": [  ]
+}
+click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":3,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 
