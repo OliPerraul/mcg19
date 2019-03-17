@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
+"class": "JASON_GOALDIR",
+"language": "GDScript",
+"path": "res://Core/World/Events - Jason/GoalDirection.gd"
+}, {
+"base": "Node2D",
 "class": "OLI_EVENT",
 "language": "GDScript",
 "path": "res://Core/World/AI - Oli/Events/Event.gd"
@@ -30,6 +35,7 @@ _global_script_classes=[ {
 "path": "res://Core/World/AI - Oli/NPC/States/Alert.gd"
 } ]
 _global_script_class_icons={
+"JASON_GOALDIR": "",
 "OLI_EVENT": "",
 "OLI_FSM": "",
 "OLI_STATE": "",
