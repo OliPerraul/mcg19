@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Core/World/Events - Jason/World2Jason.gd" type="Script" id=1]
 [ext_resource path="res://Core/Game.gd" type="Script" id=2]
@@ -15,15 +15,7 @@
 
 [sub_resource type="AnimatedTexture" id=2]
 
-[sub_resource type="Curve" id=3]
-min_value = -40.0
-max_value = 40.0
-_data = [ Vector2( 0.0135121, -0.703999 ), 0.0, 0.0, 0, 0, Vector2( 0.202439, 5.632 ), 0.0, 30.3893, 0, 0, Vector2( 0.374048, -5.632 ), 0.0, 0.0, 0, 0, Vector2( 0.607059, 9.856 ), 0.0, 0.0, 0, 0, Vector2( 0.767647, -1.408 ), 0.0, 0.0, 0, 0, Vector2( 0.945554, 4.224 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=3]
-curve = SubResource( 2 )
-
-[sub_resource type="ParticlesMaterial" id=4]
+[sub_resource type="ParticlesMaterial" id=3]
 emission_shape = 2
 emission_box_extents = Vector3( 1024, 1024, 1024 )
 flag_disable_z = true
@@ -31,7 +23,6 @@ gravity = Vector3( 0, 10, 0 )
 angular_velocity = 1.05
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-tangential_accel_curve = SubResource( 3 )
 scale = 2.0
 scale_random = 1.0
 
@@ -48,6 +39,7 @@ __score_label = NodePath("../CanvasLayer/Panel/ScoreLabel")
 __alert_label = NodePath("../CanvasLayer/Panel/AlertLabel")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="BlackBars" type="Control" parent="CanvasLayer"]
 editor/display_folded = true
@@ -97,16 +89,19 @@ one_shot = true
 autostart = true
 
 [node name="GOALS" type="Position2D" parent="."]
+editor/display_folded = true
 position = Vector2( 710, 492 )
 
 [node name="Position2D" type="Position2D" parent="GOALS"]
 
 [node name="EventManager" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
 camera_path = NodePath("../Middleground/Player/Camera2D")
 player_path = NodePath("../Middleground/Player")
 black_bars = NodePath("../CanvasLayer/BlackBars")
 
 [node name="TileMaps" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Background" type="TileMap" parent="TileMaps"]
 tile_set = ExtResource( 5 )
@@ -127,8 +122,8 @@ format = 1
 tile_data = PoolIntArray( 917567, 13, 0, 1245247, 14, 0, 2359443, 15, 0, 2424896, 13, 0, 2490462, 15, 0, 2752576, 14, 0, 2752659, 16, 0, 2883678, 16, 0, 3670138, 13, 0, 3997818, 14, 0, 4653066, 13, 0, 4980746, 14, 0, 5439648, 13, 0, 5767200, 15, 0, 5767328, 14, 0, 5832812, 15, 0, 6160416, 16, 0, 6226028, 16, 0 )
 
 [node name="Solids" type="TileMap" parent="TileMaps" groups=[
-"Tiles",
 "Solids",
+"Tiles",
 ]]
 visible = false
 material = SubResource( 1 )
@@ -144,12 +139,12 @@ __meta__ = {
 [node name="Background" type="Node" parent="."]
 
 [node name="Middleground" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="Cover" parent="Middleground" instance=ExtResource( 8 )]
 position = Vector2( 710, 490 )
 
 [node name="Player" parent="Middleground" instance=ExtResource( 9 )]
+editor/display_folded = true
 position = Vector2( 120, 172.105 )
 z_index = 1
 
@@ -165,6 +160,7 @@ drag_margin_bottom = 0.0
 [node name="NPC" parent="Middleground" instance=ExtResource( 10 )]
 
 [node name="Foreground" type="Node2D" parent="."]
+editor/display_folded = true
 z_index = 20
 
 [node name="TextureRect" type="TextureRect" parent="Foreground"]
@@ -183,10 +179,9 @@ stretch_mode = 1
 amount = 500
 lifetime = 10.0
 randomness = 1.0
-process_material = SubResource( 4 )
+process_material = SubResource( 3 )
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
-[connection signal="area_exited" from="Middleground/Player/area_2D" to="Middleground/Player" method="_on_area_2D_area_exited"]
 
 [editable path="EventManager"]
 

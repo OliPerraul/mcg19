@@ -7,28 +7,36 @@ var area : Area2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	area = get_node(__area)
-	connect("_on_area_enter", area, 'area_enter')
-
+	area.connect("body_entered", self, '_on_body_entered')
+	area.connect("body_exited", self, '_on_body_exited')
+   
 
 var t_scale = Vector2.ONE
 export(float) var max_scale = 1.2 
 export(float) var scale_speed = .08 
 
+
 func _process(delta):
+	# Handle stay
 	t_scale = Vector2.ONE	
 	var overlaps = area.get_overlapping_bodies()
 	for o in overlaps:
 		if o != null: #TODO safe check for other non contextable areas
-			handle(o)
+			t_scale = Vector2.ONE*max_scale
 			
 	scale = lerp(scale, t_scale, scale_speed)
 	
-
-
-
-# ABSTRACT : please override
-func handle(player):
+	
+# ABSTR
+func _on_body_entered(b):
 	pass
+
+
+# ABSTR
+func _on_body_exited(b):
+	pass
+
+
 
 
 

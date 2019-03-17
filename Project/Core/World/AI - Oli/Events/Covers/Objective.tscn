@@ -6,12 +6,13 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 30 )
 
-[node name="Cover" type="Node2D"]
+[node name="Objective" type="Node2D"]
 position = Vector2( 780, 290 )
 script = ExtResource( 1 )
-__area = NodePath("Area2D")
+__area = NodePath("../Objective/Area2D")
 
 [node name="Area2D" type="Area2D" parent="."]
+editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
