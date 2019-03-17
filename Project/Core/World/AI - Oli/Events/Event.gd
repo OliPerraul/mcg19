@@ -17,15 +17,21 @@ export(float) var scale_speed = .08
 
 
 func _process(delta):
+	
 	# Handle stay
 	t_scale = Vector2.ONE	
 	var overlaps = area.get_overlapping_bodies()
 	for o in overlaps:
 		if o != null: #TODO safe check for other non contextable areas
-			t_scale = Vector2.ONE*max_scale
+			if o.is_in_group('detectable'):
+				t_scale = Vector2.ONE*max_scale
+				_on_body_stay(o)
 			
 	scale = lerp(scale, t_scale, scale_speed)
 	
+	
+func _on_body_stay(b):
+	pass
 	
 # ABSTR
 func _on_body_entered(b):

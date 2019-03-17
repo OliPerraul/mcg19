@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Core/World/Events - Jason/World2Jason.gd" type="Script" id=1]
 [ext_resource path="res://Core/Game.gd" type="Script" id=2]
 [ext_resource path="res://Core/World/Events - Jason/BlackBars.gd" type="Script" id=3]
 [ext_resource path="res://Core/World/TEST/TEST-MAP/Goal_handler.gd" type="Script" id=4]
-[ext_resource path="res://Core/World/TEST/TEST-MAP/Garbage.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Core/World/AI - Oli/Events/Objectives/Garbage.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Core/World/AI - Oli/EventManager2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Core/World/NoPaddingTileset.tres" type="TileSet" id=7]
 [ext_resource path="res://Core/World/placeholder_tileset.tres" type="TileSet" id=8]
@@ -12,7 +12,6 @@
 [ext_resource path="res://Core/World/AI - Oli/Events/Covers/Cover.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Core/World/Player -Carlos/Player.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Core/World/AI - Oli/NPC/NPC.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Core/World/AI - Oli/Events/Objectives/Garbage.tscn" type="PackedScene" id=13]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -39,6 +38,7 @@ __tm_solids = NodePath("../TileMaps/Solids")
 __player = NodePath("../Middleground/Player")
 __score_label = NodePath("../CanvasLayer/Panel/ScoreLabel")
 __alert_label = NodePath("../CanvasLayer/Panel/AlertLabel")
+__goals = NodePath("../GOALS")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 editor/display_folded = true
@@ -92,7 +92,6 @@ one_shot = true
 autostart = true
 
 [node name="GOALS" type="Position2D" parent="."]
-editor/display_folded = true
 position = Vector2( 713.324, 495.324 )
 script = ExtResource( 4 )
 Garbage = ExtResource( 5 )
@@ -106,12 +105,20 @@ position = Vector2( 565.097, -217.175 )
 [node name="Position2D3" type="Position2D" parent="GOALS"]
 position = Vector2( 398.892, 283.656 )
 
+[node name="Position2D4" type="Position2D" parent="GOALS"]
+position = Vector2( -603.324, 294.676 )
+
+[node name="Position2D5" type="Position2D" parent="GOALS"]
+position = Vector2( 476.676, -355.324 )
+
 [node name="EventManager" parent="." instance=ExtResource( 6 )]
+editor/display_folded = true
 camera_path = NodePath("../Middleground/Player/Camera2D")
 player_path = NodePath("../Middleground/Player")
 black_bars = NodePath("../CanvasLayer/BlackBars")
 
 [node name="TileMaps" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Background" type="TileMap" parent="TileMaps"]
 tile_set = ExtResource( 7 )
@@ -132,8 +139,8 @@ format = 1
 tile_data = PoolIntArray( 917567, 13, 0, 1245247, 14, 0, 2359443, 15, 0, 2424896, 13, 0, 2490462, 15, 0, 2752576, 14, 0, 2752659, 16, 0, 2883678, 16, 0, 3670138, 13, 0, 3997818, 14, 0, 4653066, 13, 0, 4980746, 14, 0, 5439648, 13, 0, 5767200, 15, 0, 5767328, 14, 0, 5832812, 15, 0, 6160416, 16, 0, 6226028, 16, 0 )
 
 [node name="Solids" type="TileMap" parent="TileMaps" groups=[
-"Tiles",
 "Solids",
+"Tiles",
 ]]
 visible = false
 material = SubResource( 1 )
@@ -149,13 +156,11 @@ __meta__ = {
 [node name="Background" type="Node" parent="."]
 
 [node name="Middleground" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="Cover" parent="Middleground" instance=ExtResource( 10 )]
 position = Vector2( 710, 490 )
 
 [node name="Player" parent="Middleground" instance=ExtResource( 11 )]
-editor/display_folded = true
 position = Vector2( 120, 172.105 )
 z_index = 1
 
@@ -169,12 +174,6 @@ drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
 [node name="NPC" parent="Middleground" instance=ExtResource( 12 )]
-
-[node name="Garbage" parent="Middleground" instance=ExtResource( 13 )]
-position = Vector2( 400, 280 )
-
-[node name="Garbage" parent="Middleground/Garbage" instance=ExtResource( 13 )]
-position = Vector2( 10, 20 )
 
 [node name="Foreground" type="Node2D" parent="."]
 visible = false

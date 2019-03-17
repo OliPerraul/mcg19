@@ -85,8 +85,10 @@ func _process(delta):
 
 	time_goal += delta
 	if time_goal >= time_goal_limit:
-		pass
-
+		goals.add()
+		time_goal = 0
+	
+	
 	
 	
 	
