@@ -14,9 +14,9 @@
 [ext_resource path="res://Core/World/Jack/B1.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Core/World/Jack/B2.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Core/World/Jack/B3.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Core/World/AI - Oli/NPC/NPC2.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Core/World/AI - Oli/NPC/NPC.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Core/World/Player -Carlos/Player.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Core/World/Player -Carlos/Player.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Core/World/AI - Oli/NPC/NPC2.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Core/World/AI - Oli/NPC/NPC.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Core/World/ObscureObject.png" type="Texture" id=18]
 
 [sub_resource type="CanvasItemMaterial" id=1]
@@ -231,7 +231,6 @@ player_path = NodePath("../Middleground/Player")
 black_bars = NodePath("../CanvasLayer/BlackBars")
 
 [node name="TileMaps" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Blank" type="TileMap" parent="TileMaps"]
 tile_set = ExtResource( 7 )
@@ -328,13 +327,33 @@ position = Vector2( 450, 750 )
 [node name="B8" parent="Middleground/Bushes" instance=ExtResource( 14 )]
 position = Vector2( 604.5, 130 )
 
+[node name="Player" parent="Middleground" instance=ExtResource( 15 )]
+editor/display_folded = true
+position = Vector2( 849.876, 3790.82 )
+z_index = 1
+
+[node name="Camera2D" type="Camera2D" parent="Middleground/Player"]
+current = true
+smoothing_enabled = true
+smoothing_speed = 3.0
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
+
 [node name="NPCs" type="Node2D" parent="Middleground"]
 
-[node name="Reporter" parent="Middleground/NPCs" instance=ExtResource( 15 )]
+[node name="Reporter" parent="Middleground/NPCs" instance=ExtResource( 16 )]
 position = Vector2( 579, 1940 )
 
+[node name="FSM" parent="Middleground/NPCs/Reporter/Character" index="1"]
+editor/display_folded = false
+
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter/Character" index="2"]
-frame = 2
+frame = 4
+
+[node name="Emoji" parent="Middleground/NPCs/Reporter/Character" index="3"]
+frame = 0
 
 [node name="Kill" parent="Middleground/NPCs/Reporter/Character" index="4"]
 editor/display_folded = false
@@ -347,14 +366,17 @@ curve = SubResource( 2 )
 position = Vector2( -169, -30.4181 )
 rotation = 4.78103e-007
 
-[node name="Reporter3" parent="Middleground/NPCs" instance=ExtResource( 15 )]
+[node name="Reporter3" parent="Middleground/NPCs" instance=ExtResource( 16 )]
 position = Vector2( -110, 2766 )
 
-[node name="FSM" parent="Middleground/NPCs/Reporter3/Character" index="1"]
-editor/display_folded = false
+[node name="Character" parent="Middleground/NPCs/Reporter3" index="1"]
+editor/display_folded = true
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter3/Character" index="2"]
-frame = 2
+frame = 4
+
+[node name="Emoji" parent="Middleground/NPCs/Reporter3/Character" index="3"]
+frame = 0
 
 [node name="Kill" parent="Middleground/NPCs/Reporter3/Character" index="4"]
 editor/display_folded = false
@@ -366,13 +388,17 @@ curve = SubResource( 3 )
 [node name="PathAgent" parent="Middleground/NPCs/Reporter3/Path2D" index="0"]
 position = Vector2( -20, 83.582 )
 rotation = -1.5708
+__path = NodePath("../../../../NPCs/NPC/Path2D")
 
 [node name="Reporter2" parent="Middleground/NPCs" instance=ExtResource( 16 )]
 editor/display_folded = true
 position = Vector2( 560, 1540 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter2/Character" index="2"]
-frame = 2
+frame = 4
+
+[node name="Emoji" parent="Middleground/NPCs/Reporter2/Character" index="3"]
+frame = 0
 
 [node name="Path2D" parent="Middleground/NPCs/Reporter2" index="2"]
 position = Vector2( 20, 10.4181 )
@@ -382,11 +408,14 @@ curve = SubResource( 4 )
 position = Vector2( -100, 19.5819 )
 rotation = 0.0
 
-[node name="Reporter4" parent="Middleground/NPCs" instance=ExtResource( 15 )]
+[node name="Reporter4" parent="Middleground/NPCs" instance=ExtResource( 16 )]
 position = Vector2( 370, 1320 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter4/Character" index="2"]
-frame = 2
+frame = 4
+
+[node name="Emoji" parent="Middleground/NPCs/Reporter4/Character" index="3"]
+frame = 0
 
 [node name="Path2D" parent="Middleground/NPCs/Reporter4" index="2"]
 position = Vector2( 20, 10.4181 )
@@ -396,11 +425,14 @@ curve = SubResource( 5 )
 position = Vector2( -160, -0.418091 )
 rotation = 0.0
 
-[node name="Reporter5" parent="Middleground/NPCs" instance=ExtResource( 15 )]
+[node name="Reporter5" parent="Middleground/NPCs" instance=ExtResource( 16 )]
 position = Vector2( 190, 580 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter5/Character" index="2"]
-frame = 2
+frame = 4
+
+[node name="Emoji" parent="Middleground/NPCs/Reporter5/Character" index="3"]
+frame = 0
 
 [node name="Kill" parent="Middleground/NPCs/Reporter5/Character" index="4"]
 editor/display_folded = false
@@ -413,14 +445,17 @@ curve = SubResource( 6 )
 position = Vector2( -160, -0.418091 )
 rotation = 0.0
 
-[node name="Reporter6" parent="Middleground/NPCs" instance=ExtResource( 15 )]
+[node name="Reporter6" parent="Middleground/NPCs" instance=ExtResource( 16 )]
 position = Vector2( 189, 540 )
 
 [node name="FSM" parent="Middleground/NPCs/Reporter6/Character" index="1"]
 editor/display_folded = false
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter6/Character" index="2"]
-frame = 2
+frame = 4
+
+[node name="Emoji" parent="Middleground/NPCs/Reporter6/Character" index="3"]
+frame = 0
 
 [node name="Kill" parent="Middleground/NPCs/Reporter6/Character" index="4"]
 editor/display_folded = false
@@ -434,20 +469,17 @@ editor/display_folded = true
 position = Vector2( 361, -0.418091 )
 rotation = 3.14159
 
-[node name="Hunter" parent="Middleground/NPCs" instance=ExtResource( 16 )]
+[node name="Hunter" parent="Middleground/NPCs" instance=ExtResource( 17 )]
 position = Vector2( 228.585, 3544.03 )
 
-[node name="Hunter3" parent="Middleground/NPCs" instance=ExtResource( 16 )]
+[node name="Hunter3" parent="Middleground/NPCs" instance=ExtResource( 17 )]
 position = Vector2( -50, 2150 )
 
 [node name="Character" parent="Middleground/NPCs/Hunter3" index="1"]
 editor/display_folded = true
 
-[node name="FSM" parent="Middleground/NPCs/Hunter3/Character" index="1"]
-editor/display_folded = false
-
 [node name="AnimatedSprite" parent="Middleground/NPCs/Hunter3/Character" index="2"]
-frame = 2
+frame = 4
 
 [node name="Path2D" parent="Middleground/NPCs/Hunter3" index="2"]
 editor/display_folded = true
@@ -458,11 +490,11 @@ curve = SubResource( 8 )
 position = Vector2( -314.401, -0.880127 )
 rotation = 1.53147e-008
 
-[node name="Hunter4" parent="Middleground/NPCs" instance=ExtResource( 16 )]
+[node name="Hunter4" parent="Middleground/NPCs" instance=ExtResource( 17 )]
 position = Vector2( -20, 1956 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Hunter4/Character" index="2"]
-frame = 2
+frame = 4
 
 [node name="Kill" parent="Middleground/NPCs/Hunter4/Character" index="4"]
 editor/display_folded = false
@@ -475,17 +507,11 @@ curve = SubResource( 9 )
 position = Vector2( -244.401, -6.88013 )
 rotation = 2.21515e-007
 
-[node name="Hunter5" parent="Middleground/NPCs" instance=ExtResource( 16 )]
+[node name="Hunter5" parent="Middleground/NPCs" instance=ExtResource( 17 )]
 position = Vector2( 339, 1000 )
 
-[node name="FSM" parent="Middleground/NPCs/Hunter5/Character" index="1"]
-editor/display_folded = false
-
 [node name="AnimatedSprite" parent="Middleground/NPCs/Hunter5/Character" index="2"]
-frame = 2
-
-[node name="Emoji" parent="Middleground/NPCs/Hunter5/Character" index="3"]
-frame = 1
+frame = 4
 
 [node name="Kill" parent="Middleground/NPCs/Hunter5/Character" index="4"]
 editor/display_folded = false
@@ -499,14 +525,8 @@ position = Vector2( -273.401, -10.8801 )
 rotation = 0.0
 __path = NodePath("../../../NPCs/NPC/Path2D")
 
-[node name="Hunter2" parent="Middleground/NPCs" instance=ExtResource( 16 )]
+[node name="Hunter2" parent="Middleground/NPCs" instance=ExtResource( 17 )]
 position = Vector2( -30, 3210 )
-
-[node name="AnimatedSprite" parent="Middleground/NPCs/Hunter2/Character" index="2"]
-frame = 6
-
-[node name="Emoji" parent="Middleground/NPCs/Hunter2/Character" index="3"]
-frame = 1
 
 [node name="Kill" parent="Middleground/NPCs/Hunter2/Character" index="4"]
 editor/display_folded = false
@@ -518,19 +538,6 @@ curve = SubResource( 11 )
 [node name="PathAgent" parent="Middleground/NPCs/Hunter2/Path2D" index="0"]
 position = Vector2( 165.599, -40.8801 )
 rotation = 3.14159
-
-[node name="Player" parent="Middleground" instance=ExtResource( 17 )]
-position = Vector2( 849.876, 3790.82 )
-z_index = 1
-
-[node name="Camera2D" type="Camera2D" parent="Middleground/Player"]
-current = true
-smoothing_enabled = true
-smoothing_speed = 3.0
-drag_margin_left = 0.0
-drag_margin_top = 0.0
-drag_margin_right = 0.0
-drag_margin_bottom = 0.0
 
 [node name="Foreground" type="Node2D" parent="."]
 z_index = 20
@@ -576,6 +583,8 @@ process_material = SubResource( 14 )
 
 [editable path="Middleground/Bushes/B3"]
 
+[editable path="Middleground/Player"]
+
 [editable path="Middleground/NPCs/Reporter"]
 
 [editable path="Middleground/NPCs/Reporter3"]
@@ -595,5 +604,3 @@ process_material = SubResource( 14 )
 [editable path="Middleground/NPCs/Hunter5"]
 
 [editable path="Middleground/NPCs/Hunter2"]
-
-[editable path="Middleground/Player"]
