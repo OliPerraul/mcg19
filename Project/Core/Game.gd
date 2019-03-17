@@ -85,9 +85,9 @@ func _process(delta):
 			alert -= alert_decr
 			if(alert < 0):
 				alert = 0
-								
-    _score_label.text = _score_format.replace('$$', round(Globals.score))
-    _alert_label.text = _alert_format.replace('$$', round(self.alert)).replace('@@', self._alert_limit)				
+	
+	_score_label.text = _score_format.replace('$$', round(Globals.score))
+	_alert_label.text = _alert_format.replace('$$', round(self.alert)).replace('@@', self._alert_limit)				
 
 
 	time_goal += delta
