@@ -26,6 +26,7 @@ func update(context, delta):
 		match(context.vision.target.type):
 			Globals.DETECTABLE.PLAYER:
 				if time_detection > time_detection_limit_player:
+					print("boop")
 					context.fsm.set_state_named('Chase', [context.vision.target])
 					context.vision.draw_color = context.vision.RED
 				else:

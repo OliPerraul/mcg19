@@ -94,11 +94,8 @@ func _process(delta):
 	if time_goal >= time_goal_limit:
 		goals.add()
 		time_goal = 0
-	
-	
-	
-	
-	
+
+
 func end_game():
 	Globals.high_score = max(Globals.high_score, Globals.score)
 	get_tree().change_scene("res://Core/Start/GameOverScreen.tscn")
