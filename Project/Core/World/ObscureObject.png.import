@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/TileSet.png-71cafd70feb23c97ab57bd1c895e8862.stex"
+path="res://.import/ObscureObject.png-028cbfb2aa9cdac065aa9c37be078350.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Core/World/TileSet.png"
-dest_files=[ "res://.import/TileSet.png-71cafd70feb23c97ab57bd1c895e8862.stex" ]
+source_file="res://Core/World/ObscureObject.png"
+dest_files=[ "res://.import/ObscureObject.png-028cbfb2aa9cdac065aa9c37be078350.stex" ]
 
 [params]
 

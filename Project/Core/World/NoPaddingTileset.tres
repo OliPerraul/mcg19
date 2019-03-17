@@ -1,209 +1,17 @@
-[gd_resource type="TileSet" load_steps=18 format=2]
+[gd_resource type="TileSet" load_steps=2 format=2]
 
-[ext_resource path="res://Core/World/Layout/House1.png" type="Texture" id=1]
-[ext_resource path="res://Core/World/Layout/Truck.png" type="Texture" id=2]
-[ext_resource path="res://Core/World/Layout/Trees.png" type="Texture" id=3]
-[ext_resource path="res://Core/World/Player -Carlos/TileSet.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sprites/TileSetItems.png" type="Texture" id=5]
-[ext_resource path="res://Core/World/Layout/BigHouse1.png" type="Texture" id=6]
-[ext_resource path="res://Core/World/Layout/House2.png" type="Texture" id=7]
-
-[sub_resource type="ConvexPolygonShape2D" id=1]
-points = PoolVector2Array( 4.26632, 0, 70.7528, 0, 70.6182, 17.2187, 2.65126, 17.0841 )
-
-[sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( 20.04, 0, 32.1529, 0, 32.799, 11.5336, 19.5555, 11.8566 )
-
-[sub_resource type="ConvexPolygonShape2D" id=3]
-points = PoolVector2Array( 17.9405, 0, 33.6065, 0, 33.445, 8.58269, 17.6174, 8.25967 )
-
-[sub_resource type="ConvexPolygonShape2D" id=4]
-points = PoolVector2Array( 26.7923, 44.4287, 23.8852, 53.7314, 8.57448, 53.5376, 4.69834, 45.2039 )
-
-[sub_resource type="ConvexPolygonShape2D" id=5]
-points = PoolVector2Array( 11.4287, 10.4068, 19.3748, 10.4068, 19.7624, 17.19, 10.8473, 17.19 )
-
-[sub_resource type="ConvexPolygonShape2D" id=6]
-points = PoolVector2Array( 8, 0, 144, 0, 142.332, 48.8826, 128.145, 48.8826, 127.215, 60.0459, 60.2355, 60.0459, 59.0727, 48.8826, 11.8614, 49.3478 )
-
-[sub_resource type="ConvexPolygonShape2D" id=7]
-points = PoolVector2Array( 16.7629, 22.7332, 17.0994, 25.8736, 11.9626, 25.8511, 12.0523, 22.7332 )
-
-[sub_resource type="ConvexPolygonShape2D" id=8]
-points = PoolVector2Array( 20.9273, 11.5589, 19.9852, 17.077, 10.2949, 17.077, 9.35275, 11.6935 )
-
-[sub_resource type="ConvexPolygonShape2D" id=9]
-points = PoolVector2Array( 9.08919, 0, 75.399, 0, 77.0735, 74.5445, 9.42409, 74.5445 )
-
-[sub_resource type="ConvexPolygonShape2D" id=10]
-points = PoolVector2Array( 7.0798, 0.197136, 85.4459, 0, 84.4412, 62.1533, 9.08919, 62.823 )
+[ext_resource path="res://Core/World/TileSet.png" type="Texture" id=1]
 
 [resource]
-3/name = "BigHouse1 Lower"
-3/texture = ExtResource( 6 )
-3/tex_offset = Vector2( 0, 0 )
-3/modulate = Color( 1, 1, 1, 1 )
-3/region = Rect2( 0, 96, 160, 64 )
-3/tile_mode = 0
-3/occluder_offset = Vector2( 0, 0 )
-3/navigation_offset = Vector2( 0, 0 )
-3/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 6 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-3/z_index = 0
-6/name = "BigHouse1 Upper"
-6/texture = ExtResource( 6 )
-6/tex_offset = Vector2( 0, 0 )
-6/modulate = Color( 1, 1, 1, 1 )
-6/region = Rect2( 0, 0, 160, 96 )
-6/tile_mode = 0
-6/occluder_offset = Vector2( 0, 0 )
-6/navigation_offset = Vector2( 0, 0 )
-6/shapes = [  ]
-6/z_index = 4
-7/name = "House2 Lower"
-7/texture = ExtResource( 7 )
-7/tex_offset = Vector2( 0, 0 )
-7/modulate = Color( 1, 1, 1, 1 )
-7/region = Rect2( 0, 32, 96, 96 )
-7/tile_mode = 0
-7/occluder_offset = Vector2( 0, 0 )
-7/navigation_offset = Vector2( 0, 0 )
-7/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 9 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-7/z_index = 0
-8/name = "House2 Upper"
-8/texture = ExtResource( 7 )
-8/tex_offset = Vector2( 0, 0 )
-8/modulate = Color( 1, 1, 1, 1 )
-8/region = Rect2( 0, 0, 96, 32 )
-8/tile_mode = 0
-8/occluder_offset = Vector2( 0, 0 )
-8/navigation_offset = Vector2( 0, 0 )
-8/shapes = [  ]
-8/z_index = 4
-9/name = "House1 Lower"
-9/texture = ExtResource( 1 )
-9/tex_offset = Vector2( 0, 0 )
-9/modulate = Color( 1, 1, 1, 1 )
-9/region = Rect2( 0, 32, 96, 64 )
-9/tile_mode = 0
-9/occluder_offset = Vector2( 0, 0 )
-9/navigation_offset = Vector2( 0, 0 )
-9/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 10 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-9/z_index = 0
-10/name = "House1 Upper"
-10/texture = ExtResource( 1 )
-10/tex_offset = Vector2( 0, 0 )
-10/modulate = Color( 1, 1, 1, 1 )
-10/region = Rect2( 0, 0, 96, 32 )
-10/tile_mode = 0
-10/occluder_offset = Vector2( 0, 0 )
-10/navigation_offset = Vector2( 0, 0 )
-10/shapes = [  ]
-10/z_index = 4
-11/name = "Truck Lower"
-11/texture = ExtResource( 2 )
-11/tex_offset = Vector2( 0, 0 )
-11/modulate = Color( 1, 1, 1, 1 )
-11/region = Rect2( 0, 32, 96, 32 )
-11/tile_mode = 0
-11/occluder_offset = Vector2( 0, 0 )
-11/navigation_offset = Vector2( 0, 0 )
-11/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 1 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-11/z_index = 0
-12/name = "Truck Upper"
-12/texture = ExtResource( 2 )
-12/tex_offset = Vector2( 0, 0 )
-12/modulate = Color( 1, 1, 1, 1 )
-12/region = Rect2( 0, 0, 96, 32 )
-12/tile_mode = 0
-12/occluder_offset = Vector2( 0, 0 )
-12/navigation_offset = Vector2( 0, 0 )
-12/shapes = [  ]
-12/z_index = 4
-13/name = "Tree1 Upper"
-13/texture = ExtResource( 3 )
-13/tex_offset = Vector2( 0, 0 )
-13/modulate = Color( 1, 1, 1, 1 )
-13/region = Rect2( 0, 0, 56, 40 )
-13/tile_mode = 0
-13/occluder_offset = Vector2( 0, 0 )
-13/navigation_offset = Vector2( 0, 0 )
-13/shapes = [  ]
-13/z_index = 2
-14/name = "Tree1 Lower"
-14/texture = ExtResource( 3 )
-14/tex_offset = Vector2( 0, 0 )
-14/modulate = Color( 1, 1, 1, 1 )
-14/region = Rect2( 0, 40, 56, 16 )
-14/tile_mode = 0
-14/occluder_offset = Vector2( 0, 0 )
-14/navigation_offset = Vector2( 0, 0 )
-14/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 2 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-14/z_index = 0
-15/name = "Tree2 Upper"
-15/texture = ExtResource( 3 )
-15/tex_offset = Vector2( 0, 0 )
-15/modulate = Color( 1, 1, 1, 1 )
-15/region = Rect2( 0, 56, 56, 48 )
-15/tile_mode = 0
-15/occluder_offset = Vector2( 0, 0 )
-15/navigation_offset = Vector2( 0, 0 )
-15/shapes = [  ]
-15/z_index = 2
-16/name = "Tree2 Lower"
-16/texture = ExtResource( 3 )
-16/tex_offset = Vector2( 0, 0 )
-16/modulate = Color( 1, 1, 1, 1 )
-16/region = Rect2( 0, 104, 56, 16 )
-16/tile_mode = 0
-16/occluder_offset = Vector2( 0, 0 )
-16/navigation_offset = Vector2( 0, 0 )
-16/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 3 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-16/z_index = 0
 17/name = "Path"
-17/texture = ExtResource( 4 )
+17/texture = ExtResource( 1 )
 17/tex_offset = Vector2( 0, 0 )
 17/modulate = Color( 1, 1, 1, 1 )
-17/region = Rect2( 153, 189, 0, 1 )
+17/region = Rect2( 199, 1, 197, 296 )
 17/tile_mode = 1
-17/autotile/bitmask_mode = 2
-17/autotile/bitmask_flags = [ Vector2( 0, 0 ), 176, Vector2( 0, 1 ), 146, Vector2( 0, 2 ), 50, Vector2( 1, 0 ), 56, Vector2( 1, 2 ), 56, Vector2( 2, 0 ), 152, Vector2( 2, 1 ), 146, Vector2( 2, 2 ), 58, Vector2( 3, 2 ), 312, Vector2( 3, 3 ), 292, Vector2( 4, 2 ), 120, Vector2( 4, 3 ), 73 ]
-17/autotile/icon_coordinate = Vector2( 0, 0 )
+17/autotile/bitmask_mode = 1
+17/autotile/bitmask_flags = [ Vector2( 0, 0 ), 176, Vector2( 0, 1 ), 146, Vector2( 0, 2 ), 50, Vector2( 0, 3 ), 447, Vector2( 1, 0 ), 56, Vector2( 1, 1 ), 511, Vector2( 1, 2 ), 56, Vector2( 1, 3 ), 255, Vector2( 2, 0 ), 152, Vector2( 2, 1 ), 146, Vector2( 2, 2 ), 58, Vector2( 3, 0 ), 432, Vector2( 3, 1 ), 54, Vector2( 3, 2 ), 440, Vector2( 3, 3 ), 438, Vector2( 3, 7 ), 504, Vector2( 3, 8 ), 63, Vector2( 4, 0 ), 216, Vector2( 4, 1 ), 27, Vector2( 4, 2 ), 248, Vector2( 4, 3 ), 219, Vector2( 4, 7 ), 218, Vector2( 4, 8 ), 155, Vector2( 5, 2 ), 26, Vector2( 5, 3 ), 178, Vector2( 5, 4 ), 58, Vector2( 5, 5 ), 154, Vector2( 5, 6 ), 184, Vector2( 5, 7 ), 510, Vector2( 5, 8 ), 507 ]
+17/autotile/icon_coordinate = Vector2( 1, 1 )
 17/autotile/tile_size = Vector2( 32, 32 )
 17/autotile/spacing = 1
 17/autotile/occluder_map = [  ]
@@ -214,27 +22,8 @@ points = PoolVector2Array( 7.0798, 0.197136, 85.4459, 0, 84.4412, 62.1533, 9.089
 17/navigation_offset = Vector2( 0, 0 )
 17/shapes = [  ]
 17/z_index = 0
-18/name = "TileSet.png 18"
-18/texture = ExtResource( 4 )
-18/tex_offset = Vector2( 0, 0 )
-18/modulate = Color( 1, 1, 1, 1 )
-18/region = Rect2( 70, 87, 1, 0 )
-18/tile_mode = 1
-18/autotile/bitmask_mode = 0
-18/autotile/bitmask_flags = [  ]
-18/autotile/icon_coordinate = Vector2( 0, 0 )
-18/autotile/tile_size = Vector2( 32, 32 )
-18/autotile/spacing = 0
-18/autotile/occluder_map = [  ]
-18/autotile/navpoly_map = [  ]
-18/autotile/priority_map = [  ]
-18/autotile/z_index_map = [  ]
-18/occluder_offset = Vector2( 0, 0 )
-18/navigation_offset = Vector2( 0, 0 )
-18/shapes = [  ]
-18/z_index = 0
 19/name = "Snow"
-19/texture = ExtResource( 4 )
+19/texture = ExtResource( 1 )
 19/tex_offset = Vector2( 0, 0 )
 19/modulate = Color( 1, 1, 1, 1 )
 19/region = Rect2( 1, 34, 197, 98 )
@@ -252,33 +41,14 @@ points = PoolVector2Array( 7.0798, 0.197136, 85.4459, 0, 84.4412, 62.1533, 9.089
 19/navigation_offset = Vector2( 0, 0 )
 19/shapes = [  ]
 19/z_index = 0
-20/name = "Path"
-20/texture = ExtResource( 4 )
-20/tex_offset = Vector2( 0, 0 )
-20/modulate = Color( 1, 1, 1, 1 )
-20/region = Rect2( 199, 1, 197, 131 )
-20/tile_mode = 1
-20/autotile/bitmask_mode = 1
-20/autotile/bitmask_flags = [ Vector2( 0, 0 ), 176, Vector2( 0, 1 ), 146, Vector2( 0, 2 ), 50, Vector2( 1, 0 ), 56, Vector2( 1, 2 ), 56, Vector2( 2, 0 ), 152, Vector2( 2, 1 ), 146, Vector2( 2, 2 ), 58, Vector2( 3, 2 ), 312, Vector2( 3, 3 ), 292, Vector2( 4, 2 ), 120, Vector2( 4, 3 ), 73, Vector2( 5, 2 ), 26 ]
-20/autotile/icon_coordinate = Vector2( 0, 0 )
-20/autotile/tile_size = Vector2( 32, 32 )
-20/autotile/spacing = 1
-20/autotile/occluder_map = [  ]
-20/autotile/navpoly_map = [  ]
-20/autotile/priority_map = [  ]
-20/autotile/z_index_map = [  ]
-20/occluder_offset = Vector2( 0, 0 )
-20/navigation_offset = Vector2( 0, 0 )
-20/shapes = [  ]
-20/z_index = 0
 21/name = "Fence"
-21/texture = ExtResource( 4 )
+21/texture = ExtResource( 1 )
 21/tex_offset = Vector2( 0, 0 )
 21/modulate = Color( 1, 1, 1, 1 )
 21/region = Rect2( 199, 298, 197, 98 )
 21/tile_mode = 1
 21/autotile/bitmask_mode = 1
-21/autotile/bitmask_flags = [ Vector2( 0, 0 ), 176, Vector2( 0, 1 ), 146, Vector2( 0, 2 ), 50, Vector2( 1, 0 ), 56, Vector2( 1, 2 ), 56, Vector2( 2, 0 ), 152, Vector2( 2, 1 ), 146, Vector2( 2, 2 ), 26, Vector2( 3, 0 ), 48, Vector2( 3, 1 ), 178, Vector2( 3, 2 ), 144, Vector2( 4, 0 ), 184, Vector2( 4, 1 ), 186, Vector2( 4, 2 ), 58, Vector2( 5, 0 ), 24, Vector2( 5, 1 ), 154, Vector2( 5, 2 ), 18 ]
+21/autotile/bitmask_flags = [ Vector2( 0, 0 ), 176, Vector2( 0, 1 ), 146, Vector2( 0, 2 ), 50, Vector2( 1, 0 ), 56, Vector2( 1, 1 ), 16, Vector2( 1, 2 ), 56, Vector2( 2, 0 ), 152, Vector2( 2, 1 ), 146, Vector2( 2, 2 ), 26, Vector2( 3, 0 ), 48, Vector2( 3, 1 ), 178, Vector2( 3, 2 ), 144, Vector2( 4, 0 ), 184, Vector2( 4, 1 ), 186, Vector2( 4, 2 ), 58, Vector2( 5, 0 ), 24, Vector2( 5, 1 ), 154, Vector2( 5, 2 ), 18 ]
 21/autotile/icon_coordinate = Vector2( 0, 0 )
 21/autotile/tile_size = Vector2( 32, 32 )
 21/autotile/spacing = 1
@@ -291,7 +61,7 @@ points = PoolVector2Array( 7.0798, 0.197136, 85.4459, 0, 84.4412, 62.1533, 9.089
 21/shapes = [  ]
 21/z_index = 0
 22/name = "Trees"
-22/texture = ExtResource( 4 )
+22/texture = ExtResource( 1 )
 22/tex_offset = Vector2( 0, 0 )
 22/modulate = Color( 1, 1, 1, 1 )
 22/region = Rect2( 34, 265, 98, 164 )
@@ -310,14 +80,14 @@ points = PoolVector2Array( 7.0798, 0.197136, 85.4459, 0, 84.4412, 62.1533, 9.089
 22/shapes = [  ]
 22/z_index = 0
 23/name = "Road"
-23/texture = ExtResource( 4 )
+23/texture = ExtResource( 1 )
 23/tex_offset = Vector2( 0, 0 )
 23/modulate = Color( 1, 1, 1, 1 )
-23/region = Rect2( 82, 158, 0, 1 )
+23/region = Rect2( 1, 133, 362, 197 )
 23/tile_mode = 1
 23/autotile/bitmask_mode = 1
-23/autotile/bitmask_flags = [ Vector2( 0, 2 ), 438, Vector2( 2, 2 ), 219, Vector2( 3, 0 ), 510, Vector2( 3, 2 ), 447, Vector2( 5, 0 ), 507, Vector2( 5, 1 ), 511, Vector2( 5, 2 ), 255, Vector2( 6, 0 ), 504, Vector2( 6, 2 ), 63 ]
-23/autotile/icon_coordinate = Vector2( 0, 0 )
+23/autotile/bitmask_flags = [ Vector2( 0, 2 ), 438, Vector2( 2, 2 ), 219, Vector2( 3, 0 ), 510, Vector2( 3, 2 ), 447, Vector2( 3, 3 ), 432, Vector2( 3, 5 ), 54, Vector2( 5, 0 ), 507, Vector2( 5, 1 ), 511, Vector2( 5, 2 ), 255, Vector2( 5, 3 ), 216, Vector2( 5, 5 ), 27, Vector2( 6, 0 ), 504, Vector2( 6, 2 ), 63 ]
+23/autotile/icon_coordinate = Vector2( 5, 1 )
 23/autotile/tile_size = Vector2( 32, 32 )
 23/autotile/spacing = 1
 23/autotile/occluder_map = [  ]
@@ -328,154 +98,79 @@ points = PoolVector2Array( 7.0798, 0.197136, 85.4459, 0, 84.4412, 62.1533, 9.089
 23/navigation_offset = Vector2( 0, 0 )
 23/shapes = [  ]
 23/z_index = 0
-24/name = "Blank Snow"
-24/texture = ExtResource( 4 )
-24/tex_offset = Vector2( 0, 0 )
-24/modulate = Color( 1, 1, 1, 1 )
-24/region = Rect2( 133, 67, 32, 32 )
-24/tile_mode = 0
-24/occluder_offset = Vector2( 0, 0 )
-24/navigation_offset = Vector2( 0, 0 )
-24/shapes = [  ]
-24/z_index = 0
-25/name = "Snowman top"
-25/texture = ExtResource( 5 )
+25/name = "HorBridge"
+25/texture = ExtResource( 1 )
 25/tex_offset = Vector2( 0, 0 )
 25/modulate = Color( 1, 1, 1, 1 )
-25/region = Rect2( 1, 1, 32, 32 )
-25/tile_mode = 0
+25/region = Rect2( 1, 133, 65, 296 )
+25/tile_mode = 1
+25/autotile/bitmask_mode = 1
+25/autotile/bitmask_flags = [ Vector2( 0, 3 ), 504, Vector2( 0, 4 ), 511, Vector2( 0, 5 ), 63, Vector2( 0, 6 ), 432, Vector2( 0, 7 ), 438, Vector2( 0, 8 ), 54, Vector2( 1, 0 ), 216, Vector2( 1, 1 ), 219, Vector2( 1, 2 ), 27 ]
+25/autotile/icon_coordinate = Vector2( 0, 4 )
+25/autotile/tile_size = Vector2( 32, 32 )
+25/autotile/spacing = 1
+25/autotile/occluder_map = [  ]
+25/autotile/navpoly_map = [  ]
+25/autotile/priority_map = [  ]
+25/autotile/z_index_map = [  ]
 25/occluder_offset = Vector2( 0, 0 )
 25/navigation_offset = Vector2( 0, 0 )
 25/shapes = [  ]
 25/z_index = 0
-26/name = "Snowman bottom"
-26/texture = ExtResource( 5 )
+26/name = "VertBridge"
+26/texture = ExtResource( 1 )
 26/tex_offset = Vector2( 0, 0 )
 26/modulate = Color( 1, 1, 1, 1 )
-26/region = Rect2( 1, 34, 32, 32 )
-26/tile_mode = 0
+26/region = Rect2( 1, 430, 197, 65 )
+26/tile_mode = 1
+26/autotile/bitmask_mode = 1
+26/autotile/bitmask_flags = [ Vector2( 0, 0 ), 432, Vector2( 0, 1 ), 438, Vector2( 1, 0 ), 504, Vector2( 1, 1 ), 511, Vector2( 2, 0 ), 216, Vector2( 2, 1 ), 219, Vector2( 3, 1 ), 54, Vector2( 4, 1 ), 63, Vector2( 5, 1 ), 27 ]
+26/autotile/icon_coordinate = Vector2( 1, 1 )
+26/autotile/tile_size = Vector2( 32, 32 )
+26/autotile/spacing = 1
+26/autotile/occluder_map = [  ]
+26/autotile/navpoly_map = [  ]
+26/autotile/priority_map = [  ]
+26/autotile/z_index_map = [  ]
 26/occluder_offset = Vector2( 0, 0 )
 26/navigation_offset = Vector2( 0, 0 )
-26/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 4 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
+26/shapes = [  ]
 26/z_index = 0
-27/name = "Stoplight bottom"
-27/texture = ExtResource( 5 )
+27/name = "RaisedSnow"
+27/texture = ExtResource( 1 )
 27/tex_offset = Vector2( 0, 0 )
 27/modulate = Color( 1, 1, 1, 1 )
-27/region = Rect2( 34, 67, 32, 32 )
-27/tile_mode = 0
+27/region = Rect2( 199, 397, 197, 98 )
+27/tile_mode = 1
+27/autotile/bitmask_mode = 1
+27/autotile/bitmask_flags = [ Vector2( 0, 0 ), 255, Vector2( 0, 1 ), 219, Vector2( 0, 2 ), 507, Vector2( 1, 0 ), 63, Vector2( 1, 2 ), 504, Vector2( 2, 0 ), 447, Vector2( 2, 1 ), 438, Vector2( 2, 2 ), 510, Vector2( 3, 0 ), 432, Vector2( 3, 1 ), 438, Vector2( 3, 2 ), 54, Vector2( 4, 0 ), 504, Vector2( 4, 1 ), 511, Vector2( 4, 2 ), 63, Vector2( 5, 0 ), 216, Vector2( 5, 1 ), 219, Vector2( 5, 2 ), 27 ]
+27/autotile/icon_coordinate = Vector2( 4, 2 )
+27/autotile/tile_size = Vector2( 32, 32 )
+27/autotile/spacing = 1
+27/autotile/occluder_map = [  ]
+27/autotile/navpoly_map = [  ]
+27/autotile/priority_map = [  ]
+27/autotile/z_index_map = [  ]
 27/occluder_offset = Vector2( 0, 0 )
 27/navigation_offset = Vector2( 0, 0 )
-27/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 5 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
+27/shapes = [  ]
 27/z_index = 0
-28/name = "Stoplight middle"
-28/texture = ExtResource( 5 )
+28/name = "BlankSnow"
+28/texture = ExtResource( 1 )
 28/tex_offset = Vector2( 0, 0 )
 28/modulate = Color( 1, 1, 1, 1 )
-28/region = Rect2( 34, 34, 32, 32 )
-28/tile_mode = 0
+28/region = Rect2( 100, 1, 98, 131 )
+28/tile_mode = 1
+28/autotile/bitmask_mode = 1
+28/autotile/bitmask_flags = [ Vector2( 0, 0 ), 511, Vector2( 1, 0 ), 511, Vector2( 1, 2 ), 511, Vector2( 2, 0 ), 511 ]
+28/autotile/icon_coordinate = Vector2( 0, 0 )
+28/autotile/tile_size = Vector2( 32, 32 )
+28/autotile/spacing = 1
+28/autotile/occluder_map = [  ]
+28/autotile/navpoly_map = [  ]
+28/autotile/priority_map = [ Vector3( 1, 2, 12 ) ]
+28/autotile/z_index_map = [  ]
 28/occluder_offset = Vector2( 0, 0 )
 28/navigation_offset = Vector2( 0, 0 )
 28/shapes = [  ]
 28/z_index = 0
-29/name = "Stoplight top"
-29/texture = ExtResource( 5 )
-29/tex_offset = Vector2( 0, 0 )
-29/modulate = Color( 1, 1, 1, 1 )
-29/region = Rect2( 34, 1, 32, 32 )
-29/tile_mode = 0
-29/occluder_offset = Vector2( 0, 0 )
-29/navigation_offset = Vector2( 0, 0 )
-29/shapes = [  ]
-29/z_index = 0
-30/name = "Stopsign bottom"
-30/texture = ExtResource( 5 )
-30/tex_offset = Vector2( 0, 0 )
-30/modulate = Color( 1, 1, 1, 1 )
-30/region = Rect2( 67, 34, 32, 32 )
-30/tile_mode = 0
-30/occluder_offset = Vector2( 0, 0 )
-30/navigation_offset = Vector2( 0, 0 )
-30/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 7 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-30/z_index = 0
-31/name = "Stopsign top"
-31/texture = ExtResource( 5 )
-31/tex_offset = Vector2( 0, 0 )
-31/modulate = Color( 1, 1, 1, 1 )
-31/region = Rect2( 67, 1, 32, 32 )
-31/tile_mode = 0
-31/occluder_offset = Vector2( 0, 0 )
-31/navigation_offset = Vector2( 0, 0 )
-31/shapes = [  ]
-31/z_index = 0
-32/name = "Streetlight top"
-32/texture = ExtResource( 5 )
-32/tex_offset = Vector2( 0, 0 )
-32/modulate = Color( 1, 1, 1, 1 )
-32/region = Rect2( 100, 1, 65, 32 )
-32/tile_mode = 0
-32/occluder_offset = Vector2( 0, 0 )
-32/navigation_offset = Vector2( 0, 0 )
-32/shapes = [  ]
-32/z_index = 0
-33/name = "Streetlight middle"
-33/texture = ExtResource( 5 )
-33/tex_offset = Vector2( 0, 0 )
-33/modulate = Color( 1, 1, 1, 1 )
-33/region = Rect2( 133, 34, 32, 32 )
-33/tile_mode = 0
-33/occluder_offset = Vector2( 0, 0 )
-33/navigation_offset = Vector2( 0, 0 )
-33/shapes = [  ]
-33/z_index = 0
-34/name = "Streetlight bottom"
-34/texture = ExtResource( 5 )
-34/tex_offset = Vector2( 0, 0 )
-34/modulate = Color( 1, 1, 1, 1 )
-34/region = Rect2( 133, 67, 32, 32 )
-34/tile_mode = 0
-34/occluder_offset = Vector2( 0, 0 )
-34/navigation_offset = Vector2( 0, 0 )
-34/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 8 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-34/z_index = 0
-35/name = "Car"
-35/texture = ExtResource( 5 )
-35/tex_offset = Vector2( 0, 0 )
-35/modulate = Color( 1, 1, 1, 1 )
-35/region = Rect2( 166, 1, 65, 98 )
-35/tile_mode = 2
-35/autotile/icon_coordinate = Vector2( 0, 0 )
-35/autotile/tile_size = Vector2( 32, 32 )
-35/autotile/spacing = 1
-35/autotile/occluder_map = [  ]
-35/autotile/navpoly_map = [  ]
-35/autotile/z_index_map = [  ]
-35/occluder_offset = Vector2( 0, 0 )
-35/navigation_offset = Vector2( 0, 0 )
-35/shapes = [  ]
-35/z_index = 0
-
