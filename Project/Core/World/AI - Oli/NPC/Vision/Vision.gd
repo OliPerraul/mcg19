@@ -60,17 +60,14 @@ func _process(delta):
 
 
 # Drawing the FOV
-const RED = Color(1.0, 0, 0, 0.1)
-const GREEN = Color(1.0, 1.0, 1.0, 0.1)
+const RED = Color(1.0, .5, .5, 0.5)
+const GREEN = Color(1.0, 1.0, 1.0, .5)
 const BLUE = Color(1.0, 0, 0, 1)
-
 var draw_color = GREEN
 
 
 func _draw():
 	draw_circle_arc_poly(Vector2(), DETECT_RADIUS,  angle - FOV/2, angle + FOV/2, draw_color)
-	if target:
-		draw_line(Vector2(), hit_pos, BLUE, 2.5)
 
 
 func draw_circle_arc_poly(center, radius, angle_from, angle_to, color):

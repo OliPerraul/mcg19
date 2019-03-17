@@ -3,6 +3,8 @@ extends Node2D
 export(float) onready var lerp_speed = .02
 
 var alert = 0
+var alert_incr = 20
+
 
 export(NodePath) onready var __astar_agent
 var astar_agent
@@ -49,8 +51,9 @@ func _ready():
 
 func _on_player_kill(body):
 	if body.is_in_group('detectable'):
-		Globals.game.alert = INF
-		Globals.game.end_game()
+		if body.priority < 0:
+			return					
+		Globals.game.alert += alert_incr
 
 
 func _process(delta):	
