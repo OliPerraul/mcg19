@@ -18,7 +18,7 @@ func _ready():
 #	pass
 
 func _on_play():
-	get_tree().change_scene("res://Core/World/Events - Jason/World2Jason.tscn")
+	get_tree().change_scene("res://Core/World/Jack/ThirdWorld.tscn")
 
 func _on_howto():
 	print('howto')
