@@ -31,3 +31,8 @@ func vec_min(a : Vector2, b : Vector2):
 func init(goal, camera):
 	self.goal = goal
 	self.camera = camera
+
+func destroy(G):
+	print("boop")
+	if G == goal:
+		queue_free()
