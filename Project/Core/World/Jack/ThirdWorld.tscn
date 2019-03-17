@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Core/World/Events - Jason/World2Jason.gd" type="Script" id=1]
 [ext_resource path="res://Core/Game.gd" type="Script" id=2]
@@ -40,60 +40,54 @@ _data = {
 [sub_resource type="Curve2D" id=5]
 bake_interval = 0.01
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -100, 19.5819, 0, 0, 0, 0, 50, 19.5819, 0, 0, 0, 0, 50, 119.582, 0, 0, 0, 0, 20, 119.582, 0, 0, 0, 0, -100, 119.582, 0, 0, 0, 0, -100, 39.5819 )
+"points": PoolVector2Array( 0, 0, 0, 0, -160, -0.418091, 0, 0, 0, 0, 190, -0.418091, 0, 0, 0, 0, 190, 189.582, 0, 0, 0, 0, -160, 189.582, 0, 0, 0, 0, -160, -0.418091 )
 }
 
 [sub_resource type="Curve2D" id=6]
 bake_interval = 0.01
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -160, -0.418091, 0, 0, 0, 0, 190, -0.418091, 0, 0, 0, 0, 190, 189.582, 0, 0, 0, 0, -160, 189.582, 0, 0, 0, 0, -160, -0.418091 )
+"points": PoolVector2Array( 0, 0, 0, 0, -160, -0.418091, 0, 0, 0, 0, 190, -0.418091, 0, 0, 0, 0, 190, 219.582, 0, 0, 0, 0, -160, 219.582, 0, 0, 0, 0, -160, -0.418091 )
 }
 
 [sub_resource type="Curve2D" id=7]
 bake_interval = 0.01
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -160, -0.418091, 0, 0, 0, 0, 190, -0.418091, 0, 0, 0, 0, 190, 219.582, 0, 0, 0, 0, -160, 219.582, 0, 0, 0, 0, -160, -0.418091 )
+"points": PoolVector2Array( 0, 0, 0, 0, 361, -0.418091, 0, 0, 0, 0, -109, -0.418091, 0, 0, 0, 0, -19, -0.418091, 0, 0, 0, 0, -19, -100.418, 0, 0, 0, 0, -109, -100.418 )
 }
 
 [sub_resource type="Curve2D" id=8]
 bake_interval = 0.01
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 361, -0.418091, 0, 0, 0, 0, -109, -0.418091, 0, 0, 0, 0, -19, -0.418091, 0, 0, 0, 0, -19, -100.418, 0, 0, 0, 0, -109, -100.418 )
+"points": PoolVector2Array( 0, 0, 0, 0, -314.401, -0.880127, 0, 0, 0, 0, -114.401, -0.880127, 0, 0, 0, 0, -114.401, 109.12, 0, 0, 0, 0, 105.599, 109.12 )
 }
 
 [sub_resource type="Curve2D" id=9]
 bake_interval = 0.01
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -314.401, -0.880127, 0, 0, 0, 0, -114.401, -0.880127, 0, 0, 0, 0, -114.401, 109.12, 0, 0, 0, 0, 105.599, 109.12 )
+"points": PoolVector2Array( 0, 0, 0, 0, -244.401, -6.88013, 0, 0, 0, 0, 195.599, -6.88013, 0, 0, 0, 0, 195.599, -46.8801, 0, 0, 0, 0, 275.599, -46.8801, 0, 0, 0, 0, 275.599, 43.1199, 0, 0, 0, 0, 195.599, 43.1199, 0, 0, 0, 0, 195.599, 3.11987, 0, 0, 0, 0, -244.401, 3.11987 )
 }
 
 [sub_resource type="Curve2D" id=10]
 bake_interval = 0.01
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -244.401, -6.88013, 0, 0, 0, 0, 195.599, -6.88013, 0, 0, 0, 0, 195.599, -46.8801, 0, 0, 0, 0, 275.599, -46.8801, 0, 0, 0, 0, 275.599, 43.1199, 0, 0, 0, 0, 195.599, 43.1199, 0, 0, 0, 0, 195.599, 3.11987, 0, 0, 0, 0, -244.401, 3.11987 )
+"points": PoolVector2Array( 0, 0, 0, 0, -273.401, -10.8801, 0, 0, 0, 0, 206.599, -10.8801, 0, 0, 0, 0, 206.599, 79.1199, 0, 0, 0, 0, -273.401, 79.1199, 0, 0, 0, 0, -273.401, 69.1199, 0, 0, 0, 0, -73.4012, 69.1199, 0, 0, 0, 0, -73.4012, -0.880127, 0, 0, 0, 0, -273.401, -0.880127 )
 }
 
 [sub_resource type="Curve2D" id=11]
 bake_interval = 0.01
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -273.401, -10.8801, 0, 0, 0, 0, 206.599, -10.8801, 0, 0, 0, 0, 206.599, 79.1199, 0, 0, 0, 0, -273.401, 79.1199, 0, 0, 0, 0, -273.401, 69.1199, 0, 0, 0, 0, -73.4012, 69.1199, 0, 0, 0, 0, -73.4012, -0.880127, 0, 0, 0, 0, -273.401, -0.880127 )
-}
-
-[sub_resource type="Curve2D" id=12]
-bake_interval = 0.01
-_data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 165.599, -40.8801, 0, 0, 0, 0, 65.5988, -40.8801, 0, 0, 0, 0, 65.5988, 109.12, 0, 0, 0, 0, -94.4012, 109.12, 0, 0, 0, 0, -94.4012, -40.8801, 0, 0, 0, 0, 5.59875, -70.8801, 0, 0, 0, 0, 165.599, -70.8801 )
 }
 
-[sub_resource type="Curve" id=13]
+[sub_resource type="Curve" id=12]
 min_value = -40.0
 max_value = 40.0
 _data = [ Vector2( 0.0135121, -0.703999 ), 0.0, 0.0, 0, 0, Vector2( 0.202439, 5.632 ), 0.0, 30.3893, 0, 0, Vector2( 0.374048, -5.632 ), 0.0, 0.0, 0, 0, Vector2( 0.607059, 9.856 ), 0.0, 0.0, 0, 0, Vector2( 0.767647, -1.408 ), 0.0, 0.0, 0, 0, Vector2( 0.945554, 4.224 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=14]
-curve = SubResource( 13 )
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
 
-[sub_resource type="ParticlesMaterial" id=15]
+[sub_resource type="ParticlesMaterial" id=14]
 render_priority = 127
 emission_shape = 2
 emission_box_extents = Vector3( 3086, 3086, 2048 )
@@ -102,7 +96,7 @@ gravity = Vector3( 0, 10, 0 )
 angular_velocity = 1.05
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-tangential_accel_curve = SubResource( 14 )
+tangential_accel_curve = SubResource( 13 )
 scale = 2.0
 scale_random = 1.0
 
@@ -355,7 +349,6 @@ drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
 [node name="NPCs" type="Node2D" parent="Middleground"]
-editor/display_folded = true
 
 [node name="Reporter" parent="Middleground/NPCs" instance=ExtResource( 18 )]
 position = Vector2( 579, 1940 )
@@ -364,10 +357,7 @@ position = Vector2( 579, 1940 )
 editor/display_folded = false
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter/Character" index="2"]
-frame = 7
-
-[node name="Emoji" parent="Middleground/NPCs/Reporter/Character" index="3"]
-frame = 1
+frame = 2
 
 [node name="Kill" parent="Middleground/NPCs/Reporter/Character" index="4"]
 editor/display_folded = false
@@ -378,38 +368,20 @@ curve = SubResource( 4 )
 
 [node name="PathAgent" parent="Middleground/NPCs/Reporter/Path2D" index="0"]
 position = Vector2( -169, -30.4181 )
-rotation = 4.78103e-07
+rotation = 4.78103e-007
 
 [node name="Reporter2" parent="Middleground/NPCs" instance=ExtResource( 16 )]
-editor/display_folded = true
 position = Vector2( 560, 1540 )
-
-[node name="AnimatedSprite" parent="Middleground/NPCs/Reporter2/Character" index="2"]
-frame = 7
-
-[node name="Emoji" parent="Middleground/NPCs/Reporter2/Character" index="3"]
-frame = 1
-
-[node name="Path2D" parent="Middleground/NPCs/Reporter2" index="2"]
-position = Vector2( 20, 10.4181 )
-curve = SubResource( 5 )
-
-[node name="PathAgent" parent="Middleground/NPCs/Reporter2/Path2D" index="0"]
-position = Vector2( -100, 19.5819 )
-rotation = 0.0
 
 [node name="Reporter4" parent="Middleground/NPCs" instance=ExtResource( 18 )]
 position = Vector2( 370, 1320 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter4/Character" index="2"]
-frame = 7
-
-[node name="Emoji" parent="Middleground/NPCs/Reporter4/Character" index="3"]
-frame = 1
+frame = 2
 
 [node name="Path2D" parent="Middleground/NPCs/Reporter4" index="2"]
 position = Vector2( 20, 10.4181 )
-curve = SubResource( 6 )
+curve = SubResource( 5 )
 
 [node name="PathAgent" parent="Middleground/NPCs/Reporter4/Path2D" index="0"]
 position = Vector2( -160, -0.418091 )
@@ -419,17 +391,14 @@ rotation = 0.0
 position = Vector2( 190, 580 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter5/Character" index="2"]
-frame = 7
-
-[node name="Emoji" parent="Middleground/NPCs/Reporter5/Character" index="3"]
-frame = 1
+frame = 2
 
 [node name="Kill" parent="Middleground/NPCs/Reporter5/Character" index="4"]
 editor/display_folded = false
 
 [node name="Path2D" parent="Middleground/NPCs/Reporter5" index="2"]
 position = Vector2( 20, 10.4181 )
-curve = SubResource( 7 )
+curve = SubResource( 6 )
 
 [node name="PathAgent" parent="Middleground/NPCs/Reporter5/Path2D" index="0"]
 position = Vector2( -160, -0.418091 )
@@ -442,17 +411,14 @@ position = Vector2( 189, 540 )
 editor/display_folded = false
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Reporter6/Character" index="2"]
-frame = 7
-
-[node name="Emoji" parent="Middleground/NPCs/Reporter6/Character" index="3"]
-frame = 1
+frame = 2
 
 [node name="Kill" parent="Middleground/NPCs/Reporter6/Character" index="4"]
 editor/display_folded = false
 
 [node name="Path2D" parent="Middleground/NPCs/Reporter6" index="2"]
 position = Vector2( 20, 10.4181 )
-curve = SubResource( 8 )
+curve = SubResource( 7 )
 
 [node name="PathAgent" parent="Middleground/NPCs/Reporter6/Path2D" index="0"]
 editor/display_folded = true
@@ -469,55 +435,55 @@ position = Vector2( -50, 2150 )
 editor/display_folded = true
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Hunter3/Character" index="2"]
-frame = 7
+frame = 2
 
 [node name="Emoji" parent="Middleground/NPCs/Hunter3/Character" index="3"]
-frame = 1
+frame = 0
 
 [node name="Path2D" parent="Middleground/NPCs/Hunter3" index="2"]
 editor/display_folded = true
 position = Vector2( 24.4012, 10.8801 )
-curve = SubResource( 9 )
+curve = SubResource( 8 )
 
 [node name="PathAgent" parent="Middleground/NPCs/Hunter3/Path2D" index="0"]
 position = Vector2( -314.401, -0.880127 )
-rotation = 1.53147e-08
+rotation = 1.53147e-008
 
 [node name="Hunter4" parent="Middleground/NPCs" instance=ExtResource( 19 )]
 position = Vector2( -20, 1956 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Hunter4/Character" index="2"]
-frame = 7
+frame = 2
 
 [node name="Emoji" parent="Middleground/NPCs/Hunter4/Character" index="3"]
-frame = 1
+frame = 0
 
 [node name="Kill" parent="Middleground/NPCs/Hunter4/Character" index="4"]
 editor/display_folded = false
 
 [node name="Path2D" parent="Middleground/NPCs/Hunter4" index="2"]
 position = Vector2( 24.4012, 10.8801 )
-curve = SubResource( 10 )
+curve = SubResource( 9 )
 
 [node name="PathAgent" parent="Middleground/NPCs/Hunter4/Path2D" index="0"]
 position = Vector2( -244.401, -6.88013 )
-rotation = 2.21515e-07
+rotation = 2.21515e-007
 
 [node name="Hunter5" parent="Middleground/NPCs" instance=ExtResource( 19 )]
 position = Vector2( 339, 1000 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Hunter5/Character" index="2"]
-frame = 7
+frame = 2
 
 [node name="Emoji" parent="Middleground/NPCs/Hunter5/Character" index="3"]
-frame = 1
+frame = 0
 
 [node name="Kill" parent="Middleground/NPCs/Hunter5/Character" index="4"]
 editor/display_folded = false
 
 [node name="Path2D" parent="Middleground/NPCs/Hunter5" index="2"]
 position = Vector2( 24.4012, 10.8801 )
-curve = SubResource( 11 )
+curve = SubResource( 10 )
 
 [node name="PathAgent" parent="Middleground/NPCs/Hunter5/Path2D" index="0"]
 position = Vector2( -273.401, -10.8801 )
@@ -528,17 +494,17 @@ __path = NodePath("../../../NPCs/NPC/Path2D")
 position = Vector2( -30, 3210 )
 
 [node name="AnimatedSprite" parent="Middleground/NPCs/Hunter2/Character" index="2"]
-frame = 4
+frame = 7
 
 [node name="Emoji" parent="Middleground/NPCs/Hunter2/Character" index="3"]
-frame = 1
+frame = 0
 
 [node name="Kill" parent="Middleground/NPCs/Hunter2/Character" index="4"]
 editor/display_folded = false
 
 [node name="Path2D" parent="Middleground/NPCs/Hunter2" index="2"]
 position = Vector2( 24.4012, 10.8801 )
-curve = SubResource( 12 )
+curve = SubResource( 11 )
 
 [node name="PathAgent" parent="Middleground/NPCs/Hunter2/Path2D" index="0"]
 position = Vector2( 165.599, -40.8801 )
@@ -567,7 +533,7 @@ amount = 20000
 lifetime = 10.0
 speed_scale = 2.0
 randomness = 1.0
-process_material = SubResource( 15 )
+process_material = SubResource( 14 )
 
 [node name="Particles2D2" type="Particles2D" parent="Foreground"]
 position = Vector2( 890, 790 )
@@ -576,7 +542,7 @@ amount = 20000
 lifetime = 10.0
 speed_scale = 2.0
 randomness = 1.0
-process_material = SubResource( 15 )
+process_material = SubResource( 14 )
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 
